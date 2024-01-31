@@ -11,7 +11,7 @@ const Mobiles = () => {
 
   const [categoryimg, setcategoryimg] = useState(filtered_img);
   const [categoryimg_copy, setcategoryimg_copy] = useState(filtered_img);
-  const [categoryimg_secondcopy, setcategoryimg_secondcopy] = useState(filtered_img)
+  // const [categoryimg_secondcopy, setcategoryimg_secondcopy] = useState(filtered_img)
 
   // const allonclick = () => {
   //   setcategoryimg(filtered_img)
@@ -40,7 +40,7 @@ const Mobiles = () => {
   //     .forEach((el) => el.checked = false);
   // }
 
-  const handleonchange = (event) => {
+  const handleonchange = (event) => { 
     event.target.value;
     let checkboxbrandval = [...document.querySelectorAll('.checkboxbrand')]
       .filter((data) => data.checked)
@@ -51,42 +51,62 @@ const Mobiles = () => {
       .filter((data) => data.checked)
       .map((currdata) => currdata.value)
     console.log(checkboxpriceval);
+     
+    // let brand_checkbox = checkboxbrandval.length 
+    // let price_checkbox = checkboxpriceval.length 
 
-    let checkboxbrand_filtered = categoryimg_copy.filter((filterdata) => checkboxbrandval.includes(filterdata.brands))
-    setcategoryimg_secondcopy(checkboxbrand_filtered)
+    let brandprice_filtered = categoryimg_copy.filter((filterdata) => checkboxbrandval.includes(filterdata.brands) && (checkboxpriceval.includes(filterdata.pricerange)))   
+    let brand_filtered = categoryimg_copy.filter((filterdata) => checkboxbrandval.includes(filterdata.brands))   
+    let price_filtered = categoryimg_copy.filter((filterdata) => checkboxpriceval.includes(filterdata.pricerange))  
+ 
+     if ((checkboxbrandval.length!==0) && (checkboxpriceval.length!==0)) {
+       setcategoryimg(brandprice_filtered) 
+     } else if ((checkboxbrandval.length!==0) && (checkboxpriceval.length===0)) {
+       setcategoryimg(brand_filtered)
+     } else if ((checkboxpriceval.length!==0) && (checkboxbrandval.length===0)) {
+       setcategoryimg(price_filtered)
+     }  else {
+      setcategoryimg(filtered_img)
+     }
 
 
 
+    // let checkboxbrand_filtered = categoryimg_copy.filter((filterdata) => checkboxbrandval.includes(filterdata.brands) && (checkboxpriceval.includes(filterdata.pricerange)))
+    // setcategoryimg_secondcopy(checkboxbrand_filtered)
+    
+    // const checkboxprice_filtered = categoryimg_secondcopy.filter((filterdata) => checkboxpriceval.includes(filterdata.pricerange))
 
-    const checkboxprice_filtered = categoryimg_secondcopy.filter((filterdata) => checkboxpriceval.includes(filterdata.pricerange))
 
-    if ((checkboxbrandval.length === 0) && (checkboxpriceval.length === 0)) {
-      setcategoryimg(categoryimg_copy)
-    }
-    else if (checkboxbrand_filtered.length !== 0 && checkboxpriceval.length === 0) {
-      setcategoryimg(categoryimg_copy.filter((filterdata) => checkboxbrandval.includes(filterdata.brands)))
-    }
-    else if (checkboxbrand_filtered.length !== 0 && checkboxprice_filtered.length === 0) {
-      setcategoryimg(categoryimg_copy.filter((filterdata) => checkboxbrandval.includes(filterdata.pricerange)))
-    }
-    else if (checkboxbrandval.length === 0 && checkboxpriceval.length !== 0) {
-      setcategoryimg(filtered_img.filter((filterdata) => checkboxpriceval.includes(filterdata.pricerange)))
-    }
-    else if (checkboxpriceval.length !== 0 && checkboxbrand_filtered.length !== 0) {
-      setcategoryimg(checkboxbrand_filtered.filter((filterdata) => checkboxpriceval.includes(filterdata.pricerange)))
-    }
-    else if (checkboxbrand_filtered.length !== 0 && checkboxprice_filtered.length !== 0) {
-      setcategoryimg(checkboxbrand_filtered.filter((filterdata) => checkboxpriceval.includes(filterdata.pricerange)))
-    }
-    // else if (checkboxbrand_filtered.length === 0) {
-    //   setcategoryimg(categorimg_copy)
-    // }
-    else {
-      setcategoryimg(categorimg_copy)
-    }
-  }
+
+  //   if ((checkboxbrandval.length === 0) && (checkboxpriceval.length === 0)) {
+  //     setcategoryimg(categoryimg_copy)
+  //   }
+  //   else if (checkboxbrand_filtered.length !== 0 && checkboxpriceval.length === 0) {
+  //     setcategoryimg(categoryimg_copy.filter((filterdata) => checkboxbrandval.includes(filterdata.brands)))
+  //   }
+  //   else if (checkboxbrand_filtered.length !== 0 && checkboxprice_filtered.length === 0) {
+  //     setcategoryimg(categoryimg_copy.filter((filterdata) => checkboxbrandval.includes(filterdata.pricerange)))
+  //   }
+  //   else if (checkboxbrandval.length === 0 && checkboxpriceval.length !== 0) {
+  //     setcategoryimg(filtered_img.filter((filterdata) => checkboxpriceval.includes(filterdata.pricerange)))
+  //   }
+  //   else if (checkboxpriceval.length !== 0 && checkboxbrand_filtered.length !== 0) {
+  //     setcategoryimg(checkboxbrand_filtered.filter((filterdata) => checkboxpriceval.includes(filterdata.pricerange)))
+  //   }
+  //   else if (checkboxbrand_filtered.length !== 0 && checkboxprice_filtered.length !== 0) {
+  //     setcategoryimg(checkboxbrand_filtered.filter((filterdata) => checkboxpriceval.includes(filterdata.pricerange)))
+  //   }
+  //   // else if (checkboxbrand_filtered.length === 0) {
+  //   //   setcategoryimg(categorimg_copy)
+  //   // }
+  //   else {
+  //     setcategoryimg(categorimg_copy)
+  //   }
+  // }
 
   // change categoryimg to categoryimg_copy in all categories such as beauty fashion electronic etc
+  }
+
 
   return (
     <>
