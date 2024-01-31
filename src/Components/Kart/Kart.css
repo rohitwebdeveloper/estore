@@ -1,0 +1,16 @@
+
+
+.row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    flex-wrap: wrap;
+}
+
+img{
+    height: 130px;
+    width: auto;
+    margin: 10px;
+}

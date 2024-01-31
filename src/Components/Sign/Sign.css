@@ -1,0 +1,92 @@
+.sign_container{
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: 300px;
+    height: 450px;
+    background: transparent;
+    display:block;
+    margin: auto auto;
+    border: 2px solid black;
+    border-radius: 5px;
+    overflow: hidden;
+    
+}
+
+.signin_box{
+    width: 300px;
+    height: 100%;
+    position:absolute;
+    top: 20px;
+    left: 0px;
+  
+
+   
+    
+}
+.signup_box{
+    width: 300px;
+    height: 100%;
+    position: absolute;
+    top: 20px;
+    left: -300px;
+}
+
+
+.signin_credentials{
+    width: 80%;
+    display: block;
+    margin: 10px auto;
+    font-size: 1rem;
+    padding: 5px 8px;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid black;
+}
+
+.btn{
+    width: 80%;
+    display: block;
+    margin: 40px auto 15px auto;
+    text-align: center;
+    font-size: 1rem;
+    padding: 5px 10px;
+    background-color: rgb(0, 0, 0);
+    outline: none;
+    border-radius: 5px;
+    font-weight: bold;
+    color: white;
+
+}
+
+.btn:hover{
+    background-color: rgb(37, 36, 36);
+}
+
+.sign_heading{
+    display: flex;
+    margin: 14px auto 30px auto;
+    width: 100%;
+    justify-content: center;
+    color: rgb(0, 0, 0);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+}
+
+.sign_h2{
+    display: inline-block;
+    margin: 15px 16px;
+    text-decoration: underline;
+
+}
+
+p{
+    display: block;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    padding: 5px 10px;
+    text-decoration: underline;
+}
