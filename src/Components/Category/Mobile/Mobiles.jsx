@@ -8,39 +8,13 @@ const Mobiles = () => {
   const filtered_img = Categorydata.filter((data) => data.major_category == 'mobiles');
   const mobilebrand = ['samsung', 'vivo', 'realme', 'oneplus', 'oppo']
   const mobileprice = ['Upto ₹7000', '₹7000 to ₹10000', '₹10000 to ₹12000', '₹12000 to ₹15000', '₹15000 to ₹20000', '₹20000 to ₹25000', '₹25000 to ₹30000', '₹30000 to ₹40000', '₹40000 to ₹50000', ' Above ₹50000']
+  const mobilerating = ['5', '4', '3', '2', '1']
 
   const [categoryimg, setcategoryimg] = useState(filtered_img);
   const [categoryimg_copy, setcategoryimg_copy] = useState(filtered_img);
-  // const [categoryimg_secondcopy, setcategoryimg_secondcopy] = useState(filtered_img)
-
-  // const allonclick = () => {
-  //   setcategoryimg(filtered_img)
-  //   setcategoryimg_copy(filtered_img)
-  //   document.querySelectorAll('.checkbox')
-  //     .forEach((el) => el.checked = false);
-  // }
-  // const tvonclick = () => {
-  //   setcategoryimg(filtered_img.filter((data) => data.minor_category == 'camera'))
-  //   setcategoryimg_copy(filtered_img.filter((data) => data.minor_category == 'camera'))
-  //   document.querySelectorAll('.checkbox')
-  //     .forEach((el) => el.checked = false);
-  // }
-  // const refregiratoronclick = () => {
-  //   setcategoryimg(filtered_img.filter((data) => data.minor_category === 'ai'))
-  //   setcategoryimg_copy(filtered_img.filter((data) => data.minor_category === 'ai'))
-  //   document.querySelectorAll('.checkbox')
-  //     .forEach((el) => el.checked = false);
-  // }
-  // const washingonclick = () => {
-  //   setcategoryimg(filtered_img.filter((data) => data.minor_category === 'earphone'))
-  //   setcategoryimg_copy(filtered_img.filter((data) => data.minor_category === 'earphone'))
 
 
-  //   document.querySelectorAll('.checkbox')
-  //     .forEach((el) => el.checked = false);
-  // }
-
-  const handleonchange = (event) => { 
+  const handleonchange = (event) => {
     event.target.value;
     let checkboxbrandval = [...document.querySelectorAll('.checkboxbrand')]
       .filter((data) => data.checked)
@@ -51,60 +25,47 @@ const Mobiles = () => {
       .filter((data) => data.checked)
       .map((currdata) => currdata.value)
     console.log(checkboxpriceval);
-     
+
+    let checkboxratingval = [...document.querySelectorAll('.checkboxrating')]
+      .filter((data) => data.checked)
+      .map((currdata) => currdata.value)
+    console.log(checkboxratingval);
+
+
+
     // let brand_checkbox = checkboxbrandval.length 
     // let price_checkbox = checkboxpriceval.length 
 
-    let brandprice_filtered = categoryimg_copy.filter((filterdata) => checkboxbrandval.includes(filterdata.brands) && (checkboxpriceval.includes(filterdata.pricerange)))   
-    let brand_filtered = categoryimg_copy.filter((filterdata) => checkboxbrandval.includes(filterdata.brands))   
-    let price_filtered = categoryimg_copy.filter((filterdata) => checkboxpriceval.includes(filterdata.pricerange))  
- 
-     if ((checkboxbrandval.length!==0) && (checkboxpriceval.length!==0)) {
-       setcategoryimg(brandprice_filtered) 
-     } else if ((checkboxbrandval.length!==0) && (checkboxpriceval.length===0)) {
-       setcategoryimg(brand_filtered)
-     } else if ((checkboxpriceval.length!==0) && (checkboxbrandval.length===0)) {
-       setcategoryimg(price_filtered)
-     }  else {
+    let brandpricerating_filtered = categoryimg_copy.filter((filterdata) => checkboxbrandval.includes(filterdata.brands) && (checkboxpriceval.includes(filterdata.pricerange)) && (checkboxratingval.includes(filterdata.rating)))
+    let brandprice_filtered = categoryimg_copy.filter((filterdata) => checkboxbrandval.includes(filterdata.brands) && (checkboxpriceval.includes(filterdata.pricerange)))
+    let brandrating_filtered = categoryimg_copy.filter((filterdata) => checkboxbrandval.includes(filterdata.brands) && (checkboxratingval.includes(filterdata.rating)))
+    let ratingprice_filtered = categoryimg_copy.filter((filterdata) => checkboxratingval.includes(filterdata.rating) && (checkboxpriceval.includes(filterdata.pricerange)))
+    let brand_filtered = categoryimg_copy.filter((filterdata) => checkboxbrandval.includes(filterdata.brands))
+    let price_filtered = categoryimg_copy.filter((filterdata) => checkboxpriceval.includes(filterdata.pricerange))
+    let rating_filtered = categoryimg_copy.filter((filterdata) => checkboxratingval.includes(filterdata.rating))
+
+    if ((checkboxbrandval.length !== 0) && (checkboxpriceval.length !== 0) && (checkboxratingval.length !== 0)) {
+      setcategoryimg(brandpricerating_filtered)
+    } else if ((checkboxbrandval.length !== 0) && (checkboxpriceval.length !== 0) && (checkboxratingval.length === 0)) {
+      setcategoryimg(brandprice_filtered)
+    } else if ((checkboxbrandval.length !== 0) && (checkboxratingval.length !== 0) && (checkboxpriceval.length === 0)) {
+      setcategoryimg(brandrating_filtered)
+    } else if ((checkboxratingval.length !== 0) && (checkboxpriceval.length !== 0) && (checkboxbrandval.length === 0)) {
+      setcategoryimg(ratingprice_filtered)
+    }
+    else if ((checkboxbrandval.length !== 0) && (checkboxpriceval.length === 0) && (checkboxratingval.length === 0)) {
+      setcategoryimg(brand_filtered)
+    }
+    else if ((checkboxpriceval.length !== 0) && (checkboxbrandval.length === 0) && (checkboxratingval.length === 0)) {
+      setcategoryimg(price_filtered)
+    }
+    else if ((checkboxratingval.length !== 0) && (checkboxbrandval.length === 0) && (checkboxpriceval.length === 0)) {
+      setcategoryimg(rating_filtered)
+    }
+    else {
       setcategoryimg(filtered_img)
-     }
+    }
 
-
-
-    // let checkboxbrand_filtered = categoryimg_copy.filter((filterdata) => checkboxbrandval.includes(filterdata.brands) && (checkboxpriceval.includes(filterdata.pricerange)))
-    // setcategoryimg_secondcopy(checkboxbrand_filtered)
-    
-    // const checkboxprice_filtered = categoryimg_secondcopy.filter((filterdata) => checkboxpriceval.includes(filterdata.pricerange))
-
-
-
-  //   if ((checkboxbrandval.length === 0) && (checkboxpriceval.length === 0)) {
-  //     setcategoryimg(categoryimg_copy)
-  //   }
-  //   else if (checkboxbrand_filtered.length !== 0 && checkboxpriceval.length === 0) {
-  //     setcategoryimg(categoryimg_copy.filter((filterdata) => checkboxbrandval.includes(filterdata.brands)))
-  //   }
-  //   else if (checkboxbrand_filtered.length !== 0 && checkboxprice_filtered.length === 0) {
-  //     setcategoryimg(categoryimg_copy.filter((filterdata) => checkboxbrandval.includes(filterdata.pricerange)))
-  //   }
-  //   else if (checkboxbrandval.length === 0 && checkboxpriceval.length !== 0) {
-  //     setcategoryimg(filtered_img.filter((filterdata) => checkboxpriceval.includes(filterdata.pricerange)))
-  //   }
-  //   else if (checkboxpriceval.length !== 0 && checkboxbrand_filtered.length !== 0) {
-  //     setcategoryimg(checkboxbrand_filtered.filter((filterdata) => checkboxpriceval.includes(filterdata.pricerange)))
-  //   }
-  //   else if (checkboxbrand_filtered.length !== 0 && checkboxprice_filtered.length !== 0) {
-  //     setcategoryimg(checkboxbrand_filtered.filter((filterdata) => checkboxpriceval.includes(filterdata.pricerange)))
-  //   }
-  //   // else if (checkboxbrand_filtered.length === 0) {
-  //   //   setcategoryimg(categorimg_copy)
-  //   // }
-  //   else {
-  //     setcategoryimg(categorimg_copy)
-  //   }
-  // }
-
-  // change categoryimg to categoryimg_copy in all categories such as beauty fashion electronic etc
   }
 
 
@@ -113,8 +74,8 @@ const Mobiles = () => {
       <div className="container">
         <div className="dynamic_section">
           <div className="row">
-            { categoryimg.length===0 ? (
-             <h1>No Result</h1>
+            {categoryimg.length === 0 ? (
+              <h1>No Result</h1>
             ) : (categoryimg.map((currdata) => {
               return (
                 <>
@@ -125,10 +86,10 @@ const Mobiles = () => {
                     </div>
                     <div className="product_detail">
                       <div className="product_name">
-                        Realme Nazor R10
+                        {currdata.name}
                       </div>
                       <div className="rating">
-                        4.5
+                        {currdata.rating}
                       </div>
                       <ul className="description">
                         <li>8GB & 128GB</li>
@@ -149,10 +110,8 @@ const Mobiles = () => {
             }))}
           </div>
         </div>
-        <Filter change={handleonchange} brand={mobilebrand} price={mobileprice} />
+        <Filter change={handleonchange} brand={mobilebrand} price={mobileprice} rating={mobilerating} />
       </div>
-
-
     </>
   )
 }

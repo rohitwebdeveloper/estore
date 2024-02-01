@@ -4,6 +4,7 @@ const Filter = (props) => {
 
   const [brandone, brandtwo, brandthree, brandfour, brandfive] = props.brand;
   const [priceone, pricetwo, pricethree, pricefour, pricefive, pricesix, priceseven, priceeight, pricenine, priceten ] = props.price;
+  const [ratingone, ratingtwo, ratingthree, ratingfour, ratingfive] = props.rating;
 
   return (
     <>
@@ -28,10 +29,11 @@ const Filter = (props) => {
               <div className="filter_items"><input type="checkbox" onChange={props.change}   className="checkboxprice" value={pricenine} /> {pricenine}</div>
               <div className="filter_items"><input type="checkbox" onChange={props.change}   className="checkboxprice" value={priceten} /> {priceten}</div>
               <h4>Most Rated</h4>
-              <div className="filter_items"><input type="checkbox"  onChange={props.change}  className="checkbox" value="avc" /> 4 & Above</div>
-              <div className="filter_items"><input type="checkbox"  onChange={props.change}  className="checkbox" value="avc" /> 3 & Above</div>
-              <div className="filter_items"><input type="checkbox"  onChange={props.change}  className="checkbox" value="avc" /> 2 & Above</div>
-              <div className="filter_items"><input type="checkbox"  onChange={props.change}  className="checkbox" value="avc" /> 1 & Above</div>
+              <div className="filter_items"><input type="checkbox"  onChange={props.change}  className="checkboxrating" value={ratingone} /> 5 ⭐</div>
+              <div className="filter_items"><input type="checkbox"  onChange={props.change}  className="checkboxrating" value={ratingtwo} /> 4 ⭐ </div>
+              <div className="filter_items"><input type="checkbox"  onChange={props.change}  className="checkboxrating" value={ratingthree} /> 3 ⭐</div>
+              <div className="filter_items"><input type="checkbox"  onChange={props.change}  className="checkboxrating" value={ratingfour} /> 2 ⭐</div>
+              <div className="filter_items"><input type="checkbox"  onChange={props.change}  className="checkboxrating" value={ratingfive} /> 1 ⭐</div>
             </div>
           </div>
     </>

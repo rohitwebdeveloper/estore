@@ -138,11 +138,12 @@ const Categorydata = [
     {
         id: 1,
         url:'/realmeone.png',
-        name:'realme',
+        name:'Realme GT Pro',
         major_category:'mobiles',
         brands:'realme',
         pricing:9999,
-        pricerange:'₹7000 to ₹10000'
+        pricerange:'₹7000 to ₹10000',
+        rating: '4'
         
         
     },
@@ -150,154 +151,180 @@ const Categorydata = [
     {
         id: 1,
         url:'/realmetwo.png',
-        name:'realme',
+        name:'Realme Narzo 9',
         major_category:'mobiles',
         brands:'realme',
         pricing:9000,
-        pricerange:'₹7000 to ₹10000'
+        pricerange:'₹7000 to ₹10000',
+        rating: '3'
         
         
     },
     {
         id: 1,
         url:'/realmethree.png',
-        name:'realme',
+        name:'Realme 6',
         major_category:'mobiles',
         brands:'realme',
         pricing:13999,
-        pricerange:'₹12000 to ₹15000'
+        pricerange:'₹12000 to ₹15000',
+        rating: '4'
         
         
     },
     {
         id: 1,
         url:'/realmefour.png',
-        name:'realme',
+        name:'Realme X50 Pro',
         major_category:'mobiles',
         brands:'realme',
         pricing:14999,
-        pricerange:'₹12000 to ₹15000'
+        pricerange:'₹12000 to ₹15000',
+        rating: '5'
         
         
     },
     {
         id: 1,
         url:'/realmefive.png',
-        name:'realme',
+        name:'Realme 9 5G',
         major_category:'mobiles',
         brands:'realme',
         pricing:11599,
-        pricerange:'₹10000 to ₹12000'
+        pricerange:'₹10000 to ₹12000',
+        rating: '3'
+        
+        
+    },
+    {
+        id: 1,
+        url:'/realmesix.png',
+        name:'Realme Narzo 10',
+        major_category:'mobiles',
+        brands:'realme',
+        pricing:11599,
+        pricerange:'₹10000 to ₹12000',
+        rating: '5' 
         
         
     },
     {
         id: 1,
         url:'/vivoone.png',
-        name:'realme',
+        name:'Vivo V21 Pro',
         major_category:'mobiles',
         brands:'vivo',
         pricing:7000,
-        pricerange:'Upto ₹7000'
+        pricerange:'Upto ₹7000',
+        rating: '2'
         
         
     },
     {
         id: 1,
         url:'/vivotwo.png',
-        name:'realme',
+        name:'Vivo V23 5G',
         major_category:'mobiles',
         brands:'vivo',
         pricing:17499,
-        pricerange:'₹15000 to ₹20000'
+        pricerange:'₹15000 to ₹20000',
+        rating: '3'
         
         
     },
     {
         id: 1,
         url:'/vivothree.png',
-        name:'realme',
+        name:'Vivo V22 5G',
         major_category:'mobiles',
         brands:'vivo',
         pricing:7000,
-        pricerange:'Upto ₹7000'
+        pricerange:'Upto ₹7000',
+        rating: '2'
         
         
     },
     {
         id: 1,
         url:'/oneplusone.png',
-        name:'realme',
+        name:'Oneplus Nord 5',
         major_category:'mobiles',
         brands:'oneplus',
         pricing:7000,
-        pricerange:'Upto ₹7000'
+        pricerange:'Upto ₹7000',
+        rating: '5'
         
         
     },
     {
         id: 1,
         url:'/oneplustwo.png',
-        name:'realme',
+        name:'Oneplus Nord 4',
         major_category:'mobiles',
         brands:'oneplus',
         pricing: 11999,
-        pricerange:'₹10000 to ₹12000'
+        pricerange:'₹10000 to ₹12000',
+        rating: '2'
         
         
     },
     {
         id: 1,
         url:'/galaxyone.png',
-        name:'realme',
+        name:'Samsung Galaxy ',
         major_category:'mobiles',
         brands:'samsung',
         pricing:14499,
-        pricerange:'₹12000 to ₹15000'
+        pricerange:'₹12000 to ₹15000',
+        rating: '4'
         
         
     },
     {
         id: 1,
         url:'/galaxytwo.png',
-        name:'realme',
+        name:'Samsung Galaxy M53 (5G)',
         major_category:'mobiles',
         brands:'samsung',
         pricing:11599,
-        pricerange:'₹10000 to ₹12000'
+        pricerange:'₹10000 to ₹12000',
+        rating: '5'
         
         
     },
     {
         id: 1,
         url:'/galaxythree.png',
-        name:'realme',
+        name:'Samsung Galaxy A9 Core',
         major_category:'mobiles',
         brands:'samsung',
         pricing:8999,
-        pricerange:'₹7000 to ₹10000'
+        pricerange:'₹7000 to ₹10000',
+        rating: '2'
         
         
     },
     {
         id: 1,
         url:'/galaxyfour.png',
-        name:'realme',
+        name:'Samsung Galaxy M32',
         major_category:'mobiles',
         brands:'samsung',
         pricing:14499,
-        pricerange:'₹12000 to ₹15000'
+        pricerange:'₹12000 to ₹15000',
+        rating: '4'
         
         
     },
     {
         id: 1,
         url:'/galaxyfive.png',
-        name:'realme',
+        name:'Samsung Galaxy A14',
         major_category:'mobiles',
         brands:'samsung',
         pricing:9000,
-        pricerange:'₹7000 to ₹10000'
+        pricerange:'₹7000 to ₹10000',
+        rating: '3'
         
         
     },
