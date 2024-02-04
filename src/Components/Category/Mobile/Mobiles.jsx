@@ -8,7 +8,7 @@ const Mobiles = () => {
   const filtered_img = Categorydata.filter((data) => data.major_category == 'mobiles');
   const mobilebrand = ['samsung', 'vivo', 'realme', 'oneplus', 'oppo']
   const mobileprice = ['Upto ₹7000', '₹7000 to ₹10000', '₹10000 to ₹12000', '₹12000 to ₹15000', '₹15000 to ₹20000', '₹20000 to ₹25000', '₹25000 to ₹30000', '₹30000 to ₹40000', '₹40000 to ₹50000', ' Above ₹50000']
-  const mobilerating = ['5', '4', '3', '2', '1']
+  // const mobilerating = [5, 4, 3, 2, 1]
 
   const [categoryimg, setcategoryimg] = useState(filtered_img);
   const [categoryimg_copy, setcategoryimg_copy] = useState(filtered_img);
@@ -110,7 +110,7 @@ const Mobiles = () => {
             }))}
           </div>
         </div>
-        <Filter change={handleonchange} brand={mobilebrand} price={mobileprice} rating={mobilerating} />
+        <Filter change={handleonchange} brand={mobilebrand} price={mobileprice}  />
       </div>
     </>
   )

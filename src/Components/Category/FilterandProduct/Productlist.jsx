@@ -1,25 +1,34 @@
 import React from "react";
 
-const Productlist = (props)=>{
-    const [clickone, clicktwo, clickthree, clickfour] = props.click;
-    const [productone, producttwo, productthree, productfour, productfive, productsix, productseven ] = props.productlistname;
+const Productlist = (props) => {
+  // const [clickone, clicktwo, clickthree, clickfour, clickfive, clicksix, clickseven] = props.click;
+  // const [productone, producttwo, productthree, productfour, productfive, productsix ] = props.productlistname;
 
-    return(
-        <>
-        <div className="variety_section">
-          <div className="varietybox">
-            <div className="variety_item" onClick={clickone}>All</div>
-            <div className="variety_item" onClick={clicktwo}>{productone}</div>
+  const clickdata = props.click;
+  const productlist = props.productlistname;
+  return (
+    <>
+
+      <div className="variety_section">
+        <div className="varietybox">
+          {clickdata.map((data, index) => {
+            const productlistdata = productlist[index];
+            return (
+              <>
+                <div className="variety_item" onClick={data}>{productlistdata}</div>
+              </>
+            )
+          })}
+          {/* <div className="variety_item" onClick={clicktwo}>{productone}</div>
             <div className="variety_item" onClick={clickthree}>{producttwo}</div>
             <div className="variety_item" onClick={clickfour}>{productthree}</div>
-            <div className="variety_item">{productfour}</div>
-            <div className="variety_item">{productfive}</div>
-            <div className="variety_item">{productsix}</div>
-            <div className="variety_item">{productseven}</div>
-          </div>
+            <div className="variety_item" onClick={clickfive}>{productfour}</div>
+            <div className="variety_item" onClick={clicksix}>{productfive}</div>
+            <div className="variety_item" onClick={clickseven}>{productsix}</div> */}
         </div>
-        </>
-    )
+      </div>
+    </>
+  )
 }
 
 export default Productlist;

@@ -21,9 +21,8 @@
     position:absolute;
     top: 20px;
     left: 0px;
-  
-
-   
+    transition: 0.3s;
+    
     
 }
 .signup_box{
@@ -32,6 +31,8 @@
     position: absolute;
     top: 20px;
     left: -300px;
+    transition: 0.3s;
+  
 }
 
 

@@ -1,17 +1,117 @@
 const Categorydata = [
+ 
     {
-        id: 0,
-        url:'/alexa.png',
-        major_category:'appliance',
-        brands:'ai'
-        
+        id: 1,
+        url:'/tshirtone.png',
+        name:'red polo t-shirt',
+        major_category:'fashion',
+        minor_category:'shirts',
+        brands:'pluss',
+        pricing:399,
+        pricerange:'₹7000 to ₹10000',
+        rating: '3' 
     },
     {
-        id: 11,
-        url:'/tshirtthree.png',
-        category:'cloth',
-        gender:'men'
+        id: 1,
+        url:'/tshirttwo.png',
+        name:'t-shirt black',
+        major_category:'fashion',
+        minor_category:'shirts',
+        brands:'asos',
+        pricing:199,
+        pricerange:'₹7000 to ₹10000',
+        rating: '5' 
     },
+    {
+        id: 1,
+        url:'/tshirtfour.png',
+        name:'white t-shirt plain',
+        major_category:'fashion',
+        minor_category:'shirts',
+        brands:'levis',
+        pricing:599,
+        pricerange:'₹7000 to ₹10000',
+        rating: '2' 
+    },
+    {
+        id: 1,
+        url:'/tshirtfive.png',
+        name:'blue t-shirt',
+        major_category:'fashion',
+        minor_category:'shirts',
+        brands:'fabindia',
+        pricing:1099,
+        pricerange:'₹7000 to ₹10000',
+        rating: '4' 
+    },
+    {
+        id: 1,
+        url:'/tshirtsix.png',
+        name:'men regular-fit t-shirt',
+        major_category:'fashion',
+        minor_category:'shirts',
+        brands:'peterEngland',
+        pricing:799,
+        pricerange:'₹7000 to ₹10000',
+        rating: '2' 
+    },
+
+    {
+        id: 1,
+        url:'/tshirttwelve.png',
+        name:'regular-fit t-shirt',
+        major_category:'fashion',
+        minor_category:'shirts',
+        brands:'asos',
+        pricing:999,
+        pricerange:'₹7000 to ₹10000',
+        rating: '5' 
+    },
+    {
+        id: 1,
+        url:'/tshirtthirteen.png',
+        name:'solid blue shirt',
+        major_category:'fashion',
+        minor_category:'shirts',
+        brands:'fabindia',
+        pricing:1499,
+        pricerange:'₹7000 to ₹10000',
+        rating: '3' 
+    },
+    {
+        id: 1,
+        url:'/tshirtfourteen.png',
+        name:'mens solid red t-shirt',
+        major_category:'fashion',
+        minor_category:'shirts',
+        brands:'levis',
+        pricing:299,
+        pricerange:'₹7000 to ₹10000',
+        rating: '4' 
+    },
+    {
+        id: 1,
+        url:'/bagone.png',
+        name:'Office Bag ',
+        major_category:'fashion',
+        minor_category:'accessories',
+        brands:'peterEngland',
+        pricing:1899,
+        pricerange:'₹7000 to ₹10000',
+        rating: '3' 
+    },
+    {
+        id: 1,
+        url:'/bagtwo.png',
+        name:'Black School Bag',
+        major_category:'fashion',
+        minor_category:'accessories',
+        brands:'levis',
+        pricing:899,
+        pricerange:'₹7000 to ₹10000',
+        rating: '5' 
+    },
+ 
     {
         id: 1,
         url:'/earphonetwo.png',
@@ -21,12 +121,7 @@ const Categorydata = [
         
         
     },
-    {
-        id: 9,
-        url:'/tshirttwo.png',
-        category:'cloth',
-        gender:'men'
-    },
+  
     {
         id: 9,
         url:'/cameraone.png',
@@ -57,12 +152,6 @@ const Categorydata = [
         brands:'sony',
         brands:'camera'
         
-    },
-
-    {
-        id: 10,
-        url:'/redtshirt.png',
-        category:'cloth'
     },
     {
         id: 4,
@@ -97,18 +186,6 @@ const Categorydata = [
         category:'appliance'
     },
     {
-        id: 8,
-        url:'/bagone.png',
-        category:'bag',
-        gender:'women'
-    },
-    {
-        id: 7,
-        url:'/bagtwo.png',
-        category:'bag',
-        gender:'men'
-    },
-    {
         id: 7,
         url:'/computeraccessaries.png',
         category:'computer'
@@ -128,13 +205,13 @@ const Categorydata = [
         url:'/headphonethree.png',
         category:'appliance'
     },
-  
     {
         id: 7,
         url:'/monitorone.png',
         category:'computer'
     },
 
+    // MOBILES CATEGORY DATA START HERE
     {
         id: 1,
         url:'/realmeone.png',
@@ -144,10 +221,7 @@ const Categorydata = [
         pricing:9999,
         pricerange:'₹7000 to ₹10000',
         rating: '4'
-        
-        
     },
-
     {
         id: 1,
         url:'/realmetwo.png',
@@ -156,9 +230,7 @@ const Categorydata = [
         brands:'realme',
         pricing:9000,
         pricerange:'₹7000 to ₹10000',
-        rating: '3'
-        
-        
+        rating: '3' 
     },
     {
         id: 1,
@@ -169,8 +241,6 @@ const Categorydata = [
         pricing:13999,
         pricerange:'₹12000 to ₹15000',
         rating: '4'
-        
-        
     },
     {
         id: 1,
@@ -180,9 +250,7 @@ const Categorydata = [
         brands:'realme',
         pricing:14999,
         pricerange:'₹12000 to ₹15000',
-        rating: '5'
-        
-        
+        rating:'5'   
     },
     {
         id: 1,
@@ -192,9 +260,7 @@ const Categorydata = [
         brands:'realme',
         pricing:11599,
         pricerange:'₹10000 to ₹12000',
-        rating: '3'
-        
-        
+        rating:'3'
     },
     {
         id: 1,
@@ -204,9 +270,7 @@ const Categorydata = [
         brands:'realme',
         pricing:11599,
         pricerange:'₹10000 to ₹12000',
-        rating: '5' 
-        
-        
+        rating:'5'    
     },
     {
         id: 1,
@@ -216,9 +280,7 @@ const Categorydata = [
         brands:'vivo',
         pricing:7000,
         pricerange:'Upto ₹7000',
-        rating: '2'
-        
-        
+        rating:'2'  
     },
     {
         id: 1,
@@ -228,9 +290,7 @@ const Categorydata = [
         brands:'vivo',
         pricing:17499,
         pricerange:'₹15000 to ₹20000',
-        rating: '3'
-        
-        
+        rating:'3' 
     },
     {
         id: 1,
@@ -240,9 +300,7 @@ const Categorydata = [
         brands:'vivo',
         pricing:7000,
         pricerange:'Upto ₹7000',
-        rating: '2'
-        
-        
+        rating:'2' 
     },
     {
         id: 1,
@@ -252,9 +310,7 @@ const Categorydata = [
         brands:'oneplus',
         pricing:7000,
         pricerange:'Upto ₹7000',
-        rating: '5'
-        
-        
+        rating:'5'
     },
     {
         id: 1,
@@ -264,9 +320,7 @@ const Categorydata = [
         brands:'oneplus',
         pricing: 11999,
         pricerange:'₹10000 to ₹12000',
-        rating: '2'
-        
-        
+        rating:'2'  
     },
     {
         id: 1,
@@ -276,9 +330,7 @@ const Categorydata = [
         brands:'samsung',
         pricing:14499,
         pricerange:'₹12000 to ₹15000',
-        rating: '4'
-        
-        
+        rating:'4'  
     },
     {
         id: 1,
@@ -288,9 +340,7 @@ const Categorydata = [
         brands:'samsung',
         pricing:11599,
         pricerange:'₹10000 to ₹12000',
-        rating: '5'
-        
-        
+        rating:'5'
     },
     {
         id: 1,
@@ -300,9 +350,7 @@ const Categorydata = [
         brands:'samsung',
         pricing:8999,
         pricerange:'₹7000 to ₹10000',
-        rating: '2'
-        
-        
+        rating:'2'  
     },
     {
         id: 1,
@@ -312,9 +360,7 @@ const Categorydata = [
         brands:'samsung',
         pricing:14499,
         pricerange:'₹12000 to ₹15000',
-        rating: '4'
-        
-        
+        rating:'4' 
     },
     {
         id: 1,
@@ -324,9 +370,7 @@ const Categorydata = [
         brands:'samsung',
         pricing:9000,
         pricerange:'₹7000 to ₹10000',
-        rating: '3'
-        
-        
+        rating: '3' 
     },
 
     
