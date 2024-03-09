@@ -7,6 +7,7 @@ import Fashion from "./Fashion/Fashion";
 import Appliance from "./Appliance/Appliance";
 import Beauty from "./Beautyskin/Beauty";
 import Mobiles from "./Mobile/Mobiles";
+// import { CiMobile3 } from "react-icons/ci";
 // import Homekitchen from "./HomeKitchen/Homekitchen";
 // import Categorydata from "./categorydata";
 
@@ -60,12 +61,11 @@ const Category = () => {
                     <div className="category_box">
                         {/* <h2 className="category_heading">Categories</h2> */}
                         <ul className="category">
-                            <li className="category_items"><NavLink to="" >Fashion</NavLink></li>
-                            <li className="category_items"><NavLink to="electronic" >Electonic</NavLink></li>
-                            <li className="category_items"><NavLink to="beautyskin">Beauty&Skin</NavLink></li>
-                            <li className="category_items"><NavLink to="appliance">Appliance</NavLink></li>
-                            {/* <li className="category_items"><NavLink to="homekitchen">Home&Kitchen</NavLink></li> */}
-                            <li className="category_items"><NavLink to="mobiles">Mobiles</NavLink></li>
+                            <li ><NavLink  className="category_items" to="" >Fashion </NavLink></li>
+                            <li ><NavLink className="category_items" to="electronic" >Electonic</NavLink></li>
+                            <li ><NavLink className="category_items" to="beautyskin">Beauty&Skin</NavLink></li>
+                            <li><NavLink className="category_items" to="appliance">Appliance</NavLink></li>
+                            <li ><NavLink  className="category_items"to="mobiles">Mobiles</NavLink></li>
                         </ul>
                     </div>
                 </div>

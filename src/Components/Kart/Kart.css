@@ -1,16 +1,145 @@
 
-
-.row{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-    flex-wrap: wrap;
+.kartContainer{
+    min-height: 100vh;
+    max-width: 1450px;
+    width: 100%;
+    font-family: system-ui, sans-serif;
 }
 
-img{
-    height: 130px;
-    width: auto;
-    margin: 10px;
+.kartBox{
+    display: block;
+    margin: auto;
+}
+
+
+.headingBox{
+    width: 1200px;
+    /* box-shadow: 0px 0px 5px rgb(194, 194, 194);  */
+    border-bottom: 1px solid grey;
+    display: block;
+    margin: 50px auto;
+    font-size: 1rem;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0px;
+    font-weight: bold;
+}
+
+.heading{
+    font-size: 1rem;
+}
+
+.itemBox{
+    width: 1200px;
+    box-shadow: 0px 0px 5px rgb(194, 194, 194);  
+    /* border-bottom: 1px solid grey; */
+    display: block;
+    margin: 50px auto;
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0px;
+    height: 80px;
+}
+
+.item{
+    /* border: 1px solid gray; */
+}
+
+.kartPrice{
+ font-size: 1rem;   
+}
+
+.kartQuantity{
+    display: flex;
+    align-items: center;
+    width: 70px;
+    padding: 0px 10px;
+    border: 1px solid rgb(185, 185, 185);
+    border-radius: 3px;
+    justify-content: space-between;
+}
+
+.quantityValue{
+    font-weight: bold;
+}
+
+.increanddecre{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-left: 1px solid gray;
+    height: 100%;
+    padding-left: 5px;
+}
+
+.couponBox{
+    display: block;
+    margin: auto;
+    width: 1200px;
+}
+
+.couponCode{
+    border-radius: 3px;
+    border: 1px solid grey;
+    padding: 10px 10px;
+    font-size: 0.9rem;
+    outline: none;
+    margin: 0px 20px 0px 0px;
+    font-family: system-ui, sans-serif;
+}
+
+.applyBtn{
+    border-radius: 3px;
+    border: 1px solid grey;
+    padding: 10px 10px;
+    font-size: 0.9rem;
+    background-color: #ff0060;
+    color: white;
+    outline: none;
+    border: none;
+    margin: 0px 0px 0px 20px;
+}
+
+.applyBtn:hover{
+    box-shadow: 0px 0px 5px #ff0060;
+}
+
+
+.checkoutBox{
+    max-width: 400px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    padding: 15px;
+
+}
+
+
+.checkoutItem{
+    border-bottom: 1px solid black;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    font-family: 0.9rem;
+}
+
+.checkoutContainer{
+    width: 1200px;
+    display: block;
+    margin: 50px auto;
+    
+}
+
+.checkoutBtn{
+    border-radius: 3px;
+    border: 1px solid grey;
+    padding: 10px 10px;
+    font-size: 0.9rem;
+    background-color: #ff0060;
+    color: white;
+    outline: none;
+    border: none;
+    margin: 20px auto 0px auto;
+    display: block;
 }

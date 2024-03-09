@@ -1,4 +1,0 @@
-use ternary operatot to display no result found 
-make a state called show and its value equal to false 
-nnow on goclick function add ifelse condition statinng if searchval is bland then set show equal to false if its true then,
-perforn array.map otherwise show no result fouond.

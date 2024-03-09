@@ -115,7 +115,7 @@ const Fashion = () => {
     <>
       <div className="container">
         <Productlist click={[allclick, shirtsclick, trouserjeansclick, sareesuitclick, seasonalwearclick, accessoriesclick, shoesclick]} productlistname={productlist} />
-        <div className="dynamic_section">
+        <div className="product_section">
           <div className="row">
             {categoryimg.length === 0 ? (
               <h1>No Result</h1>
@@ -138,11 +138,11 @@ const Fashion = () => {
                         {currdata.rating}
                       </div>
                       <div className="priceandkart">
-                      <div className="fashion_price"> ₹{currdata.pricing}</div>
-                      <button className='kart_btn' >Add To Kart</button>
+                        <div className="fashion_price"> ₹{currdata.pricing}</div>
+                      </div>
+                        <button className='fashionkartBtn' >Add To Kart</button>
                     </div>
-                    </div>
-                    
+
                   </div>
                 </>
               )

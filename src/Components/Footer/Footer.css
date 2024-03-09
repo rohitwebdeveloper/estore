@@ -1,28 +1,68 @@
 .footer_section{
     width: 100vw;
-    height: 250px;
+    height: auto;
     background-color: black;
     color: white;
+    padding: 20px;
+}
+
+.footerDetail{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
 }
 
+.copyright{
+    width: 100%;
+    height: 40px;
+    border-top:1px solid rgb(46, 45, 45);
+    text-align: center;
+    padding: 5px;
+}
+
 .box{
-    max-width:300px;
+    max-width:200px;
     height: 200px;
     width: 100%;
-    background-color: rgb(80, 80, 80);
+    background-color: rgb(0, 0, 0);
+    /* border: 2px solid white; */
+    color: white;
+    font-family: system-ui, sans-serif;
 }
 
-.boxthree{
-    padding: 20px 10px 20px 20px;
+.socialIcon{
+    font-size: 1.2rem;
 }
+
+.quickLink{
+    font-size: 0.9rem;
+    margin: 5px auto;
+}
+
+.support{
+    font-size: 0.85rem;
+    margin: 7px 0px;
+}
+
 
 .followus_heading{
-    font-weight: bold;
     font-size: 1.3rem;
-    margin: 10px auto;
-    font-family: monospace;
-    text-decoration: underline;
+    margin: 0px auto 10px auto;
+    font-family: system-ui, sans-serif;
+}
+
+.facebook:hover{
+    color: rgb(0, 140, 255);
+}
+.linkedin:hover{
+    color: rgb(3, 74, 182);
+}
+.twitter:hover{
+    color: rgb(0, 204, 255);
+}
+.instagram:hover{
+    color: rgb(214, 80, 255);
+}
+.threads:hover{
+    color: rgb(95, 95, 95);
 }

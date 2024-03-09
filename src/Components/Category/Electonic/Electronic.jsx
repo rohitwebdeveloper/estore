@@ -10,7 +10,7 @@ import './Electronic.css';
 const Electronic = () => {
 
   const filtered_img = Categorydata.filter((data) => data.major_category == 'fashion');
-  const productlist = ['all', 'laptops', 'computer & accessories', 'mobile accessories', 'gadgets', ];
+  const productlist = ['all', 'laptops', 'computer & accessories', 'mobile accessories', 'gadgets',];
   const fashionbrand = ['samsung', 'lg', 'sony', 'usha', 'whirpool']
   const fashionprice = ['Upto ₹10000', '₹10000 to ₹15000', '₹15000 to ₹20000', '₹20000 to ₹25000', '₹25000 to ₹30000', '₹30000 to ₹40000', 'Above ₹40000 ']
 
@@ -108,33 +108,38 @@ const Electronic = () => {
       <div className="container">
         <Productlist click={[allclick, laptopsclick, computerclick, mobileaccessoriesclick, gadgetsclick]} productlistname={productlist} />
         <div className="dynamic_section">
-          <div className="row">
+          <div className="electronic_row">
             {categoryimg.length === 0 ? (
               <h1>No Result</h1>
             ) : (categoryimg.map((currdata) => {
               return (
                 <>
-                  <div className="fashionproduct_card">
-                    <div className="fashionproduct_img" key={currdata.id} >
+                  <div className="electronic_product_card">
+                    <div className="electronic_product_img" key={currdata.id} >
                       <img src={currdata.url} alt="" />
                       {/* <h5>{currdata.category}</h5> */}
                     </div>
-                    <div className="fashionproduct_detail">
-                      <div className="fashionproduct_brand">
-                        {currdata.brands}
-                      </div>
-                      <div className="fashionproduct_name">
+                    <div className="electronic_product_detail">
+                      <div className="electronic_product_name">
                         {currdata.name}
                       </div>
-                      <div className="fashion_rating">
+                      <div className="electronic_rating">
                         {currdata.rating}
                       </div>
-                      <div className="priceandkart">
-                      <div className="fashion_price"> ₹{currdata.pricing}</div>
-                      <button className='kart_btn' >Add To Kart</button>
+                      <ul className="electronic_description">
+                        <li>8GB & 128GB</li>
+                        <li>50MP + 8MP + 8MP</li>
+                        <li>5.8inch Amoled Display</li>
+                        <li>6000mAh Li-ion Batteryy</li>
+                        <li>8 Gen1 Processor</li>
+                        <li>2 Year warranty from the manufacturer</li>
+                      </ul>
+                      <div className="electronic_price"> ₹{currdata.pricing}</div>
+                      <button className='electronic_kartBtn' >Add To Kart</button>
                     </div>
-                    </div>
-                    
+                    {/* <div className="electronic_priceandkart">
+                    </div> */}
+
                   </div>
                 </>
               )

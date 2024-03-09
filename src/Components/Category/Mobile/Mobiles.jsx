@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react';
 import Categorydata from '../../Imageurl/Categorydata';
 import Filter from '../FilterandProduct/Filter';
+import './Mobile.css';
 // import Productlist from '../FilterandProduct/Productlist';
 
 const Mobiles = () => {
@@ -12,54 +13,68 @@ const Mobiles = () => {
 
   const [categoryimg, setcategoryimg] = useState(filtered_img);
   const [categoryimg_copy, setcategoryimg_copy] = useState(filtered_img);
+  const [range, setrange] = useState();
+
+ 
 
 
   const handleonchange = (event) => {
     event.target.value;
+    // handlepricerang
+    // setrange(event.target.va)
+
     let checkboxbrandval = [...document.querySelectorAll('.checkboxbrand')]
       .filter((data) => data.checked)
       .map((currdata) => currdata.value)
     console.log(checkboxbrandval);
 
-    let checkboxpriceval = [...document.querySelectorAll('.checkboxprice')]
-      .filter((data) => data.checked)
-      .map((currdata) => currdata.value)
-    console.log(checkboxpriceval);
+    // let checkboxpriceval = [...document.querySelectorAll('.checkboxprice')]
+    //   .filter((data) => data.checked)
+    //   .map((currdata) => currdata.value)
+    // console.log(checkboxpriceval);
+    
+    
+    
+    let pricerange = document.querySelector('.pricerangeSlider').value;
+    setrange(pricerange);
+    
+
 
     let checkboxratingval = [...document.querySelectorAll('.checkboxrating')]
       .filter((data) => data.checked)
       .map((currdata) => currdata.value)
     console.log(checkboxratingval);
 
-
+    // handlepricerange()
 
     // let brand_checkbox = checkboxbrandval.length 
     // let price_checkbox = checkboxpriceval.length 
 
-    let brandpricerating_filtered = categoryimg_copy.filter((filterdata) => checkboxbrandval.includes(filterdata.brands) && (checkboxpriceval.includes(filterdata.pricerange)) && (checkboxratingval.includes(filterdata.rating)))
-    let brandprice_filtered = categoryimg_copy.filter((filterdata) => checkboxbrandval.includes(filterdata.brands) && (checkboxpriceval.includes(filterdata.pricerange)))
+    let brandpricerating_filtered = categoryimg_copy.filter((filterdata) => checkboxbrandval.includes(filterdata.brands ) && (filterdata.pricing <=pricerange) && (checkboxratingval.includes(filterdata.rating)))
+    let brandprice_filtered = categoryimg_copy.filter((filterdata) => checkboxbrandval.includes(filterdata.brands) &&  (filterdata.pricing <=pricerange))
     let brandrating_filtered = categoryimg_copy.filter((filterdata) => checkboxbrandval.includes(filterdata.brands) && (checkboxratingval.includes(filterdata.rating)))
-    let ratingprice_filtered = categoryimg_copy.filter((filterdata) => checkboxratingval.includes(filterdata.rating) && (checkboxpriceval.includes(filterdata.pricerange)))
+    let ratingprice_filtered = categoryimg_copy.filter((filterdata) => checkboxratingval.includes(filterdata.rating) &&  (filterdata.pricing <=pricerange))
     let brand_filtered = categoryimg_copy.filter((filterdata) => checkboxbrandval.includes(filterdata.brands))
-    let price_filtered = categoryimg_copy.filter((filterdata) => checkboxpriceval.includes(filterdata.pricerange))
+    console.log('This is A brand filtered data', brand_filtered);
+    let price_filtered = categoryimg_copy.filter((filterdata) => filterdata.pricing <=pricerange)
     let rating_filtered = categoryimg_copy.filter((filterdata) => checkboxratingval.includes(filterdata.rating))
 
-    if ((checkboxbrandval.length !== 0) && (checkboxpriceval.length !== 0) && (checkboxratingval.length !== 0)) {
+    if ((checkboxbrandval.length !== 0) && (pricerange !== 0) && (checkboxratingval.length !== 0)) {
       setcategoryimg(brandpricerating_filtered)
-    } else if ((checkboxbrandval.length !== 0) && (checkboxpriceval.length !== 0) && (checkboxratingval.length === 0)) {
+    } else if ((checkboxbrandval.length !== 0) && (pricerange !== 0) && (checkboxratingval.length === 0)) {
       setcategoryimg(brandprice_filtered)
-    } else if ((checkboxbrandval.length !== 0) && (checkboxratingval.length !== 0) && (checkboxpriceval.length === 0)) {
+    } else if ((checkboxbrandval.length !== 0) && (checkboxratingval.length !== 0) && (pricerange=== 0)) {
       setcategoryimg(brandrating_filtered)
-    } else if ((checkboxratingval.length !== 0) && (checkboxpriceval.length !== 0) && (checkboxbrandval.length === 0)) {
+    } else if ((checkboxratingval.length !== 0) && (pricerange !== 0) && (checkboxbrandval.length === 0)) {
       setcategoryimg(ratingprice_filtered)
     }
-    else if ((checkboxbrandval.length !== 0) && (checkboxpriceval.length === 0) && (checkboxratingval.length === 0)) {
+    else if ((checkboxbrandval.length !== 0) && (pricerange === 0) && (checkboxratingval.length === 0)) {
       setcategoryimg(brand_filtered)
     }
-    else if ((checkboxpriceval.length !== 0) && (checkboxbrandval.length === 0) && (checkboxratingval.length === 0)) {
+    else if ((pricerange !== 0) && (checkboxbrandval.length === 0) && (checkboxratingval.length === 0)) {
       setcategoryimg(price_filtered)
     }
-    else if ((checkboxratingval.length !== 0) && (checkboxbrandval.length === 0) && (checkboxpriceval.length === 0)) {
+    else if ((checkboxratingval.length) !== 0 && (checkboxbrandval.length === 0) && (pricerange === 0)) {
       setcategoryimg(rating_filtered)
     }
     else {
@@ -68,11 +83,19 @@ const Mobiles = () => {
 
   }
 
+  // const handlepricerange = (event)=>{
+  //   setrange(event.target.value);
+  //   handleonchange()
+  //   // handleonchange()
+    
+  // }
+
+
 
   return (
     <>
       <div className="container">
-        <div className="dynamic_section">
+        <div className="productSection">
           <div className="row">
             {categoryimg.length === 0 ? (
               <h1>No Result</h1>
@@ -102,7 +125,7 @@ const Mobiles = () => {
                     </div>
                     <div className="priceandkart">
                       <div className="price"> ₹{currdata.pricing}</div>
-                      <button className='kart_btn' >Add To Kart</button>
+                      <button className='kartBtn' >Add To Kart</button>
                     </div>
                   </div>
                 </>
@@ -110,10 +133,13 @@ const Mobiles = () => {
             }))}
           </div>
         </div>
-        <Filter change={handleonchange} brand={mobilebrand} price={mobileprice}  />
+        <Filter change={handleonchange}  brand={mobilebrand} price={mobileprice} rangevalue={range} />
       </div>
     </>
   )
 }
+
+// changepricerange={handlepricerange}
+
 
 export default Mobiles;

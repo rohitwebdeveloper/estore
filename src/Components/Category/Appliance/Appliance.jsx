@@ -111,33 +111,38 @@ const Appliance = () => {
       <div className="container">
         <Productlist click={[allclick, tvclick, refregiratorclick, washingmachineclick, fancoolerclick, maicrowavegrinderclick]} productlistname={productlist} />
         <div className="dynamic_section">
-          <div className="row">
+          <div className="appliance_row">
             {categoryimg.length === 0 ? (
               <h1>No Result</h1>
             ) : (categoryimg.map((currdata) => {
               return (
                 <>
-                  <div className="fashionproduct_card">
-                    <div className="fashionproduct_img" key={currdata.id} >
+                  <div className="appliance_product_card">
+                    <div className="appliance_product_img" key={currdata.id} >
                       <img src={currdata.url} alt="" />
                       {/* <h5>{currdata.category}</h5> */}
                     </div>
-                    <div className="fashionproduct_detail">
-                      <div className="fashionproduct_brand">
-                        {currdata.brands}
-                      </div>
-                      <div className="fashionproduct_name">
+                    <div className="appliance_product_detail">
+                      <div className="appliance_product_name">
                         {currdata.name}
                       </div>
-                      <div className="fashion_rating">
+                      <div className="appliance_rating">
                         {currdata.rating}
                       </div>
-                      <div className="priceandkart">
-                      <div className="fashion_price"> ₹{currdata.pricing}</div>
-                      <button className='kart_btn' >Add To Kart</button>
+                      <ul className="appliance_description">
+                        <li>8GB & 128GB</li>
+                        <li>50MP + 8MP + 8MP</li>
+                        <li>5.8inch Amoled Display</li>
+                        <li>6000mAh Li-ion Batteryy</li>
+                        <li>8 Gen1 Processor</li>
+                        <li>2 Year warranty from the manufacturer</li>
+                      </ul>
+                      <div className="appliance_price"> ₹{currdata.pricing}</div>
+                      <button className='appliance_kartBtn' >Add To Kart</button>
                     </div>
-                    </div>
-                    
+                    {/* <div className="appliance_priceandkart">
+                    </div> */}
+
                   </div>
                 </>
               )

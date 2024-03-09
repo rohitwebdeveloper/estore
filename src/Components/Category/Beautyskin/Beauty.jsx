@@ -8,8 +8,8 @@ import './Beauty.css'
 const Beauty = () => {
   const filtered_img = Categorydata.filter((data) => data.major_category == 'fashion');
   const productlist = ['all', 'moistorizer & lotion', 'sunscreen', 'shampoo & conditioner', 'serum & toner', 'mask'];
-  const fashionbrand = ['mamaEarth', 'nivea', 'cetaphil', 'ponds', 'vaseline']
-  const fashionprice = ['Upto ₹200', '₹200 to ₹400', '₹400 to ₹600', '₹600 to ₹800', '₹800 to ₹1000', '₹1000 to ₹1500', '₹1500 to ₹2000', 'Above ₹2000 ']
+  const beautybrand = ['mamaEarth', 'nivea', 'cetaphil', 'ponds', 'vaseline']
+  const beautyprice = ['Upto ₹200', '₹200 to ₹400', '₹400 to ₹600', '₹600 to ₹800', '₹800 to ₹1000', '₹1000 to ₹1500', '₹1500 to ₹2000', 'Above ₹2000 ']
 
   const [categoryimg, setcategoryimg] = useState(filtered_img);
   const [categoryimg_copy, setcategoryimg_copy] = useState(filtered_img);
@@ -109,41 +109,41 @@ const Beauty = () => {
     <>
       <div className="container">
         <Productlist click={[allclick, moistorizerclick, sunscreenclick, shampooconditionerclick, serumtonerclick, maskclick]} productlistname={productlist} />
-        <div className="dynamic_section">
+        <div className="product_section">
           <div className="row">
             {categoryimg.length === 0 ? (
               <h1>No Result</h1>
             ) : (categoryimg.map((currdata) => {
               return (
                 <>
-                  <div className="fashionproduct_card">
-                    <div className="fashionproduct_img" key={currdata.id} >
+                  <div className="beautyproduct_card">
+                    <div className="beautyproduct_img" key={currdata.id} >
                       <img src={currdata.url} alt="" />
                       {/* <h5>{currdata.category}</h5> */}
                     </div>
-                    <div className="fashionproduct_detail">
-                      <div className="fashionproduct_brand">
+                    <div className="beautyproduct_detail">
+                      <div className="beautyproduct_brand">
                         {currdata.brands}
                       </div>
-                      <div className="fashionproduct_name">
+                      <div className="beautyproduct_name">
                         {currdata.name}
                       </div>
-                      <div className="fashion_rating">
+                      <div className="beauty_rating">
                         {currdata.rating}
                       </div>
                       <div className="priceandkart">
-                      <div className="fashion_price"> ₹{currdata.pricing}</div>
-                      <button className='kart_btn' >Add To Kart</button>
+                        <div className="beauty_price"> ₹{currdata.pricing}</div>
+                      </div>
+                        <button className='beautykartBtn' >Add To Kart</button>
                     </div>
-                    </div>
-                    
+
                   </div>
                 </>
               )
             }))}
           </div>
         </div>
-        <Filter change={handleonchange} brand={fashionbrand} price={fashionprice} />
+        <Filter change={handleonchange} brand={beautybrand} price={beautyprice} />
       </div>
 
 

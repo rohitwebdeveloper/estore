@@ -1,31 +1,38 @@
  const Bestsellerdata = [
     {
         id:0,
-        url:'/alexa.png'
+        url:'/alexa.png',
+        category:'Gadgets'
     },
     {
         id:1,
-        url:'/redtshirt.png'
+        url:'/tshirtone.png',
+        category:'Cloths'
     },
     {
         id:2,
-        url:'/bagtwo.png'
+        url:'/bagtwo.png',
+        category:'Bags'
     },
     {
         id:3,
-        url:'/headphonethree.png'
+        url:'/headphonethree.png',
+        category:'Headphones'
     },
     {
         id:4,
-        url:'/tshirttwo.png'
+        url:'/tshirttwo.png',
+        category:'Cloths'
     },
     {
         id:5,
-        url:'/shoeone.png'
+        url:'/shoeone.png',
+        category:'Shoes'
     },
     {
         id:6,
-        url:'/cosmeticone.png'
+        url:'/cosmeticone.png',
+        category:'Beauty&Cosmetic'
     }
  ]
 

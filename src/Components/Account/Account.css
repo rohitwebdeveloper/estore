@@ -1,0 +1,82 @@
+
+.accountContainer{
+    max-width: 1450px;
+    width: 100%;
+    min-height: 100vh;
+    padding: 30px;
+    display: block;
+    margin: auto;
+}
+
+.accountBox{
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    margin: 30px auto;
+    
+}
+
+.gohomeWrapper{
+    max-width: 1200px;
+    width: 100%;
+    display: block;
+    margin: 0px auto 40px auto;
+}
+
+.gohomeBtn{
+    padding: 10px;
+    border: none;
+    background-color: #ff0060;
+    border-radius: 3px;
+    color: white;
+    font-family: system-ui, sans-serif;
+}
+
+
+.contentLinkbox{
+    max-width: 200px;
+    width: 100%;
+    background-color: rgb(224, 223, 223);
+    padding: 30px 10px;
+    border-radius: 10px;
+
+
+}
+
+.contentBox{
+    margin: 0px 0px 0px 150px;
+  
+}
+
+.contentBoxHeading{
+    font-size: 1.5rem;
+    font-family: system-ui, sans-serif;
+    margin: 0px 0px 25px 0px;
+}
+
+.contentLink{
+    margin: 20px auto;
+    font-family: system-ui, sans-serif;
+    font-size: 1.2rem;
+    text-decoration: underline;
+}
+
+.profilebox{
+    width: 500px;
+    height: 100px;
+}
+
+.profileHeading{
+    font-family:system-ui, sans-serif;
+    margin: 10px auto;
+    font-weight: bold;
+}
+
+.profileDetail{
+    padding: 10px 10px;
+    width: 500px;
+    background-color: rgb(224, 223, 223);
+    font-family:system-ui, sans-serif;
+    border-radius: 5px;
+
+}

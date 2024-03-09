@@ -1,0 +1,42 @@
+
+.billingHeading{
+    font-family: system-ui, sans-serif;
+    font-weight: normal;
+    max-width: 1000px;
+    width: 100%;
+    display: block;
+    margin: 20px auto;
+}
+
+.billingContainer{
+    min-height: 100vh;
+    max-width: 1450px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    /* align-items: center; */
+}
+
+.detailContainer{
+    max-width: 500px;
+    width: 100%;
+    /* border: 1px solid black; */
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    
+}
+.paymentContainer{
+    max-width: 500px;
+    width: 100%;
+    border: 1px solid black;
+}
+
+.detailItem{
+    margin: 15px 0px;
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid grey;
+    outline: none;
+    font-family: system-ui, sans-serif;
+}

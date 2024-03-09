@@ -7,6 +7,8 @@ import { useState } from "react";
 import Categorydata from "../Imageurl/Categorydata";
 import { MdAccountCircle } from "react-icons/md";
 import { MdShoppingCartCheckout } from "react-icons/md";
+import { GoSearch } from "react-icons/go";
+import { IoIosHeartEmpty } from "react-icons/io";
 
 
 // let searchval;
@@ -44,16 +46,19 @@ const Navbar = () => {
     <>
       <div className="navbar_container" onMouseLeave={handleonblur}>
         <div className="navbar">
-          <h2 className="brand_logo">E-Com</h2>
-          <input type="search" className="search_bar" placeholder=" Search here" onFocus={handlefocus} onChange={searchchange} onKeyDown={(e)=>e.key==='Enter' ? goclick() : null} />
-          <button className="search_btn" onClick={goclick} >Go</button>
+          <h3 className="brand_logo">E-Store</h3>
+          <div className="searchBox">
+          <input type="search" className="search" placeholder=" Search here" onFocus={handlefocus} onChange={searchchange} onKeyDown={(e)=>e.key==='Enter' ? goclick() : null} />
+          <div className="searchBtn" onClick={goclick} ><GoSearch/></div>
+          </div>
           <nav>
             <ul className="ullist">
-              <li><NavLink to="/" >Home</NavLink></li>
-              <li><NavLink to="/category/"> Categories</NavLink></li>
-              <li><NavLink to="/category/"> <MdShoppingCartCheckout/></NavLink></li>
+              <li><NavLink className="navitem" to="/"  >Home</NavLink></li>
+              <li><NavLink className="navitem" to="/category/" > Categories</NavLink></li>
+              <li><NavLink className="navitem logo" to="/kart" > <MdShoppingCartCheckout/></NavLink></li>
+              <li><NavLink className="navitem logo" to="/wishlist" > <IoIosHeartEmpty/></NavLink></li>
               {/* <li><NavLink to="/kart"> Kart</NavLink></li> */}
-              <li><NavLink to="/sign"><MdAccountCircle/></NavLink></li>
+              <li><NavLink className="navitem logo" to="/account"><MdAccountCircle/></NavLink></li>
             </ul>
           </nav>
         </div>

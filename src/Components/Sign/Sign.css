@@ -1,4 +1,4 @@
-.sign_container{
+/* .sign_container{
     position: absolute;
     top: 0;
     right: 0;
@@ -90,4 +90,116 @@ p{
     text-align: center;
     padding: 5px 10px;
     text-decoration: underline;
+} */
+.sign_container{
+    width: 600px;
+    min-height: 100vh;
+    height: 100%;
+    background: transparent;
+    display:block;
+    margin: auto auto;
+   
+    border-radius: 5px;
+    overflow: hidden;
+    font-family: system-ui, sans-serif;
+    
+}
+
+.signin_box{
+    width: 470px;
+    height: 100%;
+    
+    
+}
+.signup_box{
+    width: 470px;
+    height: 100%;
+    border: 1px solid rgb(131, 129, 129);
+    padding: 20px 0px;
+    margin: 20px auto 0px auto;
+    display: block;
+    border-radius: 5px;
+  
+}
+
+
+.signin_credentials{
+    width: 80%;
+    display: block;
+    margin: 25px auto;
+    font-size: 1rem;
+    padding: 5px 8px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid rgb(131, 130, 130);
+}
+
+.btn{
+    width: 80%;
+    display: block;
+    margin: 50px auto 15px auto;
+    text-align: center;
+    font-size: 1rem;
+    padding: 15px 10px;
+    background-color:#ff0060;
+    outline: none;
+    border-radius: 5px;
+    color: white;
+    border: none;
+
+}
+.btnGoogle{
+    width: 80%;
+    display: block;
+    margin: 20px auto 15px auto;
+    text-align: center;
+    font-size: 1rem;
+    padding: 15px 10px;
+    background-color:#ffffff;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid rgb(131, 130, 130);
+    color:rgb(131, 130, 130);
+    /* border: none; */
+
+}
+
+.btn:hover{
+    box-shadow: 0px 0px 5px #ff0060;
+}
+
+.sign_heading{
+    display: flex;
+    margin: 10px auto 20px auto;
+    width: 100%;
+    justify-content: center;
+    color: rgb(0, 0, 0);
+    font-family: system-ui, sans-serif;
+
+}
+
+.sign_h2{
+    display: inline-block;
+    margin: 15px 16px;
+    font-family: system-ui, sans-serif;
+    font-weight: normal;
+
+}
+
+p{
+    display: block;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    padding: 5px 10px;
+    text-decoration: underline;
+} 
+
+.message{
+    font-size: 1.3rem;
+    color: red;
+    width: 100%;
+    text-align: center;
+
+
 }
