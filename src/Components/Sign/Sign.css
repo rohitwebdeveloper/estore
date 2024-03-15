@@ -1,96 +1,6 @@
-/* .sign_container{
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    width: 300px;
-    height: 450px;
-    background: transparent;
-    display:block;
-    margin: auto auto;
-    border: 2px solid black;
-    border-radius: 5px;
-    overflow: hidden;
-    
-}
 
-.signin_box{
-    width: 300px;
-    height: 100%;
-    position:absolute;
-    top: 20px;
-    left: 0px;
-    transition: 0.3s;
-    
-    
-}
-.signup_box{
-    width: 300px;
-    height: 100%;
-    position: absolute;
-    top: 20px;
-    left: -300px;
-    transition: 0.3s;
-  
-}
+/* There is a combine css for Signin.jsx  and  Signup.jsx */
 
-
-.signin_credentials{
-    width: 80%;
-    display: block;
-    margin: 10px auto;
-    font-size: 1rem;
-    padding: 5px 8px;
-    outline: none;
-    border: none;
-    border-bottom: 2px solid black;
-}
-
-.btn{
-    width: 80%;
-    display: block;
-    margin: 40px auto 15px auto;
-    text-align: center;
-    font-size: 1rem;
-    padding: 5px 10px;
-    background-color: rgb(0, 0, 0);
-    outline: none;
-    border-radius: 5px;
-    font-weight: bold;
-    color: white;
-
-}
-
-.btn:hover{
-    background-color: rgb(37, 36, 36);
-}
-
-.sign_heading{
-    display: flex;
-    margin: 14px auto 30px auto;
-    width: 100%;
-    justify-content: center;
-    color: rgb(0, 0, 0);
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-
-}
-
-.sign_h2{
-    display: inline-block;
-    margin: 15px 16px;
-    text-decoration: underline;
-
-}
-
-p{
-    display: block;
-    width: 100%;
-    margin: auto;
-    text-align: center;
-    padding: 5px 10px;
-    text-decoration: underline;
-} */
 .sign_container{
     width: 600px;
     min-height: 100vh;
@@ -98,7 +8,6 @@ p{
     background: transparent;
     display:block;
     margin: auto auto;
-   
     border-radius: 5px;
     overflow: hidden;
     font-family: system-ui, sans-serif;
@@ -106,27 +15,38 @@ p{
 }
 
 .signin_box{
-    width: 470px;
+    width: 400px;
     height: 100%;
+    display: block;
+    border: 1px solid rgb(131, 129, 129);
+    padding: 20px 40px;
+    border-radius: 5px;
+    margin: 20px auto 0px auto;
+
     
     
 }
 .signup_box{
-    width: 470px;
+    width: 400px;
     height: 100%;
     border: 1px solid rgb(131, 129, 129);
-    padding: 20px 0px;
-    margin: 20px auto 0px auto;
+    padding: 20px 40px;
     display: block;
+    margin: 20px auto 0px auto;
     border-radius: 5px;
   
 }
-
-
-.signin_credentials{
-    width: 80%;
+.googleBtnWrapper{
+    width: 100%;
     display: block;
-    margin: 25px auto;
+    margin: auto;
+}
+
+
+.sign_credentials{
+    width: 100%;
+    display: block;
+    margin: 20px auto;
     font-size: 1rem;
     padding: 5px 8px;
     outline: none;
@@ -135,9 +55,9 @@ p{
 }
 
 .btn{
-    width: 80%;
+    width: 100%;
     display: block;
-    margin: 50px auto 15px auto;
+    margin: 35px auto 15px auto;
     text-align: center;
     font-size: 1rem;
     padding: 15px 10px;
@@ -189,7 +109,7 @@ p{
 p{
     display: block;
     width: 100%;
-    margin: auto;
+    margin: 10px auto;
     text-align: center;
     padding: 5px 10px;
     text-decoration: underline;

@@ -1,7 +1,11 @@
 
 Backend:
 Use if condition(formdata validation at serverside) inside try catch block at the backend so that expected error can be hanled in return res.status. While unexpected error can be handled in catch block such as (internet, connection break from database or any other internal error ) to pass the error of any specific function called inside the try catch of route handler can be done throught (throw err or throw new Error('error message')) .
-
+Status:Done
 
 Frontend:
 Use if condition outside the try catch block to validate the form data at client side and use "return" keyword inside if to early stop the functionn so that no further execution can be performed such as post request to the server or any other request to the server.
+Status:Done
+
+Backend:
+Useeffect added to Home should be tranferred to the App component for global. Adding condition to check token receved at the backend is a valid or not(throught email exist function) if not the send false success ,if yes sending true success message and setting the setauthenticate to true.
