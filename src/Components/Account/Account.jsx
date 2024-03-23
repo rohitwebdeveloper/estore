@@ -3,6 +3,8 @@ import './Account.css'
 import { IoArrowBackSharp } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { setauthenticate } from "../../Reducers/authSlice";
 
 
 const Account = () => {
@@ -11,19 +13,20 @@ const Account = () => {
   const [userDetail, setuserDetail] = useState({});
   const navigate = useNavigate();
   const storedUserDetails = JSON.parse(sessionStorage.getItem('estoreUserprofile'))
-  
+  const dispatch = useDispatch()
+
   const gohomeclick = () => {
     navigate('/')
   }
-  
-  
+
+
   useEffect(() => {
-    
+
     ; (async () => {
-      
+
       const userid = sessionStorage.getItem('usertokenid');
       try {
-        
+
         if (storedUserDetails !== null && storedUserDetails.length !== 0) {
           setuserDetail(storedUserDetails)
           setloading(false)
@@ -44,6 +47,14 @@ const Account = () => {
     })()
   }, [])
 
+ 
+  const signoutClick = ()=>{
+      navigate('/')
+      dispatch(setauthenticate(false))
+      sessionStorage.removeItem('estoreUserprofile')
+      sessionStorage.removeItem('usertokenid')
+  }
+
   return (
     <>
       {loading && (<div className="h1box"><h1>Loading...</h1></div>)}
@@ -60,6 +71,7 @@ const Account = () => {
               <div className="contentLink">My Profile</div>
               <div className="contentLink">My Wishlist</div>
               <div className="contentLink">My Orders</div>
+              <button className="signoutBtn" onClick={signoutClick} >Sign-Out</button>
             </div>
             <div className="contentBox">
               <div className="contentBoxHeading">Your Profile Details</div>

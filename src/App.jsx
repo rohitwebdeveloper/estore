@@ -16,6 +16,8 @@ import Billing from './Components/Kart/Billing'
 import Account from './Components/Account/Account'
 import Wishlist from './Components/Wishlist/Wishlist'
 import Private from './Components/Privatecomponents/Private'
+import ForgetPassword from './Components/Sign/ForgetPassword/ForgetPassword'
+import ResetPassword from './Components/Sign/Reset/ResetPassword'
 import { useDispatch } from "react-redux";
 import { setauthenticate } from "./Reducers/authSlice";
 import axios from "axios";
@@ -65,6 +67,8 @@ function App() {
             <Route path='/kart' element={<Private page={Kart} />}></Route>
             <Route path='/wishlist' element={<Private page={Wishlist}/>}></Route>
             <Route path='/billing' element={<Billing/>}></Route>
+            <Route path='/account/password/forget' element={<ForgetPassword/>}></Route>
+            <Route path='/account/password/reset' element={<ResetPassword/>}></Route>
             <Route path='/*' element={<Pagenotfound />}></Route>
           </Routes>
       <Footer />

@@ -121,6 +121,7 @@ const Sign = () => {
                     <input type="email" name="email" value={formData.email} className="sign_credentials" placeholder="Enter Email" onChange={formvalChange} />
                     <input type={showPassword} name="password" value={formData.password} className="sign_credentials" placeholder="Enter Password" onChange={formvalChange} />
                     <input type="checkbox" name="show" className="checkboxShow" onClick={checkboxClick} /><span>Show Password</span>
+                    <p className="forgetPassword" onClick={()=> navigate('/account/password/forget')} >Forget Password ?</p>
                     <button className="btn" onClick={submitClick} >Submit</button>
                     <div className="googleBtnWrapper">
                         <GoogleLogin width="320" text="signin_with"
@@ -134,7 +135,7 @@ const Sign = () => {
                             }}
                         />
                     </div>
-                    <p onClick={signupClick} >Don't have Account, Sign Up</p>
+                    <p className="navigateTosignup" onClick={signupClick} >Don't have Account, Sign Up</p>
                 </div>
 
             </div>

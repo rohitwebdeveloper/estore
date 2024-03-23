@@ -34,8 +34,8 @@
     display: block;
     margin: 20px auto 0px auto;
     border-radius: 5px;
-  
 }
+
 .googleBtnWrapper{
     width: 100%;
     display: block;
@@ -106,14 +106,6 @@
 
 }
 
-p{
-    display: block;
-    width: 100%;
-    margin: 10px auto;
-    text-align: center;
-    padding: 5px 10px;
-    text-decoration: underline;
-} 
 
 .message{
     font-size: 1.3rem;
@@ -122,4 +114,27 @@ p{
     text-align: center;
 
 
+}
+
+.navigateTosignup{
+    display: block;
+    width: 100%;
+    margin: 10px auto;
+    text-align: center;
+    padding: 5px 10px;
+    text-decoration: underline;
+    color: blue;
+}
+
+.forgetPassword{
+    width: 100%;
+    margin: 5px auto;
+    padding: 5px 10px;
+    text-decoration: underline;
+    color: blue;
+}
+
+.checkboxShow{
+    margin: 0px 7px;
+   
 }
