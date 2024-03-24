@@ -42,7 +42,7 @@ const Signup = () => {
 
         try {
             // Sending the user data to the backend using post request
-            const response = await axios.post('http://localhost:8000/signup', formData)
+            const response = await axios.post('http://localhost:8000/auth/user/sign-up', formData)
 
             // Checking whether the user data is saved in the database
             if (response.data.success == true) {

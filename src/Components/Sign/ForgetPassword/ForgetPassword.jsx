@@ -30,7 +30,7 @@ const ForgetPassword = () => {
        
         try {
             // Making a post request to the server to check whether this account exists or not
-            const response = await axios.post('http://localhost:8000/password/forget', {useremail})
+            const response = await axios.post('http://localhost:8000/auth/user/forget-password', {useremail})
     
             if(response.data.success===true){
                 seteditable(false)
@@ -38,7 +38,7 @@ const ForgetPassword = () => {
                 setopacity({opacity: '1'})
                 setservercode(response.data.verificationCode)
 
-                console.log('Verification Code:', response.data.verificationCode);
+                // console.log('Verification Code:', response.data.verificationCode);
             }else{
                 seteditable(true)
                 setopacity({opacity: '0.3'})

@@ -38,7 +38,7 @@ function App() {
           }
 
           try {
-              const response = await axios.post('http://localhost:8000/authuser', { userid })
+              const response = await axios.post('http://localhost:8000/auth/user/verify-user', { userid })
               //             console.log(response.data);
               if (response.data.success === true) {
                   dispatch(setauthenticate(true))

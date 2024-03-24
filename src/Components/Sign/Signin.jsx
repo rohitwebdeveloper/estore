@@ -4,6 +4,7 @@ import "./Sign.css"
 import { GoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import { setauthenticate } from '../../Reducers/authSlice'
+import {setverifiedemail} from '../../Reducers/emailSlice'
 import { useDispatch } from "react-redux";
 import { jwtDecode } from "jwt-decode";
 
@@ -42,7 +43,7 @@ const Sign = () => {
         try {
              sessionStorage.removeItem('estoreUserprofile');
             // Sending the user credentials to the backend using post request
-            const response = await axios.post('http://localhost:8000/signin', formData)
+            const response = await axios.post('http://localhost:8000/auth/user/sign-in', formData)
 
             const usertoken = response.data.token;
 
@@ -54,6 +55,7 @@ const Sign = () => {
             if (response.data.success === true) {
                 navigate('/')
                 dispatch(setauthenticate(true))
+                dispatch(setverifiedemail(formData.email))
                 setresponseMsg(response.data.message)
             } else {
                 setresponseMsg(response.data.message)
@@ -79,7 +81,7 @@ const Sign = () => {
     // Defining action when the user click on Signin with Google
     const googleSignin = async (useremail) => {
         try {
-            const response = await axios.post('http://localhost:8000/googlesignin', { useremail })
+            const response = await axios.post('http://localhost:8000/auth/user/google/sign-in', { useremail })
             const usertoken = response.data.token;
 
             if (response.data.success === true) {
