@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import './Kart.css';
+import useRazorpay from 'react-razorpay'
+import axios from "axios";
 // import Billing from "./Billing";
- import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 // import { MdOutlineDeleteForever } from "react-icons/md";
 
 const Kart = () => {
-    const navigate = useNavigate(); 
-
+    const navigate = useNavigate();
+    const [Rasorpay] = useRazorpay();
+    const [orderid, setorderid] = useState('order_Nrhjm62zyNcenN');
     const [quantity, setquantity] = useState(0);
 
     const handleincrement = () => {
@@ -24,9 +27,48 @@ const Kart = () => {
         });
     }
 
-    const handleProceed = ()=>{
-        navigate('/billing')
-        console.log('click');
+    const options = {
+        key: "rzp_test_o92dfjzqmiEpC6", 
+        amount: "10900", 
+        currency: "INR",
+        name: "E-Store",
+        description: "Test Transaction",
+        // "image": "https://example.com/your_logo",
+        order_id: orderid, 
+        // "callback_url": "https://eneqd3r9zrjok.x.pipedream.net/",
+        handler: function (response){
+            console.log(response)
+            console.log('PaymentId:',response.razorpay_payment_id);
+            console.log('OrderId',response.razorpay_order_id);
+            console.log('Signature',response.razorpay_signature)
+        },
+        prefill: { 
+            name: "Rohit Kushwaha",
+            email: "rohitkushwaha@example.com",
+            contact: "7999344193", 
+        notes: {
+            address: "Kolar Road, Bhopal"
+        },
+        theme: {
+            'color': "#ffff"
+        }
+        }
+    };
+
+    const rap = new Rasorpay(options);
+    
+    const handleProceed = async (e) => {
+        try {
+            const response = await axios.get('http://localhost:8000/user/order')
+            console.log(response.data.order)
+        //    await setorderid(response.data.order.id)
+            await rap.open();
+        } catch (error) {
+            console.log("This is an error:", error)
+        }
+        e.preventDefault();
+        // navigate('/billing')
+        // console.log(rap);
     }
 
     return (

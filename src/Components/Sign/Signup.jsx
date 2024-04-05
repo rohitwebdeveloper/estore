@@ -91,7 +91,7 @@ const Signup = () => {
                     <input type={showPassword} name="password" className="sign_credentials" placeholder="Enter Password" value={formData.password} onChange={formvalChange} />
                     <input type="checkbox" name="show" className="checkboxShow" onClick={checkboxClick} /><span>Show Password</span>
                     <button className="btn" onClick={submitClick} > Submit </button>
-                    <p onClick={signinClick}>Already have Account, Sign In</p>
+                    <p onClick={signinClick} className="navigateTosignup" >Already have Account, Sign In</p>
                 </div>
 
             </div>

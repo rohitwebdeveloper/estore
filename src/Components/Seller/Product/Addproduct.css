@@ -1,0 +1,73 @@
+.sellerContainer{
+    height: 100%;
+    max-width: 1450px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin:30px;
+}
+
+.sellerBox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.sellerForm{ 
+    display: flex;
+    flex-direction: column;
+    /* max-width: 1000px; */
+    width: 500px; 
+}
+
+.productInput{
+    padding: 10px 10px;
+    margin: 5px 0px 10px 0px;
+    width: 100%;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid gray;
+}
+
+.productHeading{
+    font-family: system-ui, sans-serif;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+input[type='file'] {
+    display: none;
+}
+
+.custom-file-upload{
+    border: 1px solid black;
+    padding: 10px 10px;
+    width: 150px;
+    border-radius: 5px;
+    line-height: 10px;
+    font-size: 1.2rem;
+}
+
+.productSectionHeading{
+    font-family: system-ui, sans-serif;
+    text-align: left;
+    margin: 10px ;
+    font-weight: normal;
+}
+
+.addbtn{
+    background-color: #ff0060;
+    width:200px;
+    display: block;
+    margin: 15px auto;
+    padding: 10px;
+    outline: none;
+    border: none;
+    color: white;
+    border-radius: 5px;
+}
