@@ -20,6 +20,7 @@ const Account = () => {
   });
   const navigate = useNavigate();
   const storedUserDetails = JSON.parse(sessionStorage.getItem('estoreUserprofile'))
+  
   const dispatch = useDispatch()
 
   const gohomeclick = () => {
@@ -125,6 +126,7 @@ const Account = () => {
               <div className="contentLink">My Profile</div>
               <div className="contentLink">My Wishlist</div>
               <div className="contentLink">My Orders</div>
+              <div className="contentLink">Become Seller</div>
               </div>
               <div className="linkBox">
               <button className="signoutBtn" onClick={signoutClick} >Sign-Out➡</button>

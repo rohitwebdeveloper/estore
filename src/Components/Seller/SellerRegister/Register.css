@@ -1,0 +1,153 @@
+
+.sellerRegisterContainer{
+    width: 600px;
+    min-height: 100vh;
+    height: 100%;
+    background: transparent;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto auto;
+    border-radius: 5px;
+    overflow: hidden;
+    font-family: system-ui, sans-serif;
+    
+}
+
+
+.sellerRegisterBox{
+    width: 400px;
+    height: 100%;
+    border: 1px solid rgb(131, 129, 129);
+    padding: 20px 40px;
+    display: block;
+    margin: 20px auto 20px auto;
+    border-radius: 5px;
+}
+
+.googleBtnWrapper{
+    width: 100%;
+    display: block;
+    margin: auto;
+}
+
+
+.sellerCredentials{
+    width: 100%;
+    display: block;
+    margin: 20px auto;
+    font-size: 1rem;
+    padding: 5px 8px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid rgb(131, 130, 130);
+}
+
+.btn{
+    width: 100%;
+    display: block;
+    margin: 35px auto 15px auto;
+    text-align: center;
+    font-size: 1rem;
+    padding: 15px 10px;
+    background-color:#ff0060;
+    outline: none;
+    border-radius: 5px;
+    color: white;
+    border: none;
+
+}
+.btnGoogle{
+    width: 80%;
+    display: block;
+    margin: 20px auto 15px auto;
+    text-align: center;
+    font-size: 1rem;
+    padding: 15px 10px;
+    background-color:#ffffff;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid rgb(131, 130, 130);
+    color:rgb(131, 130, 130);
+    /* border: none; */
+
+}
+
+.btn:hover{
+    box-shadow: 0px 0px 5px #ff0060;
+}
+
+.sellerRegisterHeading{
+    display: flex;
+    margin: 10px auto 20px auto;
+    width: 100%;
+    justify-content: center;
+    color: rgb(0, 0, 0);
+    font-family: system-ui, sans-serif;
+
+}
+
+.sellerRegisterH2{
+    display: inline-block;
+    margin: 15px 16px;
+    font-family: system-ui, sans-serif;
+    font-weight: normal;
+
+}
+
+
+.message{
+    font-size: 1.3rem;
+    color: red;
+    width: 100%;
+    text-align: center;
+
+
+}
+
+.navigateTosellerRegisterup{
+    display: block;
+    width: 100%;
+    margin: 10px auto;
+    text-align: center;
+    padding: 5px 10px;
+    text-decoration: underline;
+    color: blue;
+}
+
+.forgetPassword{
+    width: 100%;
+    margin: 5px auto;
+    padding: 5px 10px;
+    text-decoration: underline;
+    color: blue;
+}
+
+.checkboxShow{
+    margin: 0px 7px;
+   
+}
+
+.signInMessage{
+    font-family: system-ui, sans-serif;
+    font-size: 1rem;
+}
+
+.goToSignInBtn{
+    background-color: #ff0060;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    margin: 15px;
+    color: white;
+    font-family: system-ui, sans-serif;
+    font-size: 1rem;
+}
+
+.sellerMessageBox{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 95vh;
+}

@@ -1,0 +1,43 @@
+.sellerDetailForm{
+    width: 500px;
+    font-family: system-ui,  sans-serif;
+    margin: 0px 0px 0px 50px
+
+}
+
+.sellerDetailInput{
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: rgb(211, 211, 211);
+    padding: 13px 14px;
+    margin: 8px 0px 15px 0px;
+}
+
+.sellerProfileHeading{
+    font-family: system-ui,  sans-serif;
+    margin: 10px 0px  20px 50px;
+}
+
+.sellerProfileBtnBox{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 5px;
+}
+
+.sellerProfileBtn{
+    padding: 10px 15px;
+    outline: none;
+    border: none;
+    background-color: #ff0060;
+    border-radius: 4px;
+    color:white;
+}
+
+.responseMsgHeading{
+    width:100%;
+    text-align: center;
+    font-family:system-ui, sans-serif;
+    color: red;
+    font-weight: bold;
+}

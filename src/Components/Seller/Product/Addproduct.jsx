@@ -13,6 +13,8 @@ const Addproduct = () => {
         category: '',
         subcategory: '',
     });
+
+    // Using form method to append product data
     const form = new FormData();
     form.append("photo", file)
     form.append('title', product.title)
@@ -21,11 +23,13 @@ const Addproduct = () => {
     form.append('category', product.category)
     form.append('subcategory', product.subcategory)
 
-
+    
+    // Defining action for file upload
     const changeFile = (event) => {
         setfile(event.target.files[0])
     }
 
+    // Defining action for product input field change
     const productInputChange = (event) => {
         const { name, value } = event.target;
         setproduct((previousVal) => {
@@ -39,29 +43,25 @@ const Addproduct = () => {
     // Making post request for product information and photo to the server
     const uploadClick = async () => {
 
-
-
         try {
             const response = await axios.post('http://localhost:8000/upload/image', form)
-            console.log(response)
+
             if (response.data.success == true) {
                 alert(response.data.message)
             }
             if (response.data.success == false) {
                 alert(response.data.message)
-
             }
         } catch (error) {
-            console.log(error)
-            // alert(error.response.data.message)
+            alert(error.response.data.message)
         }
     }
 
     return (
         <>
-            <div className="sellerContainer">
+            <section className="sellerContainer">
                 <h2 className='productSectionHeading'>Product Information</h2>
-                <main className='sellerBox'>
+                <div className='sellerBox'>
                     <form onSubmit={(e) => e.preventDefault()} className='sellerForm' >
                         <h4 className='productHeading'>Title</h4>
                         <input type="text" name='title' className='productInput' onChange={productInputChange} value={product.title} />
@@ -94,8 +94,8 @@ const Addproduct = () => {
                         </label>
                         <button onClick={uploadClick} className='addbtn' >Add Product</button>
                     </form>
-                </main>
-            </div>
+                </div>
+            </section>
         </>
     )
 }

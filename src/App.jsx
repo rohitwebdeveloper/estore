@@ -20,6 +20,7 @@ import ForgetPassword from './Components/Sign/ForgetPassword/ForgetPassword'
 import ResetPassword from './Components/Sign/Reset/ResetPassword'
 import Addproduct from './Components/Seller/Product/Addproduct'
 import Register from './Components/Seller/SellerRegister/Register'
+import Dashboard from './Components/Seller/Dashboard/Dashboard'
 import { useDispatch } from "react-redux";
 import { setauthenticate } from "./Reducers/authSlice";
 import axios from "axios";
@@ -73,6 +74,7 @@ function App() {
             <Route path='/account/password/reset' element={<ResetPassword/>}></Route>
             <Route path='/seller/addproduct' element={<Addproduct/>}></Route>
             <Route path='/seller/register' element={<Register/>}></Route>
+            <Route path='/seller/dashboard/*' element={<Dashboard/>}></Route>
             <Route path='/*' element={<Pagenotfound />}></Route>
           </Routes>
       <Footer />
