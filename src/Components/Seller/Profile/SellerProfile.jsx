@@ -6,7 +6,7 @@ import { setsellerProfileDetail } from '../../../Reducers/sellerprofileSlice'
 
 const SellerProfile = () => {
     // Defining states
-    const userid = sessionStorage.getItem('usertokenid');
+    const userid = sessionStorage.getItem('usertoken');
     const [loading, setloading] = useState(true);
     const [err, seterr] = useState(false)
     const [responseMsg, setresponseMsg] = useState('')
@@ -31,11 +31,11 @@ const SellerProfile = () => {
         ; (async () => {
             // Checking whether the seller profile data is stored or not and if it exists then showing it to the user
             if (storedSellerDetail.length !== 0 || storedSellerDetail === null) {
-                const [{ name, email, sellerId, company, mobilenumber, address }] = storedSellerDetail;
+                const [{ name, email, _id, company, mobilenumber, address }] = storedSellerDetail;
                 setsellerDetail({
                     name: name,
                     email: email,
-                    sellerId: sellerId,
+                    sellerId: _id,
                     company: company,
                     mobileno: mobilenumber,
                     locality: address.locality,
@@ -51,11 +51,11 @@ const SellerProfile = () => {
                     // Making a get request to the server to get the seller profile data 
                     const response = await axios.get(`http://localhost:8000/seller/dashboard/profile/${userid}`)
 
-                    const { name, email, sellerId, company, mobilenumber, address } = response.data;
+                    const { name, email, _id, company, mobilenumber, address } = response.data;
                     setsellerDetail({
                         name: name,
                         email: email,
-                        sellerId: sellerId,
+                        sellerId: _id,
                         company: company,
                         mobileno: mobilenumber,
                         locality: address.locality,

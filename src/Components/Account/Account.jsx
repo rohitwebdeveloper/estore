@@ -12,15 +12,16 @@ const Account = () => {
   const [loading, setloading] = useState(true);
   const [error, seterror] = useState(false);
   const [editable, seteditable] = useState(true)
+  const [isSeller, setisSeller] = useState(false)
   const [userDetail, setuserDetail] = useState({
-    name:'',
-    email:'',
-    mobileno:null,
-    address:''
+    name: '',
+    email: '',
+    mobileno: null,
+    address: ''
   });
   const navigate = useNavigate();
   const storedUserDetails = JSON.parse(sessionStorage.getItem('estoreUserprofile'))
-  
+
   const dispatch = useDispatch()
 
   const gohomeclick = () => {
@@ -31,17 +32,19 @@ const Account = () => {
   useEffect(() => {
     ; (async () => {
       //  Retrieving user profile data stored in session storage
-      const userid = sessionStorage.getItem('usertokenid');
+      const userid = sessionStorage.getItem('usertoken');
       try {
         // If profile data is present in session storage then displaying it to user
         if (storedUserDetails !== null && storedUserDetails.length !== 0) {
           setuserDetail({
-          name:storedUserDetails.name,
-          email:storedUserDetails.email,
-          mobileno:storedUserDetails.mobilenumber,
-          address:storedUserDetails.address
-        })
+            name: storedUserDetails.name,
+            email: storedUserDetails.email,
+            mobileno: storedUserDetails.mobilenumber,
+            address: storedUserDetails.address
+          })
+          setisSeller(storedUserDetails.isSeller)
           setloading(false)
+
         } else {
           setloading(true)
           seterror(false)
@@ -49,13 +52,13 @@ const Account = () => {
           const response = await axios.get(`http://localhost:8000/users/profile/${userid}`)
           // setuserDetail(response.data)
           setuserDetail({
-            name:response.data.name,
-            email:response.data.email,
-            mobileno:response.data.mobilenumber,
-            address:response.data.address
+            name: response.data.name,
+            email: response.data.email,
+            mobileno: response.data.mobilenumber,
+            address: response.data.address
           })
+          setisSeller(response.data.isSeller)
 
-          console.log(response.data)
           sessionStorage.setItem('estoreUserprofile', JSON.stringify(response.data))
           setloading(false)
         }
@@ -69,44 +72,44 @@ const Account = () => {
   }, [])
 
   // Defining actions for change of input field when user update the details
-  const userdetailChange = (event)=>{
-    const {name, value} = event.target;
-  setuserDetail((prevalue)=>{
-    return{
-      ...prevalue, [name]:value
-    }
-  }) 
-  } 
+  const userdetailChange = (event) => {
+    const { name, value } = event.target;
+    setuserDetail((prevalue) => {
+      return {
+        ...prevalue, [name]: value
+      }
+    })
+  }
 
-// Defining action to be executed when user click on save button 
-  const saveClick = async ()=>{
+  // Defining action to be executed when user click on save button 
+  const saveClick = async () => {
     try {
       // Making a patch request to the server to update user details in the database
       const response = await axios.patch('http://localhost:8000/user/profile/update', userDetail);
 
-      if(response.data.success==true){
+      if (response.data.success == true) {
         sessionStorage.setItem('estoreUserprofile', JSON.stringify(response.data.updateResult))
         setuserDetail({
-          name:response.data.updateResult.name,
-          email:response.data.updateResult.email,
-          mobileno:response.data.updateResult.mobilenumber,
-          address:response.data.updateResult.address
+          name: response.data.updateResult.name,
+          email: response.data.updateResult.email,
+          mobileno: response.data.updateResult.mobilenumber,
+          address: response.data.updateResult.address
         })
         seteditable(true)
         alert(response.data.message)
       }
-      
+
     } catch (error) {
       alert(error.response.data.message)
     }
   }
 
-//  Defining actions for signout click
-  const signoutClick = ()=>{
-      navigate('/')
-      dispatch(setauthenticate(false))
-      sessionStorage.removeItem('estoreUserprofile')
-      sessionStorage.removeItem('usertokenid')
+  //  Defining actions for signout click
+  const signoutClick = () => {
+    navigate('/')
+    dispatch(setauthenticate(false))
+    sessionStorage.removeItem('estoreUserprofile')
+    sessionStorage.removeItem('usertoken')
   }
 
   return (
@@ -123,15 +126,15 @@ const Account = () => {
           <div className="accountBox">
             <div className="sideBar">
               <div className="linkBox">
-              <div className="contentLink">My Profile</div>
-              <div className="contentLink">My Wishlist</div>
-              <div className="contentLink">My Orders</div>
-              <div className="contentLink">Become Seller</div>
+                <div className="contentLink">My Profile</div>
+                <div className="contentLink">My Wishlist</div>
+                <div className="contentLink">My Orders</div>
+                <div className="contentLink" onClick={() => isSeller ? navigate('/seller/dashboard/profile') : navigate('/seller/register')} >{isSeller ? 'Seller Dashboard' : 'Become Seller'}</div>
               </div>
               <div className="linkBox">
-              <button className="signoutBtn" onClick={signoutClick} >Sign-Out➡</button>
-              <button className="signoutBtn" onClick={()=> navigate('/account/password/reset')} >Change Password➡</button>
-              
+                <button className="signoutBtn" onClick={signoutClick} >Sign-Out➡</button>
+                <button className="signoutBtn" onClick={() => navigate('/account/password/reset')} >Change Password➡</button>
+
               </div>
             </div>
             <div className="contentBox">
@@ -153,8 +156,8 @@ const Account = () => {
                 <input className="profileDetail" name="address" value={userDetail.address} onChange={userdetailChange} readOnly={editable} />
               </div>
               <div className="editsaveBox">
-                <button className="editsaveBtn" onClick={()=>seteditable(false)} style={editable ?{opacity:1} : {opacity:0.3}} >Edit</button>
-                <button className="editsaveBtn" onClick={saveClick} style={editable ?{opacity:0.3} : {opacity:1}} disabled={editable ? true : false} >Save</button>
+                <button className="editsaveBtn" onClick={() => seteditable(false)} style={editable ? { opacity: 1 } : { opacity: 0.3 }} >Edit</button>
+                <button className="editsaveBtn" onClick={saveClick} style={editable ? { opacity: 0.3 } : { opacity: 1 }} disabled={editable ? true : false} >Save</button>
               </div>
             </div>
           </div>

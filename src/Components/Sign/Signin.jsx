@@ -44,11 +44,11 @@ const Sign = () => {
              sessionStorage.removeItem('estoreUserprofile');
             // Sending the user credentials to the backend using post request
             const response = await axios.post('http://localhost:8000/auth/user/sign-in', formData)
-
-            const usertoken = response.data.token;
+            console.log('RESPONSE:', response)
+            const tokenid = response.data.token;
 
             // Token provide by the server is stored in sessionStorage of the browser for further use
-            sessionStorage.setItem('usertokenid', usertoken)
+            sessionStorage.setItem('usertoken', tokenid)
             //    setresponseMsg(response.data.message);
 
             // Condition to check whether the user is signed in or not
