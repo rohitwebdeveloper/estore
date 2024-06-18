@@ -87,7 +87,7 @@ const Sign = () => {
             if (response.data.success === true) {
                 navigate('/')
                 // console.log("token from google:", usertoken)
-                sessionStorage.setItem('usertokenid', usertoken)
+                sessionStorage.setItem('usertoken', usertoken)
                 dispatch(setauthenticate(true))
                 setresponseMsg(response.data.message)
                 return;

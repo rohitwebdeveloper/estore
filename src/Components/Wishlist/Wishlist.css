@@ -26,7 +26,16 @@
     width: 200px;
     height: 200px;
     border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+.wishlistimgBox img{
+    max-height: 180px;
+    height: 100%;
+}
+
 .imgdetailBox{
     width: 200px;
     height: 200px;

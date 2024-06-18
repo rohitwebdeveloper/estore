@@ -6,10 +6,12 @@ import './Addproduct.css'
 const Addproduct = () => {
 
     const [file, setfile] = useState();
+    const userid = sessionStorage.getItem('usertoken')
     const [product, setproduct] = useState({
         title: '',
         description: '',
         price: '',
+        brand: '',
         category: '',
         subcategory: '',
     });
@@ -20,8 +22,10 @@ const Addproduct = () => {
     form.append('title', product.title)
     form.append('description', product.description)
     form.append('price', product.price)
+    form.append('brand', product.brand)
     form.append('category', product.category)
     form.append('subcategory', product.subcategory)
+    form.append('userid', userid)
 
     
     // Defining action for file upload
@@ -69,6 +73,16 @@ const Addproduct = () => {
                         <textarea type="text" name='description' className='productInput' onChange={productInputChange} value={product.description} />
                         <h4 className='productHeading'>Price</h4>
                         <input type='number' name='price' className='productInput' onChange={productInputChange} value={product.price} />
+                        <h4 className='productHeading'>Brand</h4>
+                        <select name='brand' className='productInput' onChange={productInputChange} value={product.brand}>
+                            <option value="vivo">Vivo</option>
+                            <option value="oppo">Oppo</option>
+                            <option value="realme">Realme</option>
+                            <option value="oneplus">Oneplus</option>
+                            <option value="samsung">Samsung</option>
+                            <option value="xiaomi">Xiaomi</option>
+                            <option value="other">Other</option>
+                        </select>
                         <h4 className='productHeading'>Category</h4>
                         <select name='category' className='productInput' onChange={productInputChange} value={product.category}>
                             <option value="cloth">Cloth</option>
@@ -76,9 +90,9 @@ const Addproduct = () => {
                             <option value="electronic">Electronic</option>
                             <option value="fashion">Fashion</option>
                             <option value="appliance">Appliance</option>
-                            <option value="beautyandskin">Beauty&Skin</option>
+                            <option value="other">Other</option>
                         </select>
-                        <h4 className='productHeading'>Sub-Category</h4>
+                        <h4 className='productHeading'>Sub-Category(Optional) </h4>
                         <select name='subcategory' className='productInput' onChange={productInputChange} value={product.subcategory}>
                             <option value="cloth">Cloth</option>
                             <option value="mobile">Mobile</option>
@@ -86,6 +100,7 @@ const Addproduct = () => {
                             <option value="fashion">Fashion</option>
                             <option value="appliance">Appliance</option>
                             <option value="beautyandskin">Beauty&Skin</option>
+                            <option value="other">Other</option>
                         </select>
                         <h4 className='productHeading'>Product Image</h4>
                         <label className='custom-file-upload'>

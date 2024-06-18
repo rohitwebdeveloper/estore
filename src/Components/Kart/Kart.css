@@ -33,13 +33,13 @@
     width: 1200px;
     box-shadow: 0px 0px 5px rgb(194, 194, 194);  
     /* border-bottom: 1px solid grey; */
-    display: block;
+    display: flex;
+    align-items: center;
     margin: 50px auto;
     font-size: 0.9rem;
     display: flex;
     justify-content: space-around;
     padding: 10px 0px;
-    height: 80px;
 }
 
 .item{
@@ -54,6 +54,7 @@
     display: flex;
     align-items: center;
     width: 70px;
+    height: 70px;
     padding: 0px 10px;
     border: 1px solid rgb(185, 185, 185);
     border-radius: 3px;
@@ -142,4 +143,8 @@
     border: none;
     margin: 20px auto 0px auto;
     display: block;
+}
+
+.removeKartItemBtn{
+    font-size: 1.6rem;
 }
