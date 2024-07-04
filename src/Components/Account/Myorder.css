@@ -1,0 +1,110 @@
+
+
+.myorderContainer{
+    min-height: 100vh;
+    max-width: 800px;
+    width: 100%;
+    padding: 0px;
+}
+
+.orderItemImg img{
+    height: 100px;
+}
+
+.orderItemSection{
+    max-width: 700px;
+    width: 100%;
+    border: 3px solid rgb(179, 179, 179);
+    padding: 20px 15px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 10px;
+    flex-direction: column;
+    margin: 0px 0px 20px 0px;
+    
+}
+
+.orderInfoBox{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    /* justify-content: space-around; */
+    font-family: system-ui, sans-serif;
+    font-size: 0.8rem;
+    margin: 20px 0px;
+}
+
+.orderItemWrapper{
+    display: flex;
+    border-bottom: 5px solid rgb(128, 127, 127);
+    border-radius: 8px;
+    width: 100%;
+    justify-content: space-between;
+    margin: 15px 0px;
+    padding: 20px;
+
+}
+.orderItemBox{
+    display: flex;
+    justify-content: space-evenly;
+ 
+    font-family: system-ui, sans-serif;
+    font-size: 0.9rem;
+}
+
+.orderItemDetail{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.orderItemTitle{
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.orderItemQty{
+    margin: 5px 0px;
+}
+
+
+.orderItemPriceandQty{
+    width: 150px;
+}
+
+.moreDetails{
+    width: 150px;
+}
+
+.ItemRatingAndStatusBox{
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content:center ;
+    font-family: system-ui, sans-serif;
+    font-size: 0.8rem;
+
+}
+
+.rateItem{
+    color:#ff0060;
+    font-weight: bold;
+    font-weight: 1.1rem;
+}
+
+.paymentAndDeliveryInfoBox{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    padding: 8px 20px;
+    font-family: system-ui, sans-serif;
+    font-size: 0.8rem;
+}
+.totalAmount{
+    text-align: right;
+    font-weight: bold;
+}

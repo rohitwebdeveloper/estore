@@ -21,6 +21,8 @@ import ResetPassword from './Components/Sign/Reset/ResetPassword'
 import Addproduct from './Components/Seller/Product/Addproduct'
 import Register from './Components/Seller/SellerRegister/Register'
 import Dashboard from './Components/Seller/Dashboard/Dashboard'
+import Orderplaced from './Components/Kart/Orderplaced'
+import Myorder from './Components/Account/Myorder'
 import { useDispatch } from "react-redux";
 import { setauthenticate } from "./Reducers/authSlice";
 import axios from "axios";
@@ -65,13 +67,15 @@ function App() {
             <Route path='/' element={<Home />}></Route>
             <Route path='/signup' element={<Signup />}></Route>
             <Route path='/signin' element={<Signin />}></Route>
-            <Route path='/account' element={<Private page={Account} />}></Route>
+            <Route path='/profile/*' element={<Private page={Account} />}></Route>
             <Route path='/category/*' element={<Category />}></Route>
             <Route path='/kart' element={<Private page={Kart} />}></Route>
             <Route path='/wishlist' element={<Private page={Wishlist}/>}></Route>
             <Route path='/billing' element={<Billing/>}></Route>
+            <Route path='/billing/orderplaced' element={<Orderplaced/>}></Route>
             <Route path='/account/password/forget' element={<ForgetPassword/>}></Route>
             <Route path='/account/password/reset' element={<ResetPassword/>}></Route>
+            {/* <Route path='/profile/myorder' element={<Myorder/>}></Route> */}
             <Route path='/seller/addproduct' element={<Addproduct/>}></Route>
             <Route path='/seller/register' element={<Register/>}></Route>
             <Route path='/seller/dashboard/*' element={<Dashboard/>}></Route>

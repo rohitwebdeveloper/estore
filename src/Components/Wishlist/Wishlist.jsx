@@ -41,9 +41,8 @@ const Wishlist = () => {
         <>
             <div className="wishlistContainer">
                 {wishlistData.map((data, id) => {
-                    return (
-                        <>
-                            <div className="wishlistBox">
+                    return (                      
+                            <div className="wishlistBox" key={data._id}>
                                 <div className="wishlistimgBox" >
                                     <img src={data.url} alt="" />
                                 </div>
@@ -55,7 +54,6 @@ const Wishlist = () => {
                                     <button className="wishlistRemove"   onClick={()=> wishRemoveBtnClick(id)} >Remove <span className="dustbin"><MdOutlineDeleteForever /></span> </button>
                                 </div>
                             </div>
-                        </>
                     )
 
                 })}

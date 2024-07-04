@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import './Kart.css';
-import useRazorpay from 'react-razorpay'
 import axios from "axios";
 // import Billing from "./Billing";
 import { useNavigate } from "react-router-dom";
@@ -10,8 +9,6 @@ import { setorderdetails } from "../../Reducers/orderSlice";
 
 const Kart = () => {
     const navigate = useNavigate();
-    const [Rasorpay] = useRazorpay();
-    const [orderid, setorderid] = useState('order_IluGWxBm9U8zJ8');
     const [quantity, setquantity] = useState([]);
     const userid = sessionStorage.getItem('usertoken')
     const [kartData, setkartData] = useState([])
@@ -97,55 +94,21 @@ const Kart = () => {
         }
     }
 
-
-    const options = {
-        key: "rzp_test_DtCuAcztnIMxzF",
-        amount: "10900",
-        currency: "INR",
-        name: "E-Store",
-        description: "Test Transaction",
-        // "image": "https://example.com/your_logo",
-        order_id: orderid,
-        callback_url: "https://eneqd3r9zrjok.x.pipedream.net/",
-        handler: function (response) {
-            console.log(response)
-            console.log('PaymentId:', response.razorpay_payment_id);
-            console.log('OrderId', response.razorpay_order_id);
-            console.log('Signature', response.razorpay_signature)
-        },
-        prefill: {
-            name: "Rohit Kushwaha",
-            email: "rohitkushwaha@example.com",
-            contact: "7999344193",
-            notes: {
-                address: "Kolar Road, Bhopal"
-            },
-            theme: {
-                'color': "#ffff"
+    // Handle place order 
+    const handleProceed = async () => {
+        try {
+            // const amount = total + 60
+            const response = await axios.post('http://localhost:8000/user/order', { total })
+            console.log("This is response :", response)
+            const order = [kartData, quantity, subTotal, total, response.data.order.id]
+            if (response.status == 200) {
+                await dispatch(setorderdetails(order))
             }
+            navigate('/billing')
+
+        } catch (error) {
+            console.log("This is an error:", error)
         }
-    };
-
-    
-    // const handleProceed = async (e) => {
-    //     const rap = new Rasorpay(options);
-    //     try {
-    //         const response = await axios.get('http://localhost:8000/user/order')
-    //         console.log("This is response :", response)
-    //          await setorderid(response.data.order.id)
-    //         await rap.open();
-    //     } catch (error) {
-    //         console.log("This is an error:", error)
-    //     }
-    //     e.preventDefault();
-    //     // navigate('/billing')
-    //     console.log(rap);
-    // }
-
-    const handleProceed = () => {
-        const order = [kartData, quantity, subTotal, total]
-        dispatch(setorderdetails(order))
-        navigate('/billing')
     }
 
 
@@ -163,7 +126,6 @@ const Kart = () => {
                     </div>
                     {kartData.map((data, index) => {
                         return (
-                            <>
                                 <div className="itemBox" key={data._id}>
                                     <div className="item kartProductimg ">
                                         <img src={data.productdetail.url} alt="" />
@@ -181,7 +143,6 @@ const Kart = () => {
                                     {/* <div className="item total "> {subTotal[index]}</div> */}
                                     <div className="removeKartItemBtn" onClick={() => removeKartItem(data._id, index, subTotal[index])}><MdOutlineDeleteForever /></div>
                                 </div>
-                            </>
                         )
                     })}
 

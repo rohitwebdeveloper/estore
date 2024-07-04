@@ -58,7 +58,7 @@ const Navbar = () => {
               <li><NavLink className="navitem logo" to="/kart" > <MdShoppingCartCheckout/></NavLink></li>
               <li><NavLink className="navitem logo" to="/wishlist" > <IoIosHeartEmpty/></NavLink></li>
               {/* <li><NavLink to="/kart"> Kart</NavLink></li> */}
-              <li><NavLink className="navitem logo" to="/account"><MdAccountCircle/></NavLink></li>
+              <li><NavLink className="navitem logo" to="/profile/myprofile"><MdAccountCircle/></NavLink></li>
             </ul>
           </nav>
         </div>
