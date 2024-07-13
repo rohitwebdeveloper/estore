@@ -4,13 +4,13 @@ import { NavLink, Route, Routes, useNavigate } from "react-router-dom";
 import Addproduct from "../Product/Addproduct";
 import SellerProfile from "../Profile/SellerProfile";
 import Sellerproduct from "../SellerProduct/Sellerproduct";
+import Sellerorder from "../SellerOrder/Sellerorder";
 import { useSelector } from "react-redux";
 
 
 const Dashboard = () => {
     
-    const authorizeStatus = true
-    //  useSelector((state)=>state.authenticate.value)
+    const authorizeStatus = useSelector((state)=>state.authenticate.value)
     const navigate = useNavigate()
 
      //   Defining action for gotosignin button
@@ -26,7 +26,7 @@ const Dashboard = () => {
                 <h3 className="dashboardHeading">Dashboard</h3>
                 <ul>
                     <li className="dashboardListItem"><NavLink to="profile">Profile</NavLink></li>
-                    <li className="dashboardListItem">Orders</li>
+                    <li className="dashboardListItem"> <NavLink to="order">Orders</NavLink> </li>
                     <li className="dashboardListItem"> <NavLink to="product" >Products</NavLink> </li>
                     <li className="dashboardListItem"><NavLink to="addproduct" >Add Product +</NavLink></li>
                 </ul>
@@ -36,6 +36,7 @@ const Dashboard = () => {
                 <Route path="addproduct" element={<Addproduct/>} />
                 <Route path="profile" element={<SellerProfile/>} />
                 <Route path="product" element={<Sellerproduct/>} />
+                <Route path="order" element={<Sellerorder/>} />
                </Routes>
             </section>
          </main>

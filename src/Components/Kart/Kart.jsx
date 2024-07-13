@@ -5,9 +5,12 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { MdOutlineDeleteForever } from "react-icons/md";
 import { useDispatch } from "react-redux";
-import { setorderdetails } from "../../Reducers/orderSlice";
+import { setorderdetails, removeorderdetails } from "../../Reducers/orderSlice";
 
 const Kart = () => {
+    const [loading, setloading] = useState(true)
+    const [error, seterror] = useState(false)
+    const [noData, setnoData] = useState(false)
     const navigate = useNavigate();
     const [quantity, setquantity] = useState([]);
     const userid = sessionStorage.getItem('usertoken')
@@ -21,10 +24,15 @@ const Kart = () => {
     useEffect(() => {
         ; (async () => {
             try {
+                setloading(true)
+                seterror(false)
                 // Fetches the kart details for a specific user.
                 const response = await axios.get(`http://localhost:8000/user/kart/${userid}`)
-                console.log(response.data)
                 setkartData(response.data)
+                setloading(false)
+                if (response.status === 200 && !response.data.length) {
+                    setnoData(true)
+                }
 
                 for (let index = 0; index < response.data.length; index++) {
                     await quantity.push(1);
@@ -32,8 +40,10 @@ const Kart = () => {
                     await baseprice.push(response.data[index].productdetail.price)
                 }
                 await subTotal.forEach(data => settotal(previoustotal => data + previoustotal));
+                await dispatch(removeorderdetails(0))
             } catch (error) {
-                console.error(error)
+                seterror(true)
+                setloading(false)
             }
         })()
     }, [])
@@ -90,7 +100,8 @@ const Kart = () => {
                 quantity.splice(index, 1)
             }
         } catch (error) {
-            console.log(error)
+            seterror(true)
+            setloading(false)
         }
     }
 
@@ -99,7 +110,6 @@ const Kart = () => {
         try {
             // const amount = total + 60
             const response = await axios.post('http://localhost:8000/user/order', { total })
-            console.log("This is response :", response)
             const order = [kartData, quantity, subTotal, total, response.data.order.id]
             if (response.status == 200) {
                 await dispatch(setorderdetails(order))
@@ -107,25 +117,32 @@ const Kart = () => {
             navigate('/billing')
 
         } catch (error) {
-            console.log("This is an error:", error)
+            seterror(true)
+            setloading(false)
         }
     }
 
 
 
     return (
-        <>
-            <div className="kartContainer">
-                <div className="kartBox">
-                    <div className="headingBox">
-                        <div className="heading">Product</div>
-                        <div className="heading">Price</div>
-                        <div className="heading">Quantity</div>
-                        <div className="heading">Total</div>
-                        <div className="heading"></div>
-                    </div>
-                    {kartData.map((data, index) => {
-                        return (
+
+
+        <div className="kartContainer">
+            {loading && (<h2 style={{ textAlign: 'center', marginTop:'15%' }} >Loading...</h2>)}
+            {error && (<h2 style={{ textAlign: 'center', marginTop:'15%' }} >Sorry, Something went wrong!</h2>)}
+            {noData && (<h2 style={{ textAlign: 'center', marginTop:'15%' }} >No Items Added in Kart !</h2>)}
+            {!loading && !error && !noData && (
+                <>
+                    <div className="kartBox">
+                        <div className="headingBox">
+                            <div className="heading">Product</div>
+                            <div className="heading">Price</div>
+                            <div className="heading">Quantity</div>
+                            <div className="heading">Total</div>
+                            <div className="heading"></div>
+                        </div>
+                        {kartData.map((data, index) => {
+                            return (
                                 <div className="itemBox" key={data._id}>
                                     <div className="item kartProductimg ">
                                         <img src={data.productdetail.url} alt="" />
@@ -143,33 +160,32 @@ const Kart = () => {
                                     {/* <div className="item total "> {subTotal[index]}</div> */}
                                     <div className="removeKartItemBtn" onClick={() => removeKartItem(data._id, index, subTotal[index])}><MdOutlineDeleteForever /></div>
                                 </div>
-                        )
-                    })}
+                            )
+                        })}
 
-                </div>
-                {/* <div className="couponBox">
-                    <input type="text" className="couponCode" placeholder="Enter coupon code" />
-                    <button className="applyBtn">Apply Coupon</button>
-                </div> */}
-                <div className="checkoutContainer">
-                    <div className="checkoutBox">
-                        <div className="checkoutItem">
-                            <div className="subTotal">Subtotal:</div>
-                            <div className="subtotalAmt">{total}</div>
-                        </div>
-                        <div className="checkoutItem">
-                            <div className="shipping">Shipping:</div>
-                            <div className="shippingAmt">{total > 500000 ? 'Free' : 60}</div>
-                        </div>
-                        <div className="checkoutItem">
-                            <div className="total">total:</div>
-                            <div className="totalAmt"  > {total > 500000 ? total : total + 60} </div>
-                        </div>
-                        <button className="checkoutBtn" onClick={handleProceed} >Proceed to checkout</button>
                     </div>
-                </div>
-            </div>
-        </>
+                    <div className="checkoutContainer">
+                        <div className="checkoutBox">
+                            <div className="checkoutItem">
+                                <div className="subTotal">Subtotal:</div>
+                                <div className="subtotalAmt">{total}</div>
+                            </div>
+                            <div className="checkoutItem">
+                                <div className="shipping">Shipping:</div>
+                                <div className="shippingAmt">{total > 500000 ? 'Free' : 60}</div>
+                            </div>
+                            <div className="checkoutItem">
+                                <div className="total">total:</div>
+                                <div className="totalAmt"  > {total > 500000 ? total : total + 60} </div>
+                            </div>
+                            <button className="checkoutBtn" onClick={handleProceed} >Proceed to checkout</button>
+                        </div>
+                    </div>
+                </>
+            )}
+
+        </div>
+
     )
 }
 

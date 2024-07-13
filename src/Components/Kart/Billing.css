@@ -44,10 +44,6 @@
 .paymentHeading{
     font-family: system-ui, sans-serif;
     font-weight: normal;
-    /* max-width: 1000px;
-    width: 100%;
-    display: block;
-    margin: 20px auto; */
 }
 
 .billingItemBox{
@@ -92,4 +88,17 @@
     border: none;
     margin: 20px 0px 0px 20px;
     display: block;
+    height: fit-content;
+}
+
+.goToKartBtn{
+    background-color: #ff0060;
+    color: white;
+    outline: none;
+    border: none;
+    display: block;
+    margin: 15px auto;
+    padding: 10px 15px;
+    border-radius: 5px;
+    
 }

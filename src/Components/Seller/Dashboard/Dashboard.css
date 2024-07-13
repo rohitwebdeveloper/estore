@@ -1,7 +1,6 @@
 .dashboardContainer{
     max-width: 1450px;
     width: 100%;
-    height: 100%;
     /* background-color: rgb(128, 192, 248); */
     display: flex;
     margin: auto;
@@ -14,11 +13,18 @@
 }
 
 .dashboardContent{
-    max-width: 1250px;
+    max-width: 800px;
     width: 100%;
-    height: 100%;
+    /* min-height: 100vh; */
     /* background-color: aquamarine; */
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    height: 100%;
+    
 }
 
 .dashboardListItem{

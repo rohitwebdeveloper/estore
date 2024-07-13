@@ -12,9 +12,8 @@ const Register = () => {
     const [sellerForm, setsellerForm] = useState({
         name: '',
         email: '',
-        sellerId: '',
-        company: '',
         mobileno: '',
+        company: '',
         locality: '',
         city: '',
         state: '',
@@ -34,23 +33,25 @@ const Register = () => {
     // Defining action to be executed when user click on register button
     const registerClick = async () => {
         // Checking whether input field is empty or not 
-        if (sellerForm.name === "" || sellerForm.email === "" || sellerForm.sellerId === "" || sellerForm.company === "" || sellerForm.mobileno === "" || sellerForm.locality === "" || sellerForm.city === "" || sellerForm.state === "" || sellerForm.pincode === "") {
+        if (!sellerForm.name || !sellerForm.email || !sellerForm.company || !sellerForm.mobileno || !sellerForm.locality || !sellerForm.city || !sellerForm.state || !sellerForm.pincode ) {
             setresponseMsg("Please fill all details")
             return
         }
 
         try {
             // Making a post request to the server to register a new seller and save its data in database
-            const response = await axios.post('http://localhost:8000/auth/seller/register', sellerForm)
+            const response = await axios.post('http://localhost:8000/auth/seller/register', {sellerForm})
             if (response.data.success == true) {
                 setresponseMsg(response.data.message)
+                navigate('/seller/dashboard/profile')
             }
             if (response.data.success == false) {
                 setresponseMsg(response.data.message)
             }
 
         } catch (error) {
-            setresponseMsg(error.response.data.message);
+            // setresponseMsg(error.response.data.message);
+            console.log(error)
         }
         setTimeout(() => {
             setresponseMsg('')
@@ -75,7 +76,6 @@ const Register = () => {
                         </div>
                         <input type="text" className="sellerCredentials" placeholder="Enter FullName" name='name' onChange={registerValChange} value={sellerForm.name} />
                         <input type="email" className="sellerCredentials" placeholder="Enter Email" name='email' onChange={registerValChange} value={sellerForm.email} />
-                        <input type='text' name="sellerId" className="sellerCredentials" placeholder="Enter SellerId" onChange={registerValChange} value={sellerForm.sellerId} />
                         <input type='text' name="company" className="sellerCredentials" placeholder="Enter Company or Shop Name" onChange={registerValChange} value={sellerForm.company} />
                         <input type='number' name="mobileno" className="sellerCredentials" placeholder="Enter Mobile Number" onChange={registerValChange} value={sellerForm.mobileno} />
                         <input type='text' name="locality" className="sellerCredentials" placeholder="Enter HouseNo., Colony, Locality " onChange={registerValChange} value={sellerForm.locality} />

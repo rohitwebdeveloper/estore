@@ -6,9 +6,14 @@ const orderSlice = createSlice({
     reducers:{
         setorderdetails(state, action){
             state.push(action.payload)
+        },
+        removeorderdetails(state, action){
+            state.splice(action.payload, 1)
         }
-    }
+    }, 
+    
+    
 })
 
-export const {setorderdetails} = orderSlice.actions;
+export const {setorderdetails, removeorderdetails} = orderSlice.actions;
 export default orderSlice.reducer;

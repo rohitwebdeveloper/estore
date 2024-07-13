@@ -36,16 +36,16 @@ const Account = () => {
           seterror(false)
           // If there is no profile data in session storage then making a get request to get the profile data from the database
           const response = await axios.get(`http://localhost:8000/users/profile/${userid}`)
-          console.log(response)
           setapiResponse(response.data)
-          setisSeller(response.data.isSeller)
+          // if(response.data.isSeller== null || response.data.isSeller==undefined) {
+            setisSeller(response.data.isSeller)
+          // }
           sessionStorage.setItem('estoreUserprofile', JSON.stringify(response.data))
           setloading(false)
         }
       } catch (error) {
         setloading(false)
         seterror(true)
-        console.error("Unable to fetch user profile")
       }
     })()
   }, [])

@@ -43,7 +43,6 @@ const Myorder = () => {
             {error && (<div className="h1box"><h2>Sorry, Something went wrong!</h2></div>)}
             {noData && (<div className="h1box"><h2>No Orders Found</h2></div>)}
             {!loading && !error && !noData && (
-
                 <main className='myorderContainer'>
                     {orderData.map((data) => {
                         return (

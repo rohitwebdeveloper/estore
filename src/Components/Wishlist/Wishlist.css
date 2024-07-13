@@ -17,7 +17,7 @@
     width: 100%;
     border: none;
     border-bottom: 1px solid grey;
-    padding: 20px;
+    padding: 0px 0px;
     display: flex;
     margin-top: 50px;
 }
@@ -25,37 +25,36 @@
 .wishlistimgBox{
     width: 200px;
     height: 200px;
-    border: 1px solid black;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .wishlistimgBox img{
-    max-height: 180px;
+    max-height: 120px;
     height: 100%;
 }
 
 .imgdetailBox{
     width: 200px;
-    height: 200px;
     margin: 0px 0px 0px 100px;
+    height: 100%;
 }
 
 .wishlistKartBtn{
-    width: 200px;
-    margin: 20px 0px 10px 0px;
-    font-size: 1rem;
-    padding: 10px 10px;
+    width: 120px;
+    margin: 10px 0px 5px 0px;
+    font-size: 0.8rem;
+    padding: 8px 10px;
     border-radius: 5px;
     border: none;
     background-color: #ff0060;
     color: white;
 }
 .wishlistRemove{
-    width: 200px;
-    margin: 5px 0px 10px 0px;
-    font-size: 1rem;
+    width: 120px;
+    margin: 5px 0px 0px 0px;
+    font-size: 0.8rem;
     padding: 2px 10px;
     display: flex;
     align-items: center;
@@ -67,16 +66,17 @@
 }
 
 .wishlistPrice{
-   font-size: 1.1rem; 
-   margin: 0px 0px 15px 0px;
+   font-size: 0.9rem; 
+   margin: 5px 0px 0px 0px;
 }
 .wishlistName{
-  font-size: 1.1rem;
-  margin: 0px 0px 15px 0px;
+  font-size: 1rem;
+  margin: 5px 0px 0px 0px;
+  font-weight: bold;
 }
 
 .dustbin{
-    font-size: 1.7rem;
+    font-size: 1.3rem;
 }
 
 span{
