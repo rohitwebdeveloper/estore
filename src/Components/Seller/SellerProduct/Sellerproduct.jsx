@@ -70,8 +70,8 @@ const Sellerproduct = () => {
                                 <p className="sellerProductItem"><strong>Price:</strong> {data.price}</p>
                                 <p className="sellerProductItem"><strong>Description:</strong> {data.description}</p>
                                 <div className="sellerProductBtnBox">
-                                    <button className="sellerProductBtn">Edit</button>
-                                    <button className="sellerProductBtn">Save</button>
+                                    {/* <button className="sellerProductBtn">Edit</button>
+                                    <button className="sellerProductBtn">Save</button> */}
                                     <button className="sellerProductBtn" onClick={() => unpublishClick(data._id)}>Unpublish</button>
                                 </div>
                             </div>

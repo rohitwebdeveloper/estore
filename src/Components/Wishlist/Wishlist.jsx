@@ -34,7 +34,6 @@ const Wishlist = () => {
     }, [])
 
 
-    // const [wish, setwish]= useState(Bestsellerdata);
 
     const wishKartBtnClick = async (productid) => {
         try {

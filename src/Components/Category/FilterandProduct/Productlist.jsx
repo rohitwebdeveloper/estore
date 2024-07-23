@@ -14,9 +14,7 @@ const Productlist = (props) => {
           {clickdata.map((data, index) => {
             const productlistdata = productlist[index];
             return (
-              <>
-                <div className="variety_item" onClick={data}>{productlistdata}</div>
-              </>
+                <div className="variety_item" key={index} onClick={data}>{productlistdata}</div>
             )
           })}
           {/* <div className="variety_item" onClick={clicktwo}>{productone}</div>

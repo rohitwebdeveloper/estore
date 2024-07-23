@@ -1,158 +1,126 @@
-import React from 'react'
-import { useState } from 'react';
-import Categorydata from '../../Imageurl/Categorydata';
+import React, { useState, useEffect } from 'react'
+import axios from 'axios';
 import Filter from '../FilterandProduct/Filter';
 import Productlist from '../FilterandProduct/Productlist';
 import "./Fashion.css"
 
 const Fashion = () => {
-  const filtered_img = Categorydata.filter((data) => data.major_category == 'fashion');
-  const productlist = ['all', 'shirts', 'trausors & jeans', 'sarees & suits', 'seasonal wears', 'accessories', 'shoes'];
-  const fashionbrand = ['asos', 'fabindia', 'peterEngland', 'levis', 'pluss']
-  const fashionprice = ['Upto ₹200', '₹200 to ₹500', '₹500 to ₹1000', '₹1500 to ₹2000', '₹2000 to ₹2500', '₹3000 to ₹3500', '₹3500 to ₹4000', '₹4000 to ₹5000', 'Above ₹5000 ']
+  const productlist = ['all', "Men's Clothing", "Women's Clothing", "Footwear"];
+  const fashionclothbrand = ["Levis", "Nike", "Adidas", "Zara", "H&M", "Forever 21", "Puma", "Reebok", "Sketchers"]
+  const [categoryData, setCategoryData] = useState([]);
+  const [categoryDataCopy, setcategoryDataCopy] = useState([]);
+  const [categoryDataOriginal, setcategoryDataOriginal] = useState([]);
+  const [range, setRange] = useState();
 
-  const [categoryimg, setcategoryimg] = useState(filtered_img);
-  const [categoryimg_copy, setcategoryimg_copy] = useState(filtered_img);
+
+  useEffect(() => {
+    ; (async () => {
+      try {
+        let category = "Fashion and Clothes"
+        const response = await axios.get(`http://localhost:8000/products/category/${category}`)
+        console.log(response)
+        setCategoryData(response.data.electronicsProduct)
+        setcategoryDataCopy(response.data.electronicsProduct)
+        setcategoryDataOriginal(response.data.electronicsProduct)
+      } catch (error) {
+        console.error(error)
+      }
+    })()
+  }, [])
+
+
 
   const allclick = () => {
-    setcategoryimg(filtered_img)
-    setcategoryimg_copy(filtered_img)
+    setCategoryData(categoryDataOriginal)
+    setcategoryDataCopy(categoryDataOriginal)
     document.querySelectorAll('.checkbox')
       .forEach((el) => el.checked = false);
   }
-  const shirtsclick = () => {
-    setcategoryimg(filtered_img.filter((data) => data.minor_category == 'shirts'))
-    setcategoryimg_copy(filtered_img.filter((data) => data.minor_category == 'shirts'))
+
+  const mensClothClick = () => {
+    setCategoryData(categoryDataOriginal.filter((data) => data.subCategory == "Men's Clothing"))
+    setcategoryDataCopy(categoryDataOriginal.filter((data) => data.subCategory == "Men's Clothing"))
     document.querySelectorAll('.checkbox')
       .forEach((el) => el.checked = false);
   }
-  const trouserjeansclick = () => {
-    setcategoryimg(filtered_img.filter((data) => data.minor_category == 'trouserjeans'))
-    setcategoryimg_copy(filtered_img.filter((data) => data.minor_category == 'trouserjeans'))
+  const womensClothClick = () => {
+    setCategoryData(categoryDataOriginal.filter((data) => data.subCategory == "Women's Clothing"))
+    setcategoryDataCopy(categoryDataOriginal.filter((data) => data.subCategory == "Women's Clothing"))
     document.querySelectorAll('.checkbox')
       .forEach((el) => el.checked = false);
   }
-  const sareesuitclick = () => {
-    setcategoryimg(filtered_img.filter((data) => data.minor_category == 'sareesuit'))
-    setcategoryimg_copy(filtered_img.filter((data) => data.minor_category == 'sareesuit'))
+  const footwearClick = () => {
+    setCategoryData(categoryDataOriginal.filter((data) => data.subCategory == "Footwear"))
+    setcategoryDataCopy(categoryDataOriginal.filter((data) => data.subCategory == "Footwear"))
     document.querySelectorAll('.checkbox')
       .forEach((el) => el.checked = false);
   }
-  const seasonalwearclick = () => {
-    setcategoryimg(filtered_img.filter((data) => data.minor_category == 'seasonalwear'))
-    setcategoryimg_copy(filtered_img.filter((data) => data.minor_category == 'seasonalwear'))
-    document.querySelectorAll('.checkbox')
-      .forEach((el) => el.checked = false);
-  }
-  const accessoriesclick = () => {
-    setcategoryimg(filtered_img.filter((data) => data.minor_category == 'accessories'))
-    setcategoryimg_copy(filtered_img.filter((data) => data.minor_category == 'accessories'))
-    document.querySelectorAll('.checkbox')
-      .forEach((el) => el.checked = false);
-  }
-  const shoesclick = () => {
-    setcategoryimg(filtered_img.filter((data) => data.minor_category == 'shoes'))
-    setcategoryimg_copy(filtered_img.filter((data) => data.minor_category == 'shoes'))
-    document.querySelectorAll('.checkbox')
-      .forEach((el) => el.checked = false);
-  }
+
 
   const handleonchange = (event) => {
-    event.target.value;
-    let checkboxbrandval = [...document.querySelectorAll('.checkboxbrand')]
-      .filter((data) => data.checked)
-      .map((currdata) => currdata.value)
-    console.log(checkboxbrandval);
+    const checkboxbrandval = [...document.querySelectorAll('.checkboxbrand')]
+      .filter(data => data.checked)
+      .map(currdata => currdata.value);
 
-    let checkboxpriceval = [...document.querySelectorAll('.checkboxprice')]
-      .filter((data) => data.checked)
-      .map((currdata) => currdata.value)
-    console.log(checkboxpriceval);
+    const checkboxratingval = [...document.querySelectorAll('.checkboxrating')]
+      .filter(data => data.checked)
+      .map(currdata => currdata.value);
 
-    let checkboxratingval = [...document.querySelectorAll('.checkboxrating')]
-      .filter((data) => data.checked)
-      .map((currdata) => currdata.value)
-    console.log(checkboxratingval);
+    const pricerange = document.querySelector('.pricerangeSlider').value;
+    setRange(pricerange);
 
-
-
-    // let brand_checkbox = checkboxbrandval.length 
-    // let price_checkbox = checkboxpriceval.length 
-
-    let brandpricerating_filtered = categoryimg_copy.filter((filterdata) => checkboxbrandval.includes(filterdata.brands) && (checkboxpriceval.includes(filterdata.pricerange)) && (checkboxratingval.includes(filterdata.rating)))
-    let brandprice_filtered = categoryimg_copy.filter((filterdata) => checkboxbrandval.includes(filterdata.brands) && (checkboxpriceval.includes(filterdata.pricerange)))
-    let brandrating_filtered = categoryimg_copy.filter((filterdata) => checkboxbrandval.includes(filterdata.brands) && (checkboxratingval.includes(filterdata.rating)))
-    let ratingprice_filtered = categoryimg_copy.filter((filterdata) => checkboxratingval.includes(filterdata.rating) && (checkboxpriceval.includes(filterdata.pricerange)))
-    let brand_filtered = categoryimg_copy.filter((filterdata) => checkboxbrandval.includes(filterdata.brands))
-    let price_filtered = categoryimg_copy.filter((filterdata) => checkboxpriceval.includes(filterdata.pricerange))
-    let rating_filtered = categoryimg_copy.filter((filterdata) => checkboxratingval.includes(filterdata.rating))
-
-    if ((checkboxbrandval.length !== 0) && (checkboxpriceval.length !== 0) && (checkboxratingval.length !== 0)) {
-      setcategoryimg(brandpricerating_filtered)
-    } else if ((checkboxbrandval.length !== 0) && (checkboxpriceval.length !== 0) && (checkboxratingval.length === 0)) {
-      setcategoryimg(brandprice_filtered)
-    } else if ((checkboxbrandval.length !== 0) && (checkboxratingval.length !== 0) && (checkboxpriceval.length === 0)) {
-      setcategoryimg(brandrating_filtered)
-    } else if ((checkboxratingval.length !== 0) && (checkboxpriceval.length !== 0) && (checkboxbrandval.length === 0)) {
-      setcategoryimg(ratingprice_filtered)
+    const filteredData = (brandVal, priceVal, ratingVal) => {
+      return categoryDataCopy.filter((filterdata) => {
+        const brandMatch = brandVal.length === 0 || brandVal.includes(filterdata.brand);
+        const priceMatch = priceVal === 0 || filterdata.price <= priceVal;
+        const ratingMatch = ratingVal.length === 0 || ratingVal.includes(filterdata.rating);
+        return brandMatch && priceMatch && ratingMatch
+      })
     }
-    else if ((checkboxbrandval.length !== 0) && (checkboxpriceval.length === 0) && (checkboxratingval.length === 0)) {
-      setcategoryimg(brand_filtered)
-    }
-    else if ((checkboxpriceval.length !== 0) && (checkboxbrandval.length === 0) && (checkboxratingval.length === 0)) {
-      setcategoryimg(price_filtered)
-    }
-    else if ((checkboxratingval.length !== 0) && (checkboxbrandval.length === 0) && (checkboxpriceval.length === 0)) {
-      setcategoryimg(rating_filtered)
-    }
-    else {
-      setcategoryimg(filtered_img)
-    }
+    const updatedCategoryData = filteredData(checkboxbrandval, pricerange, checkboxratingval)
+    setCategoryData(updatedCategoryData)
 
   }
+
 
   return (
     <>
       <div className="container">
-        <Productlist click={[allclick, shirtsclick, trouserjeansclick, sareesuitclick, seasonalwearclick, accessoriesclick, shoesclick]} productlistname={productlist} />
+        <Productlist click={[allclick, mensClothClick, womensClothClick, footwearClick]} productlistname={productlist} />
         <div className="product_section">
           <div className="row">
-            {categoryimg.length === 0 ? (
+            {categoryData.length === 0 ? (
               <h1>No Result</h1>
-            ) : (categoryimg.map((currdata) => {
+            ) : (categoryData.map((currdata, index) => {
               return (
-                <>
-                  <div className="fashionproduct_card">
-                    <div className="fashionproduct_img" key={currdata.id} >
-                      <img src={currdata.url} alt="" />
-                      {/* <h5>{currdata.category}</h5> */}
-                    </div>
-                    <div className="fashionproduct_detail">
-                      <div className="fashionproduct_brand">
-                        {currdata.brands}
-                      </div>
-                      <div className="fashionproduct_name">
-                        {currdata.name}
-                      </div>
-                      <div className="fashion_rating">
-                        {currdata.rating}
-                      </div>
-                      <div className="priceandkart">
-                        <div className="fashion_price"> ₹{currdata.pricing}</div>
-                      </div>
-                        <button className='fashionkartBtn' >Add To Kart</button>
-                    </div>
-
+                <div className="fashionproduct_card" key={index}>
+                  <div className="fashionproduct_img" key={currdata.id} >
+                    <img src={currdata.url} alt="" />
+                    {/* <h5>{currdata.category}</h5> */}
                   </div>
-                </>
+                  <div className="fashionproduct_detail">
+                    <div className="fashionproduct_brand">
+                      {currdata.brand}
+                    </div>
+                    <div className="fashionproduct_name">
+                      {currdata.title}
+                    </div>
+                    <div className="fashion_rating">
+                      0
+                    </div>
+                    <div className="priceandkart">
+                      <div className="fashion_price"> ₹{currdata.price}</div>
+                    </div>
+                    <button className='fashionwishlistBtn' >Add To Wishlist</button>
+                    <details>{currdata.description} </details>
+                  </div>
+                </div>
               )
             }))}
           </div>
         </div>
-        <Filter change={handleonchange} brand={fashionbrand} price={fashionprice} />
+        <Filter change={handleonchange} brand={fashionclothbrand} rangevalue={range} />
       </div>
-
-
     </>
   )
 }

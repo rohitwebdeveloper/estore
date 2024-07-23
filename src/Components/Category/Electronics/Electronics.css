@@ -48,7 +48,7 @@
   
   .product_name{
     font-weight: bold;
-    font-size: 1.3vmax;
+    font-size: 1.1rem;
     margin: 0px 0px 10px 0px;
     font-family: system-ui, sans-serif;
   }
@@ -60,15 +60,16 @@
     margin: 10px 0px;
     text-align: center;
     font-weight: bold;
+    font-size: 0.9rem;
     
   }
   
-  .description li{
-    font-family: monospace;
-    font-size: 0.9rem;
+  .description {
+    font-family: system-ui, sans-serif;
+    font-size: 0.8rem;
     margin: 5px 0px;
-    font-weight: bold;
-    list-style: disc;
+    max-width: 300px;
+    width: 100%;
   }
   
   .priceandkart{
@@ -87,7 +88,7 @@
     background-color:#ff0060;
     color: rgb(255, 255, 255);
     margin: 20px 0px 0px 0px;
-    font-size: 1rem;
+    font-size: 0.9rem;
     border: 2px solid #ff0060;
     padding: 7px 20px;
     border-radius: 5px;

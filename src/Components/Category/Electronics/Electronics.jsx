@@ -1,13 +1,15 @@
 import React from 'react'
-import { useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
+import axios from "axios";
+// import { FaHeart } from "react-icons/fa";
 import Filter from '../FilterandProduct/Filter';
+import './Electronics.css';
 import Productlist from '../FilterandProduct/Productlist';
-import axios from 'axios';
-import './Beauty.css'
 
-const Beauty = () => {
-  const productlist = ['all', 'Skincare', 'Haircare', 'Makeup']
-  const beautySkinbrand = ["Neutrogena", "Olay", "Clinique", "Pantene", "Head & Shoulders", "Herbal Essences", "MAC", "L'Oreal", "Maybelline"]
+const Electronics = () => {
+
+  const productlist = ['all', 'Mobiles', 'Laptops', 'Cameras']
+  const electronicsbrand = ["Vivo", "Oppo", "Realme", 'Samsung', "Oneplus", 'Motorola', 'Xiaomi', "Dell", "HP", "Apple", 'Acer', 'Lenovo', 'Asus', "Canon", "Nikon", "Sony"]
   const [categoryData, setCategoryData] = useState([]);
   const [categoryDataCopy, setcategoryDataCopy] = useState([]);
   const [categoryDataOriginal, setcategoryDataOriginal] = useState([]);
@@ -17,7 +19,7 @@ const Beauty = () => {
   useEffect(() => {
     ; (async () => {
       try {
-        let category = "Beauty and Skin"
+        let category = "Electronics"
         const response = await axios.get(`http://localhost:8000/products/category/${category}`)
         console.log(response)
         setCategoryData(response.data.electronicsProduct)
@@ -38,21 +40,21 @@ const Beauty = () => {
       .forEach((el) => el.checked = false);
   }
 
-  const skincareClick = () => {
-    setCategoryData(categoryDataOriginal.filter((data) => data.subCategory == "Skincare"))
-    setcategoryDataCopy(categoryDataOriginal.filter((data) => data.subCategory == "Skincare"))
+  const mobilesClick = () => {
+    setCategoryData(categoryDataOriginal.filter((data) => data.subCategory == "Mobiles"))
+    setcategoryDataCopy(categoryDataOriginal.filter((data) => data.subCategory == "Mobiles"))
     document.querySelectorAll('.checkbox')
       .forEach((el) => el.checked = false);
   }
-  const haircareClick = () => {
-    setCategoryData(categoryDataOriginal.filter((data) => data.subCategory == "Haircare"))
-    setcategoryDataCopy(categoryDataOriginal.filter((data) => data.subCategory == "Haircare"))
+  const laptopsClick = () => {
+    setCategoryData(categoryDataOriginal.filter((data) => data.subCategory == "Laptops"))
+    setcategoryDataCopy(categoryDataOriginal.filter((data) => data.subCategory == "Laptops"))
     document.querySelectorAll('.checkbox')
       .forEach((el) => el.checked = false);
   }
-  const makeupClick = () => {
-    setCategoryData(categoryDataOriginal.filter((data) => data.subCategory == "Makeup"))
-    setcategoryDataCopy(categoryDataOriginal.filter((data) => data.subCategory == "Makeup"))
+  const camerasClick = () => {
+    setCategoryData(categoryDataOriginal.filter((data) => data.subCategory == "Cameras"))
+    setcategoryDataCopy(categoryDataOriginal.filter((data) => data.subCategory == "Cameras"))
     document.querySelectorAll('.checkbox')
       .forEach((el) => el.checked = false);
   }
@@ -85,10 +87,23 @@ const Beauty = () => {
   }
 
 
+  // const addToWishlistClick = async () => {
+  //   try {
+  //     const wishlistResponse = await axios.post(`http://localhost:8000/products/category/${category}`)
+  //     if(wishlistResponse.status==200 || wishlistResponse.data.success==true) {
+  //       alert('Added to wishlist')
+  //       return
+  //     }
+  //   } catch (error) {
+  //     alert('Failed to add to wishlist due to Internal server error')
+  //   }
+  // }
+
+
   return (
     <>
       <div className="container">
-        <Productlist click={[allclick, skincareClick, haircareClick, makeupClick]} productlistname={productlist} />
+        <Productlist click={[allclick, mobilesClick, laptopsClick, camerasClick]} productlistname={productlist} />
         <div className="product_section">
           <div className="row">
             {categoryData.length === 0 ? (
@@ -113,7 +128,7 @@ const Beauty = () => {
                     <div className="priceandkart">
                       <div className="fashion_price"> ₹{currdata.price}</div>
                     </div>
-                    <button className='fashionwishlistBtn' >Add To Wishlist</button>
+                    <button className='fashionwishlistBtn'  >Add To Wishlist</button>
                     <details>{currdata.description} </details>
                   </div>
                 </div>
@@ -121,10 +136,12 @@ const Beauty = () => {
             }))}
           </div>
         </div>
-        <Filter change={handleonchange} brand={beautySkinbrand} rangevalue={range} />
+        <Filter change={handleonchange} brand={electronicsbrand} rangevalue={range} />
       </div>
     </>
   )
 }
 
-export default Beauty;
+
+
+export default Electronics;

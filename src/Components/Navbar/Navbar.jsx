@@ -54,7 +54,7 @@ const Navbar = () => {
           <nav>
             <ul className="ullist">
               <li><NavLink className="navitem" to="/"  >Home</NavLink></li>
-              <li><NavLink className="navitem" to="/category/" > Categories</NavLink></li>
+              <li><NavLink className="navitem" to="/category/fashion" > Categories</NavLink></li>
               <li><NavLink className="navitem logo" to="/kart" > <MdShoppingCartCheckout/></NavLink></li>
               <li><NavLink className="navitem logo" to="/wishlist" > <IoIosHeartEmpty/></NavLink></li>
               {/* <li><NavLink to="/kart"> Kart</NavLink></li> */}
