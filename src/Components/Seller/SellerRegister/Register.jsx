@@ -19,6 +19,7 @@ const Register = () => {
         state: '',
         pincode: ''
     })
+    const [isDisable, setisDisable] = useState(false)
 
     //    defining actions for register form input field change
     const registerValChange = (event) => {
@@ -40,6 +41,7 @@ const Register = () => {
 
         try {
             // Making a post request to the server to register a new seller and save its data in database
+            setisDisable(true)
             const response = await axios.post('http://localhost:8000/auth/seller/register', {sellerForm})
             if (response.data.success == true) {
                 setresponseMsg(response.data.message)
@@ -47,11 +49,14 @@ const Register = () => {
             }
             if (response.data.success == false) {
                 setresponseMsg(response.data.message)
+                setisDisable(false)
             }
 
         } catch (error) {
             // setresponseMsg(error.response.data.message);
             console.log(error)
+            alert('Failed to Register, Internal server error')
+            setisDisable(false)
         }
         setTimeout(() => {
             setresponseMsg('')
@@ -82,7 +87,7 @@ const Register = () => {
                         <input type='text' name="city" className="sellerCredentials" placeholder="Enter City or District" onChange={registerValChange} value={sellerForm.city} />
                         <input type='text' name="state" className="sellerCredentials" placeholder="Enter State" onChange={registerValChange} value={sellerForm.state} />
                         <input type='number' name="pincode" className="sellerCredentials" placeholder="Enter Area Pincode" onChange={registerValChange} value={sellerForm.pincode} />
-                        <button className="btn" onClick={registerClick} > Submit </button>
+                        <button className="btn" onClick={registerClick} disabled={isDisable} style={isDisable ? {opacity:0.3} : {opacity:1}} > Submit </button>
                     </form>
                 )}
 

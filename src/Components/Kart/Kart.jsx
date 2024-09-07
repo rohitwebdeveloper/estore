@@ -6,47 +6,34 @@ import { useNavigate } from "react-router-dom";
 import { MdOutlineDeleteForever } from "react-icons/md";
 import { useDispatch } from "react-redux";
 import { setorderdetails, removeorderdetails } from "../../Reducers/orderSlice";
+import ApiRequestHandler from "../../api/ApiRequestHandler";
+import Loader from "../Loader/Loader";
 
 const Kart = () => {
-    const [loading, setloading] = useState(true)
-    const [error, seterror] = useState(false)
-    const [noData, setnoData] = useState(false)
+
+    const userid = sessionStorage.getItem('usertoken')
+    const [loading, error, noData, data] = ApiRequestHandler(`http://localhost:8000/user/kart/${userid}`)
     const navigate = useNavigate();
     const [quantity, setquantity] = useState([]);
-    const userid = sessionStorage.getItem('usertoken')
     const [kartData, setkartData] = useState([])
     const [subTotal, setsubTotal] = useState([])
     const [baseprice, setbaseprice] = useState([])
     const [total, settotal] = useState(0)
     const dispatch = useDispatch()
-
-
+    
+    
     useEffect(() => {
-        ; (async () => {
-            try {
-                setloading(true)
-                seterror(false)
-                // Fetches the kart details for a specific user.
-                const response = await axios.get(`http://localhost:8000/user/kart/${userid}`)
-                setkartData(response.data)
-                setloading(false)
-                if (response.status === 200 && !response.data.length) {
-                    setnoData(true)
-                }
+        setkartData(data)
+        for (let index = 0; index < data.length; index++) {
+            quantity.push(1);
+            subTotal.push(data[index].productdetail.price)
+            baseprice.push(data[index].productdetail.price)
+        }
+        subTotal.forEach(data => settotal(previoustotal => data + previoustotal));
+        dispatch(removeorderdetails(0))
+    }, [data])
 
-                for (let index = 0; index < response.data.length; index++) {
-                    await quantity.push(1);
-                    await subTotal.push(response.data[index].productdetail.price)
-                    await baseprice.push(response.data[index].productdetail.price)
-                }
-                await subTotal.forEach(data => settotal(previoustotal => data + previoustotal));
-                await dispatch(removeorderdetails(0))
-            } catch (error) {
-                seterror(true)
-                setloading(false)
-            }
-        })()
-    }, [])
+
 
 
     // Handles the increment of a product quantity in the kart. 
@@ -94,14 +81,17 @@ const Kart = () => {
         try {
             const response = await axios.delete(`http://localhost:8000/user/kart/remove-product/${productid}`)
             if (response.status === 200) {
-                setkartData(kartData.filter((data) => data._id != productid))
-                settotal(previoustotal => previoustotal - subtotalPrice)
-                subTotal.splice(index, 1)
-                quantity.splice(index, 1)
+
+                setsubTotal(prevSubTotal => prevSubTotal.filter((item, i) => i !== index));
+                setquantity(prevQuantity => prevQuantity.filter((item, i) => i !== index));
+                setkartData(prevKartData => prevKartData.filter((item) => item._id !== productid));
+    
+                // Adjust the total after removing the item
+                settotal(prevTotal => prevTotal - subtotalPrice);
+                return
             }
         } catch (error) {
-            seterror(true)
-            setloading(false)
+           alert('Failed to remove product from kart')
         }
     }
 
@@ -117,20 +107,16 @@ const Kart = () => {
             navigate('/billing')
 
         } catch (error) {
-            seterror(true)
-            setloading(false)
+            alert('Sorry something went wrong, Internal server error')
         }
     }
 
 
-
     return (
-
-
         <div className="kartContainer">
-            {loading && (<h2 style={{ textAlign: 'center', marginTop:'15%' }} >Loading...</h2>)}
-            {error && (<h2 style={{ textAlign: 'center', marginTop:'15%' }} >Sorry, Something went wrong!</h2>)}
-            {noData && (<h2 style={{ textAlign: 'center', marginTop:'15%' }} >No Items Added in Kart !</h2>)}
+            {loading && (<h2 style={{ textAlign: 'center', marginTop: '15%' }} ><Loader /></h2>)}
+            {error && (<h2 style={{ textAlign: 'center', marginTop: '15%' }} >Sorry, Something went wrong!</h2>)}
+            {noData && (<h2 style={{ textAlign: 'center', marginTop: '15%' }} >No Items Added in Kart !</h2>)}
             {!loading && !error && !noData && (
                 <>
                     <div className="kartBox">

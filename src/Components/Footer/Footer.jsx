@@ -5,6 +5,7 @@ import { FaLinkedin } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { FaThreads } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
 
@@ -16,27 +17,27 @@ const Footer = () => {
                         <div className="followus_heading">Support</div>
                         <div>
                             <div className="support">212 Bandra, Navi Mumbai, Pin-442348, Maharastra, India</div>
-                            <div className="support">Mail To: rohitkushwaha.developer@gmail.com</div>
+                            <div className="support"> Mail To: <a href="mailto:rohitkushwaha.developer@gmail.com" style={{color:'white', textDecoration:'underline'}}> rohitkushwaha.developer@gmail.com</a></div>
                             <div className="support">Customer Care: 09994554595, 09994554599</div>
                         </div>
                     </div>
                     <div className="boxtwo box">
                         <div className="followus_heading">Quick Link</div>
                         <ul>
-                            <li className="quickLink">Home</li>
-                            <li className="quickLink">About</li>
-                            <li className="quickLink">Privacy Policy</li>
-                            <li className="quickLink">Terms&Conditions</li>
-                            <li className="quickLink">FAQs</li>
+                            <li className="quickLink"><Link to='/' style={{ color: 'white', textDecoration: 'underline' }} >Home</Link></li>
+                            <li className="quickLink"><Link to='/' style={{ color: 'white', textDecoration: 'underline' }} >About</Link></li>
+                            <li className="quickLink"><Link to='/' style={{ color: 'white', textDecoration: 'underline' }} >Privacy Policy</Link></li>
+                            <li className="quickLink"><Link to='/' style={{ color: 'white', textDecoration: 'underline' }} >Terms&Conditions</Link></li>
+                            <li className="quickLink"><Link to='/' style={{ color: 'white', textDecoration: 'underline' }} >FAQs</Link></li>
                         </ul>
                     </div>
                     <div className="boxthree box">
                         <div className="followus_heading">Account</div>
                         <ul>
-                            <li className="quickLink">My Profile</li>
-                            <li className="quickLink">Signin/Signup</li>
-                            <li className="quickLink">Kart</li>
-                            <li className="quickLink">Wishlist</li>
+                            <li className="quickLink"><Link to='/profile/myprofile' style={{ color: 'white', textDecoration: 'underline' }} >My Profile</Link></li>
+                            <li className="quickLink"><Link to='/signin' style={{ color: 'white', textDecoration: 'underline' }} >Signin/Signup</Link></li>
+                            <li className="quickLink"><Link to='/kart' style={{ color: 'white', textDecoration: 'underline' }} >Kart</Link></li>
+                            <li className="quickLink"><Link to='/wishlist' style={{ color: 'white', textDecoration: 'underline' }} >Wishlist</Link></li>
 
                         </ul>
                     </div>

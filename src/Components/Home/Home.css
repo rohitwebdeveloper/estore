@@ -3,7 +3,7 @@
     max-width: 1450px;
     width: 100%;
     height: 100%;
-    background:#f7f7f7;
+    background:#ff0060;
     display: flex;
     justify-content: center;
     margin:auto;
@@ -76,3 +76,10 @@
 /* li{
   width: 100px;
 } */
+
+.carouselProductgrid{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

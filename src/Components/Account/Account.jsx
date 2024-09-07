@@ -8,6 +8,7 @@ import { Route, Routes, NavLink } from "react-router-dom";
 import axios from "axios";
 import Myorder from "./Myorder";
 import Myprofile from "./Myprofile";
+import Loader from "../Loader/Loader";
 
 
 const Account = () => {
@@ -81,7 +82,7 @@ const Account = () => {
             </div>
           </div>
           <div className="contentBox">
-            {loading && (<div className="h1box"><h2>Loading...</h2></div>)}
+            {loading && (<Loader/>)}
             {error && (<div className="h1box"><h2>Sorry, Something went wrong!</h2></div>)}
             <Routes>
               {!loading && !error && (

@@ -1,14 +1,13 @@
 import React from "react";
 import "./Home.css"
 import SimpleImageSlider from "react-simple-image-slider";
-// import Bestsellerdata from "../Imageurl/Bestseller";
 import Multiimageslider from "./Multiimageslider";
 import { useNavigate } from "react-router-dom";
+import { BestOfElectronicsAndAppliances, BestOfFashionAndBeauty, LaptopsAndMobiles } from "./MultiimagesliderData";
 
 
 const Home = () => {
 
-   
     const navigate = useNavigate();
 
     let image = [
@@ -23,6 +22,8 @@ const Home = () => {
         }
     ]
 
+
+
     const clickviewall = () => {
         navigate('/category')
     }
@@ -31,11 +32,11 @@ const Home = () => {
         <>
             <div className="offer_section">
                 <SimpleImageSlider
-                    width={700}
+                    width={'50%'}
                     height={400}
                     images={image}
                     autoPlay={true}
-                    bgColor={'#f7f7f7'}
+                    bgColor={'#ff0060'}
                 />
             </div>
             <div className="homeContainer">
@@ -45,7 +46,7 @@ const Home = () => {
                         <button className="viewallBtn" onClick={clickviewall} >View All</button>
                     </div>
                     <div className="sliderbox">
-                        <Multiimageslider />
+                        <Multiimageslider imageData={BestOfFashionAndBeauty} />
                     </div>
                 </div>
                 <div className="homeSection">
@@ -54,7 +55,7 @@ const Home = () => {
                         <button className="viewallBtn" onClick={clickviewall} >View All</button>
                     </div>
                     <div className="sliderbox">
-                        <Multiimageslider />
+                        <Multiimageslider imageData={BestOfElectronicsAndAppliances} />
                     </div>
                 </div>
                 <div className="homeSection">
@@ -63,7 +64,7 @@ const Home = () => {
                         <button className="viewallBtn" onClick={clickviewall} >View All</button>
                     </div>
                     <div className="sliderbox">
-                        <Multiimageslider />
+                        <Multiimageslider imageData={LaptopsAndMobiles} />
                     </div>
                 </div>
             </div>

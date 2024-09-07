@@ -95,6 +95,10 @@
     font-weight: 1.1rem;
 }
 
+.rateItem:hover{
+    text-decoration: underline;
+}
+
 .paymentAndDeliveryInfoBox{
     display: flex;
     justify-content: space-around;
@@ -107,4 +111,31 @@
 .totalAmount{
     text-align: right;
     font-weight: bold;
+}
+
+.ratingInput{
+    width: 70px;
+    padding: 5px 10px;
+    margin: 7px auto;
+    outline: none;
+    border: none;
+    box-shadow: 0px 0px 5px rgb(0, 0, 0);
+    border-radius: 5px;
+    text-align: center;
+    display: block;
+}
+.ratingSubmit{
+    width: 70px;
+    margin: 10px auto;
+    border: none;
+    background-color: #ff0060;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-align: center;
+    display: block;
+}
+
+.ratingSubmit:hover{
+    box-shadow: 0px 0px 8px #ff0060;
 }

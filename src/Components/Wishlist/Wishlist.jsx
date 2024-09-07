@@ -2,73 +2,76 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import './Wishlist.css'
 import { MdOutlineDeleteForever } from "react-icons/md";
-// import Bestsellerdata from "../Imageurl/Bestseller";
+import ApiRequestHandler from "../../api/ApiRequestHandler";
+import Loader from "../Loader/Loader";
 
 
 
 const Wishlist = () => {
 
-    const [loading, setloading] = useState(true)
-    const [error, seterror] = useState(false)
-    const [noData, setnoData] = useState(false)
     const userid = sessionStorage.getItem('usertoken')
+    const [loading, error, noData, data] = ApiRequestHandler(`http://localhost:8000/user/wishlist/${userid}`)
     const [wishlistData, setwishlistData] = useState([])
+    const [kartResponse, setkartResponse] = useState('')
+    
 
     useEffect(() => {
-        ; (async () => {
-            try {
-                setloading(true)
-                seterror(false)
-                const response = await axios.get(`http://localhost:8000/user/wishlist/${userid}`)
-                setwishlistData(response.data)
-                setloading(false)
-                if (!response.data.length) {
-                    setnoData(true)
-                    return
-                }
-            } catch (error) {
-                seterror(true)
-                setloading(false)
-            }
-        })()
-    }, [])
-
+     setwishlistData(data)
+    }, [data])
+    
 
 
     const wishKartBtnClick = async (productid) => {
         try {
             const response = await axios.post(`http://localhost:8000/user/kart/addproduct/${userid}`, { productid })
-            console.log(response)
+            if(response.status === 200 && response.data.success === true) {
+                setkartResponse('Added To Kart !')
+                setTimeout(() => {
+                  setkartResponse('')
+                }, 3000);
+                return
+             }
         } catch (error) {
             seterror(true)
         }
     }
 
-    const wishRemoveBtnClick = (id) => {
-        // let wishitem = document.querySelector('.wishlistRemove').value;
-        let newwish = wishlistData.filter((data, index) => index != id);
-        setwishlistData(newwish)
+    
+    const wishRemoveBtnClick = async (productid) => {
+        try {
+            const response = await axios.delete(`http://localhost:8000/wishlist/${productid}`)
+            console.log(response)
+            if(response.status === 200 && response.data.success === true) {
+                setwishlistData(data.filter((data) => data._id != productid))  
+             }
+        } catch (error) {
+            alert("Failed to remove item from wishlist, Due to internal server error")
+        }
     }
+
 
     return (
         <>
-            {loading && (<h2 style={{textAlign:'center', margin:'20% auto'}}>Loading...</h2>)}
-            {error && (<h2 style={{textAlign:'center', margin:'20% auto'}}>Sorry, Something went wrong !</h2>)}
-            {noData && (<h2 style={{textAlign:'center', margin:'20% auto'}}>No Item in Wishlist !</h2>)}
-            {!loading && !error && !noData && (
+            {loading && (<h2 style={{ textAlign: 'center', margin: '20% auto' }}><Loader /></h2>)}
+            {error && (<h2 style={{ textAlign: 'center', margin: '20% auto' }}>Sorry, Something went wrong !</h2>)}
+            {/* {noData && (<h2 style={{textAlign:'center', margin:'20% auto'}}>No Item in Wishlist !</h2>)} */}
+            {noData && (<h2 style={{ textAlign: 'center', margin: '20% auto' }}>No Item in Wishlist !</h2>)}
+            {/* {!loading && !error && !noData && ( */}
+            {!loading && !error && !noData != 0 && (
                 <div className="wishlistContainer">
+                     <p style={{ width: '200px', margin: 'auto', display: 'block' }}>{kartResponse}</p>
                     {wishlistData.map((data, id) => {
                         return (
                             <div className="wishlistBox" key={data._id}>
                                 <div className="wishlistimgBox" >
-                                    <img src={data.url} alt="" />
+                                    <img src={data.productdetail.url} alt="" />
                                 </div>
                                 <div className="imgdetailBox">
-                                    <div className="wishlistName">{data.title}</div>
-                                    <div className="wishlistPrice">{data.price}</div>
+                                    <div className="wishlistName">{data.productdetail.title}</div>
+                                    <div className="wishlistPrice">{data.productdetail.price}</div>
                                     <div className="wishlistRating">4.3</div>
-                                    <button className="wishlistKartBtn" onClick={() => wishKartBtnClick(data._id)}>Add To Kart</button>
-                                    <button className="wishlistRemove" onClick={() => wishRemoveBtnClick(id)} >Remove <span className="dustbin"><MdOutlineDeleteForever /></span> </button>
+                                    <button className="wishlistKartBtn" onClick={() => wishKartBtnClick(data.productdetail._id)}>Add To Kart</button>
+                                    <button className="wishlistRemove" onClick={() => wishRemoveBtnClick(data._id)} >Remove <span className="dustbin"><MdOutlineDeleteForever /></span> </button>
                                 </div>
                             </div>
                         )

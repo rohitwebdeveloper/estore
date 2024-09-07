@@ -3,6 +3,7 @@ import './SellerProfile.css'
 import axios from 'axios'
 import { useSelector, useDispatch } from 'react-redux'
 import { setsellerProfileDetail } from '../../../Reducers/sellerprofileSlice'
+import Loader from '../../Loader/Loader'
 
 const SellerProfile = () => {
     // Defining states
@@ -120,7 +121,7 @@ const SellerProfile = () => {
 
     return (
         <>
-            {loading && (<div className="h1box"><h1>Loading...</h1></div>)}
+            {loading && (<Loader />)}
             {err && (<div className="h1box"><h1>!Sorry, Something went wrong</h1></div>)}
             {!loading && !err && (
                 <section className='sellerProfileBox'>

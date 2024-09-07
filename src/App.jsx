@@ -23,6 +23,7 @@ import Register from './Components/Seller/SellerRegister/Register'
 import Dashboard from './Components/Seller/Dashboard/Dashboard'
 import Orderplaced from './Components/Kart/Orderplaced'
 import Myorder from './Components/Account/Myorder'
+import Loader from './Components/Loader/Loader'
 import { useDispatch } from "react-redux";
 import { setauthenticate } from "./Reducers/authSlice";
 import axios from "axios";
@@ -65,6 +66,7 @@ function App() {
       <Navbar />
           <Routes>
             <Route path='/' element={<Home />}></Route>
+            <Route path='/loader' element={<Loader />}></Route>
             <Route path='/signup' element={<Signup />}></Route>
             <Route path='/signin' element={<Signin />}></Route>
             <Route path='/profile/*' element={<Private page={Account} />}></Route>

@@ -1,4 +1,4 @@
-.appliance_row{
+.row{
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -7,95 +7,6 @@
   flex-wrap: wrap;
   max-width: 1100px;
   width: 100%;
-  height: auto;
+  height: fit-content;
   
 }
-
-.appliance_product_card{
-  max-width: 1100px;
-  width: 100%;
-  background-color:#e6e6e6;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  border-bottom: 2px solid rgb(172, 172, 172);
-  font-family: system-ui, sans-serif;
-  padding: 20px;
-
-}
-
-.appliance_product_img{
-  height: 100%;
-  max-width: 370px;
-  width: 100%;
-  padding: 10px 15px;
-  background-color:#dfdfdf;
-  margin: 10px auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
- 
-}
-  
-.appliance_product_img>img{
-  height: 200px;
-} 
-
-.appliance_product_detail{
-  width: 500px;
-  /* border: 2px solid black; */
- 
-}
-
-.appliance_product_name{
-  font-weight: bold;
-  font-size: 1.3vmax;
-  margin: 0px 0px 10px 0px;
-  font-family: system-ui, sans-serif;
-}
-
-.appliance_rating{
-  width: 30px;
-  background-color: #0e930e;
-  color: white;
-  margin: 10px 0px;
-  text-align: center;
-  font-weight: bold;
-  
-}
-
-.appliance_description li{
-  font-family: system-ui, sans-serif;
-  font-size: 0.9rem;
-  margin: 5px 0px;
-  font-weight: bold;
-  list-style: disc;
-}
-
-.appliance_priceandkart{
-  width: 10px;
-  height: 100%;
-  
-}
-.appliance_price{
-  font-size: 1.3rem;
-  margin: 20px 0px 10px 0px;
-  text-align: left;
-  text-decoration: underline;
-}
-
-.appliance_kartBtn{
-  background-color:#ff0060;
-  color: rgb(255, 255, 255);
-  margin: 20px 0px 0px 0px;
-  font-size: 1rem;
-  border: 2px solid #ff0060;
-  padding: 7px 20px;
-  border-radius: 5px;
-}
-
-.appliance_kartBtn:hover{
-  box-shadow: 0px 0px 10px#ff0060;
-} 

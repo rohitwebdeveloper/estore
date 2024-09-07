@@ -5,7 +5,7 @@ const Filter = (props) => {
 
 
   // const branddata = props.brand;
-  const [checkboxData, setcheckboxData] = useState([])
+  const [checkboxData, setcheckboxData] = useState(props.brand || [])
   // const pricedata = props.price;
 
   useEffect(() => {
@@ -26,7 +26,7 @@ const Filter = (props) => {
           })}
 
           <h4>Price</h4>
-          <div className="filter_items"><input type="range" min="0" max="80000" onChange={props.change} className="pricerangeSlider" value={props.rangevalue} /></div>
+          <div className="filter_items"><input type="range" min="0" max="80000" onChange={props.change} className="pricerangeSlider" value={props.rangevalue || ""} /></div>
           <div className="priceBox">Upto: ₹{props.rangevalue}</div>
 
           <h4>Rating</h4>

@@ -4,7 +4,7 @@ import "./Navbar.css";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 // import { useNavigate } from "react-router-dom";
-import Categorydata from "../Imageurl/Categorydata";
+// import Categorydata from "../Imageurl/Categorydata";
 import { MdAccountCircle } from "react-icons/md";
 import { MdShoppingCartCheckout } from "react-icons/md";
 import { GoSearch } from "react-icons/go";

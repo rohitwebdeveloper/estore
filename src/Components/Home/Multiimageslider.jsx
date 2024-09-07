@@ -1,14 +1,14 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-// import Bestsellerdata from "../Imageurl/Bestseller";
 import './Home.css';
+import { useNavigate } from "react-router-dom";
 
 
 
+const Multiimageslider = (props) => {
 
-const Multiimageslider = () => {
- const [imagedata, setimagedata] = useState([])
+  const navigate = useNavigate()
 
   const responsive = {
     desktop: {
@@ -25,45 +25,28 @@ const Multiimageslider = () => {
     }
   };
 
-  
-  useEffect(()=>{
-    ;(async()=>{
-      try {
-
-        const response = await fetch('https://fakestoreapi.com/products ');
-        const resjson = await response.json();
-        setimagedata(resjson);
-        console.log(resjson);
-
-      } catch (error) {
-        // console.log(error);
-      }
-  
-    })()
-  }, [])
 
 
   return (
-        <>
-            <Carousel responsive={responsive} itemClass="imgBox">
-{imagedata.length===0 ? (
-  
-    <h1>DATA NOT FOUND</h1>
-) : (imagedata.map((data)=>{
-    return(
-      <>
-      <div>
-      <img src={data.image} alt="" />
-      <div className="carouselImgname">{data.category}</div>
-      <div className="carouselImgoffer">Upto 30% off</div>
-      </div>
-      </>
-    )
-  })
-)}
-</Carousel>;
-        </>
-    )
+    <>
+      <Carousel responsive={responsive} itemClass="imgBox">
+        {props.imageData ? (
+          props.imageData.map((data, index) => {
+            return (
+              <div onClick={() => navigate(data.link)} key={index} className='carouselProductgrid'>
+                <img src={data.url} alt="" />
+                {/* <div className="carouselImgname">{data.url}</div> */}
+                <div className="carouselImgoffer">{data.caption}</div>
+              </div>
+            )
+          })
+
+        ) : (
+          <h1>DATA NOT FOUND</h1>
+        )}
+      </Carousel>;
+    </>
+  )
 }
 
 export default Multiimageslider;

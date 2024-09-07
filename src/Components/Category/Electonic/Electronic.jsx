@@ -135,7 +135,7 @@ const Electronic = () => {
                         <li>2 Year warranty from the manufacturer</li>
                       </ul>
                       <div className="electronic_price"> ₹{currdata.pricing}</div>
-                      <button className='electronic_kartBtn' >Add To Kart</button>
+                      <button className='electronic_kartBtn' >Add To Wishlist</button>
                     </div>
                     {/* <div className="electronic_priceandkart">
                     </div> */}

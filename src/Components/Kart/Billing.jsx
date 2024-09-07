@@ -73,6 +73,7 @@ const Billing = () => {
 
 
     useEffect(() => {
+        console.log(order)
         if (storedUserDetails) {
             setuserDetail({
                 name: storedUserDetails.name,

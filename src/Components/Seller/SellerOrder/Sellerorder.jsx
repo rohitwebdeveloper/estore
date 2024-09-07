@@ -4,16 +4,15 @@ import axios from "axios";
 // import html2pdf from "html2pdf.js";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
+import ApiRequestHandler from "../../../api/ApiRequestHandler";
+import Loader from "../../Loader/Loader";
 
 
 
 const Sellerorder = () => {
 
   const sellerid = sessionStorage.getItem('usertoken')
-  const [error, seterror] = useState(false)
-  const [loading, setloading] = useState(false)
-  const [noData, setnoData] = useState(false)
-  const [sellerOrder, setsellerOrder] = useState([])
+  const [loading, error, noData, data] = ApiRequestHandler(`http://localhost:8000/seller/dashboard/order/${sellerid}`)
   const [demoimg, setdemoimg] = useState()
   const [orderStatusValue, setorderStatusValue] = useState('Pending')
   const [statusVisibility, setstatusVisibility] = useState('hidden')
@@ -26,25 +25,6 @@ const Sellerorder = () => {
   //   jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' },
   // };
 
-
-  useEffect(() => {
-      //  handles the request to get all orders of seller
-    ; (async () => {
-      try {
-        setloading(true)
-        seterror(false)
-        const response = await axios.get(`http://localhost:8000/seller/dashboard/order/${sellerid}`)
-        setsellerOrder(response.data)
-        setloading(false)
-        if (!response.data.length) {
-          setnoData(true)
-        }
-      } catch (error) {
-        seterror(true)
-        setloading(false)
-      }
-    })()
-  }, [])
 
 
   const invoiceDownloadClick = async () => {
@@ -78,28 +58,28 @@ const Sellerorder = () => {
     }
   }
 
-// // Making a request to update the product order status
-const updateOrderStausClick = async (idOrder) => {
-  try {
-     const response = await axios.patch(`http://localhost:8000/seller/dashboard/order/status-update`, {orderStatusValue, idOrder})
-     if(response.status==200 && response.data.success) {
-      setstatusVisibility('hidden')
-     }
-  } catch (error) {
+  // // Making a request to update the product order status
+  const updateOrderStausClick = async (idOrder) => {
+    try {
+      const response = await axios.patch(`http://localhost:8000/seller/dashboard/order/status-update`, { orderStatusValue, idOrder })
+      if (response.status == 200 && response.data.success) {
+        setstatusVisibility('hidden')
+      }
+    } catch (error) {
       seterror(true)
+    }
   }
-}
 
 
 
 
   return (
     <>
-      {loading && (<h2>Loading...</h2>)}
+      {loading && (<Loader />)}
       {error && (<h2>Sorry, Something went wrong</h2>)}
       {noData && (<h2>No Orders !</h2>)}
       {!loading && !error && !noData && (
-        sellerOrder.map((data) => {
+        data.map((data) => {
           return (
             <main className="sellerOrderContainer" key={data._id} ref={invoiceRef} >
               <section className="sellerCustomerDetails sellerOrderSection">
@@ -151,7 +131,7 @@ const updateOrderStausClick = async (idOrder) => {
                     <option value="Cancelled">Cancelled</option>
                     <option value="Refunded">Refunded</option>
                   </select>
-                   <button className="sellerOrderBtn" onClick={() => updateOrderStausClick(data._id)} > Update</button>
+                  <button className="sellerOrderBtn" onClick={() => updateOrderStausClick(data._id)} > Update</button>
                 </div>
               </section>
             </main>
