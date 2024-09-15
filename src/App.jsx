@@ -24,6 +24,7 @@ import Dashboard from './Components/Seller/Dashboard/Dashboard'
 import Orderplaced from './Components/Kart/Orderplaced'
 import Myorder from './Components/Account/Myorder'
 import Loader from './Components/Loader/Loader'
+import ProductDetails from './Components/ProductDetail/ProductDetails'
 import { useDispatch } from "react-redux";
 import { setauthenticate } from "./Reducers/authSlice";
 import axios from "axios";
@@ -82,6 +83,7 @@ function App() {
             <Route path='/seller/register' element={<Register/>}></Route>
             <Route path='/seller/dashboard/*' element={<Dashboard/>}></Route>
             <Route path='/*' element={<Pagenotfound />}></Route>
+            <Route path="/products/:productid" element={<ProductDetails/>} />
           </Routes>
       <Footer />
     </>
