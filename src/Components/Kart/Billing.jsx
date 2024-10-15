@@ -30,7 +30,7 @@ const Billing = () => {
 
     // Configuration options for initializing the Razorpay payment gateway
     const options = {
-        key: "rzp_test_DtCuAcztnIMxzF",
+        key: import.meta.env.RZP_KEY,
         amount: order?.[3] || "",
         currency: "INR",
         name: "E-Store",

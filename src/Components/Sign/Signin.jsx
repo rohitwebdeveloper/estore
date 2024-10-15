@@ -127,7 +127,7 @@ const Sign = () => {
                     <p className="forgetPassword" onClick={()=> navigate('/account/password/forget')} >Forget Password ?</p>
                     <button className="signBtn" onClick={submitClick} >Submit</button>
                     <div className="googleBtnWrapper">
-                        <GoogleLogin  text="signin_with"
+                        <GoogleLogin  text="signin_with" width={'100'}
                             onSuccess={credentialResponse => {
                                 let decodedInfo = jwtDecode(credentialResponse.credential)
                                 googleSignin(decodedInfo.email);
