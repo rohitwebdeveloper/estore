@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import './Myprofile.css'
+import apiurl from "../../api/apiConfig";
 import axios from "axios";
 
 const Myprofile = (props) => {
@@ -68,7 +69,7 @@ const Myprofile = (props) => {
     const saveClick = async () => {
         try {
             // Making a patch request to the server to update user details in the database
-            const response = await axios.patch('http://localhost:8000/user/profile/update', userDetail);
+            const response = await axios.patch(`${apiurl}/api/user/profile`, userDetail);
 
             if (response.data.success == true) {
                 sessionStorage.setItem('estoreUserprofile', JSON.stringify(response.data.updateResult))

@@ -1,23 +1,33 @@
 import React, {useState, useEffect} from 'react'
 import { FaStar } from "react-icons/fa";
+import { FaFilter } from "react-icons/fa";
 
 const Filter = (props) => {
 
 
   // const branddata = props.brand;
   const [checkboxData, setcheckboxData] = useState(props.brand || [])
+  const [isActive, setisActive] = useState(false)
+  
   // const pricedata = props.price;
 
   useEffect(() => {
    setcheckboxData(props.brand)
   }, [])
-  
+
+
+  const filterSearchClick = () => {
+    if (window.innerWidth <= 800) {
+      setisActive(!isActive);
+      return;
+    }
+  };
 
   return (
     <>
       <div className="filter_box">
-        <h3 className="filter_heading">Filter Search</h3>
-        <div className="filter">
+        <h3 className="filter_heading"onClick={filterSearchClick}>Apply Filter <FaFilter/> </h3>
+        <div className={`filter ${isActive ? 'active' : ''} `} >
           <h4>Brands</h4>
           {checkboxData.map((currdata, index) => {
             return (

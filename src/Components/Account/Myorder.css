@@ -12,7 +12,7 @@
 }
 
 .orderItemSection{
-    max-width: 700px;
+    max-width: 750px;
     width: 100%;
     border: 3px solid rgb(179, 179, 179);
     padding: 20px 15px;
@@ -41,6 +41,7 @@
     border-radius: 8px;
     width: 100%;
     justify-content: space-between;
+    align-items: center;
     margin: 15px 0px;
     padding: 20px;
 
@@ -83,9 +84,11 @@
     height: 100px;
     display: flex;
     flex-direction: column;
-    justify-content:center ;
+    justify-content:flex-start ;
     font-family: system-ui, sans-serif;
     font-size: 0.8rem;
+    padding: 15px 0px 0px 20px;
+    width:120px;
 
 }
 
@@ -93,6 +96,7 @@
     color:#ff0060;
     font-weight: bold;
     font-weight: 1.1rem;
+    text-align: right;
 }
 
 .rateItem:hover{
@@ -123,6 +127,7 @@
     border-radius: 5px;
     text-align: center;
     display: block;
+    font-size: 0.95rem;
 }
 .ratingSubmit{
     width: 70px;
@@ -134,8 +139,72 @@
     border-radius: 5px;
     text-align: center;
     display: block;
+    font-size: 0.9rem;
 }
 
 .ratingSubmit:hover{
     box-shadow: 0px 0px 8px #ff0060;
+}
+
+
+
+
+@media(max-width:800px){
+
+    
+    .orderItemWrapper{
+        margin: 10px 0px;
+        padding: 10px 0px;
+        border-bottom: 3px solid rgb(128, 127, 127);
+    }
+
+    .orderItemImg img{
+        height: 70px;
+    }
+
+    .orderItemSection{
+        padding: 15px 7px;
+    }
+
+    .orderInfoBox{
+        margin: 10px 0px;
+    }
+
+    .ItemRatingAndStatusBox{
+        padding: 7px 12px 0px 20px;
+    }
+    
+
+}
+
+
+
+@media(max-width:500px){
+
+    .orderInfoBox{
+        margin: 0px 0px;
+    }
+
+    .ItemRatingAndStatusBox{
+        padding: 10px 0px 0px 10px;
+        width: 90px;
+    }
+
+    .orderItemWrapper{
+        padding: 5px 0px;
+        margin: 5px 0px;
+    }
+
+    .ratingInput{
+        width: 50px;
+        padding: 3px 8px;
+        margin: 6px 0px 6px 15px;
+    }
+
+    .ratingSubmit{
+        width: 50px;
+        margin: 6px 0px 6px 15px;
+
+    }
+
 }

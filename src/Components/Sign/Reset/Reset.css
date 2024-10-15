@@ -1,11 +1,13 @@
 
 .resetContainer{
     min-height: calc(100vh - 60px);
+    padding: 10px 25px;
 
 }
 
 .resetBox{
-    width: 300px;
+    max-width: 300px;
+    width: 100%;
     border: 1px solid grey;
     border-radius: 5px;
     display: block;
@@ -54,4 +56,18 @@
     font-size: 1rem;
     text-align: center;
     margin: 10px auto;
+}
+
+
+
+@media(max-width:500px){
+
+    .resetinput{
+        margin: 7px auto 25px auto ;
+    }
+
+    .resetBox{
+        max-width: 260px;
+    }
+
 }

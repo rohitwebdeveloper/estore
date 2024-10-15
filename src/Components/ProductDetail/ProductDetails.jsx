@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
+import apiurl from '../../api/apiConfig';
 import Loader from '../Loader/Loader';
 import { useParams } from 'react-router-dom'; // For routing
 import './ProductDetails.css'
@@ -10,7 +11,7 @@ import axios from 'axios';
 
 const ProductDetails = () => {
     const { productid } = useParams(); // Get the product ID from the URL
-    const [loading, error, noData, data] = ApiRequestHandler(`http://localhost:8000/products/${productid}`)
+    const [loading, error, noData, data] = ApiRequestHandler(`${apiurl}/api/products/details/${productid}`)
     const [productdata, setproductdata] = useState([])
     const userid = sessionStorage.getItem('usertoken')
     const navigate = useNavigate()
@@ -29,7 +30,7 @@ const ProductDetails = () => {
             return
         }
         try {
-            const response = await axios.post(`http://localhost:8000/user/kart/addproduct/${userid}`, { productid })
+            const response = await axios.post(`${apiurl}/api/kart/${userid}`, { productid })
             console.log(response)
             if (response.status === 200 && response.data.success === true) {
                 alert('Added To Kart !')
@@ -61,7 +62,7 @@ const ProductDetails = () => {
                             <p className="product-subcategory"><strong>Sub-Category:</strong> {productdata.subCategory}</p>
                         </div>
                         <div className="product-ratings">
-                            <p className='ratingBox'>{productdata.averagerating ? productdata.averagerating : 0}</p>
+                            <p className='ratingBox'>{productdata.averagerating ? productdata.averagerating.toFixed(1) : 0}</p>
                             <p><strong>Total Ratings: </strong> {productdata.ratings ? productdata.ratings.length : 0} </p>
                         </div>
                         <button className="add-to-cart-button" onClick={() => addKartClick(productdata._id)} >Add to Cart</button>

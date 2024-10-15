@@ -2,7 +2,8 @@
 /* There is a combine css for Signin.jsx  and  Signup.jsx */
 
 .sign_container{
-    width: 600px;
+    max-width: 600px;
+    width: 100%;
     min-height: 100vh;
     height: 100%;
     background: transparent;
@@ -38,8 +39,10 @@
 
 .googleBtnWrapper{
     width: 100%;
-    display: block;
+    display: flex;
+    justify-content: center;
     margin: auto;
+    max-width: 318px;
 }
 
 
@@ -54,13 +57,13 @@
     border-bottom: 1px solid rgb(131, 130, 130);
 }
 
-.btn{
+.signBtn{
     width: 100%;
     display: block;
     margin: 35px auto 15px auto;
     text-align: center;
     font-size: 1rem;
-    padding: 15px 10px;
+    padding: 1rem 0.6rem;
     background-color:#ff0060;
     outline: none;
     border-radius: 5px;
@@ -69,12 +72,13 @@
 
 }
 .btnGoogle{
-    width: 80%;
+    
+    /* width: 100%; */
     display: block;
     margin: 20px auto 15px auto;
     text-align: center;
     font-size: 1rem;
-    padding: 15px 10px;
+    padding: 1rem 0.6rem;
     background-color:#ffffff;
     outline: none;
     border-radius: 5px;
@@ -84,7 +88,7 @@
 
 }
 
-.btn:hover{
+.signBtn:hover{
     box-shadow: 0px 0px 5px #ff0060;
 }
 
@@ -137,4 +141,47 @@
 .checkboxShow{
     margin: 0px 7px;
    
+}
+
+
+@media(max-width:800px){
+
+    .signin_box{
+        width: 310px;
+        padding: 10px 30px;
+        margin: 10px auto 0px auto;
+    }
+
+    .signup_box{
+        width: 310px;
+        padding: 10px 30px;
+        margin: 10px auto 0px auto;
+    }
+
+    /* .btnGoogle{
+        max-width: 248px;
+    } */
+
+}
+
+
+
+@media(max-width:500px){
+
+    .signin_box{
+        width: 270px;
+        padding: 10px 17px;
+        margin: 20px auto 0px auto;
+    }
+
+    .signup_box{
+        width: 270px;
+        padding: 10px 17px;
+        margin: 20px auto 0px auto;
+    }
+
+    .sign_h2{
+        margin: 10px 10px;
+    }
+
 }

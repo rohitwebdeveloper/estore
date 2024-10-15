@@ -1,17 +1,18 @@
-
-.wishlistContainer{
+.wishlistContainer {
     max-width: 1400px;
     min-height: 100vh;
+    height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    flex-flow: column-reverse;
+    justify-content: flex-end;
     align-items: center;
     margin: auto;
     font-family: system-ui, sans-serif;
 }
 
-.wishlistBox{
+.wishlistBox {
     max-width: 1200px;
     width: 100%;
     border: none;
@@ -19,28 +20,33 @@
     padding: 0px 0px;
     display: flex;
     margin-top: 50px;
+    align-items: center;
+    padding: 0px 15px;
+    height: auto;
 }
 
-.wishlistimgBox{
-    width: 200px;
+.wishlistimgBox {
+    max-width: 200px;
+    width: 100%;
     height: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.wishlistimgBox img{
-    max-height: 120px;
+.wishlistimgBox img {
+    max-height: 110px;
     height: 100%;
 }
 
-.imgdetailBox{
-    width: 200px;
+.imgdetailBox {
+    max-width: 200px;
+    width: 100%;
     margin: 0px 0px 0px 100px;
     height: 100%;
 }
 
-.wishlistKartBtn{
+.wishlistKartBtn {
     width: 120px;
     margin: 10px 0px 5px 0px;
     font-size: 0.8rem;
@@ -50,7 +56,8 @@
     background-color: #ff0060;
     color: white;
 }
-.wishlistRemove{
+
+.wishlistRemove {
     width: 120px;
     margin: 5px 0px 0px 0px;
     font-size: 0.8rem;
@@ -64,20 +71,48 @@
     color: white;
 }
 
-.wishlistPrice{
-   font-size: 0.9rem; 
-   margin: 5px 0px 0px 0px;
-}
-.wishlistName{
-  font-size: 1rem;
-  margin: 5px 0px 0px 0px;
-  font-weight: bold;
+.wishlistPrice {
+    font-size: 0.9rem;
+    margin: 5px 0px 0px 0px;
+    color: red;
+    font-weight: bold;
 }
 
-.dustbin{
+.wishlistName {
+    font-size: 1rem;
+    margin: 5px 0px 0px 0px;
+    font-weight: bold;
+}
+
+.dustbin {
     font-size: 1.3rem;
 }
 
-span{
+span {
     align-items: center;
+}
+
+
+
+@media(max-width:500px){
+
+    .imgdetailBox{
+        margin: 0px 0px 0px 20px;
+    }
+    
+    .wishlistimgBox>img{
+        max-height: 90px;
+    }
+
+    .wishlistKartBtn{
+        padding: 6px 8px;
+    }
+
+    .wishlistimgBox{
+        height: 110px;
+    }
+
+    .wishlistBox{
+        margin-top: 18px;
+    }
 }

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Sign.css"
+import apiurl from "../../api/apiConfig";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -42,7 +43,7 @@ const Signup = () => {
 
         try {
             // Sending the user data to the backend using post request
-            const response = await axios.post('http://localhost:8000/auth/user/sign-up', formData)
+            const response = await axios.post(`${apiurl}/api/auth/signup`, formData)
 
             // Checking whether the user data is saved in the database
             if (response.data.success == true) {
@@ -90,7 +91,7 @@ const Signup = () => {
                     <input type="email" className="sign_credentials" placeholder="Enter Email" value={formData.email} name='email' onChange={formvalChange} />
                     <input type={showPassword} name="password" className="sign_credentials" placeholder="Enter Password" value={formData.password} onChange={formvalChange} />
                     <input type="checkbox" name="show" className="checkboxShow" onClick={checkboxClick} /><span>Show Password</span>
-                    <button className="btn" onClick={submitClick} > Submit </button>
+                    <button className="signBtn" onClick={submitClick} > Submit </button>
                     <p onClick={signinClick} className="navigateTosignup" >Already have Account, Sign In</p>
                 </div>
 

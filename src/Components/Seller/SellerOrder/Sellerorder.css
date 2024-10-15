@@ -10,21 +10,16 @@
     border-radius: 8px;
     box-shadow: 0px 0px 8px 0px #727071;
     font-family: system-ui, sans-serif;
-    /* overflow: hidden; Remove this line */
     height: auto;
     margin: 20px;
 }
 
-.outerContainer {
-    /* Adjust as needed */
-}
 
 .sellerOrderSection {
     border: 1px solid #ccc;
     padding: 10px;
     border-radius: 5px;
     font-size: 0.9rem;
-    /* height: auto; */
 }
 
 .sellerOrderSection h3 {
@@ -67,4 +62,19 @@
     margin:20px 0px 0px 0px;
     display: flex;
     gap: 20px;
+}
+
+.orderStatus{
+    border:none;
+    outline: none;
+}
+
+
+@media(max-width:500px){
+
+    .sellerOrderBtn{
+        padding: 3px 8px;
+        border-radius: 3px;
+    }
+
 }

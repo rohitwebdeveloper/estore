@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import './Myorder.css';
+import apiurl from '../../api/apiConfig';
 import { IoStar } from 'react-icons/io5';
 import ApiRequestHandler from '../../api/ApiRequestHandler';
 import Loader from '../Loader/Loader';
@@ -7,7 +8,7 @@ import axios from 'axios';
 
 const Myorder = () => {
   const userid = sessionStorage.getItem('usertoken');
-  const [loading, error, noData, data] = ApiRequestHandler(`http://localhost:8000/user/orders/${userid}`);
+  const [loading, error, noData, data] = ApiRequestHandler(`${apiurl}/api/orders/${userid}`);
   const [ratingVal, setRatingVal] = useState([]);
   const [visibilityVal, setVisibilityVal] = useState([]);
 
@@ -47,8 +48,9 @@ const Myorder = () => {
       return;
     }
     try {
-      const response = await axios.post(`http://localhost:8000/products/rating`, { userid, productid, ratedVal, orderId, orderitemId });
+      const response = await axios.post(`${apiurl}/api/products/rating`, { userid, productid, ratedVal, orderId, orderitemId });
       if (response.status === 200 && response.data.success) {
+        // console.log(response)
         alert('Thank You! Your Rating has been saved successfully');
         window.location.reload();
       }
@@ -61,14 +63,14 @@ const Myorder = () => {
 
   const formatDate = (dateString) => {
     const date = new Date(dateString).toLocaleDateString(undefined, {
-        hour12:true,
-        hour:'2-digit',
-        minute:'2-digit',
-        year:'numeric',
-        month:'short',
-        day:'numeric',
+      hour12: true,
+      hour: '2-digit',
+      minute: '2-digit',
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
     })
- return date
+    return date
   }
 
   return (
@@ -84,7 +86,6 @@ const Myorder = () => {
                 <div className="orderId">OrderId: {orderData.orderid}</div>
                 <div className="orderDate">Ordered On: {formatDate(orderData.orderdate)}</div>
                 <div className="orderStatus">OrderStatus: {orderData.status}</div>
-                <div className="deliveryStatus">Expected to be delivered by: </div>
               </div>
               {orderData.orderitems.map((orderitemData, index) => (
                 <div key={orderitemData._id} className="orderItemWrapper">
@@ -103,7 +104,7 @@ const Myorder = () => {
                   <div className="ItemRatingAndStatusBox">
                     <div className="rateItem" onClick={() => !orderitemData.rating && rateProductClick(idx, index)}>
                       <IoStar />
-                      {orderitemData.rating ? ` Your Rating ${orderitemData.rating} / 5 ` : ' Rate Product'}
+                      {orderitemData.rating ? ` Rated ${orderitemData.rating} / 5 ` : ' Rate Product'}
                     </div>
                     {visibilityVal[idx]?.[index] && (
                       <div>

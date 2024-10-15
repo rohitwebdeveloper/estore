@@ -1,20 +1,28 @@
-import React from "react";
+import React, {useState} from "react";
+import { TbCategoryFilled } from "react-icons/tb";
 
 const Productlist = (props) => {
-  // const [clickone, clicktwo, clickthree, clickfour, clickfive, clicksix, clickseven] = props.click;
-  // const [productone, producttwo, productthree, productfour, productfive, productsix ] = props.productlistname;
 
   const clickdata = props.click;
   const productlist = props.productlistname;
+  const [isActive, setisActive] = useState(false)
+
+  const subcategoryClick = () => {
+    if (window.innerWidth <= 800) {
+      setisActive(!isActive);
+      return;
+    }
+  }
+
   return (
     <>
-
       <div className="variety_section">
-        <div className="varietybox">
+        <h3 className="varietyHeading" onClick={subcategoryClick}>Subcategories </h3>
+        <div className={`varietybox ${isActive ? 'active' : '' }`}>
           {productlist.map((data, index) => {
             // const productlistdata = productlist[index];
             return (
-                <div className="variety_item" key={index} onClick={()=> clickdata(data)}>{data}</div>
+              <div className="variety_item" key={index} onClick={() => clickdata(data)}>{data}</div>
             )
           })}
         </div>

@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import './Sellerproduct.css';
+import apiurl from "../../../api/apiConfig";
 import axios from "axios";
 import ApiRequestHandler from "../../../api/ApiRequestHandler";
 import Loader from "../../Loader/Loader";
@@ -8,28 +9,26 @@ import Loader from "../../Loader/Loader";
 const Sellerproduct = () => {
 
     const userid = sessionStorage.getItem('usertoken')
-    const [loading, error, noData, data] = ApiRequestHandler(`http://localhost:8000/seller/dashboard/product/${userid}`)
+    const [loading, error, noData, data] = ApiRequestHandler(`${apiurl}/api/seller/product/${userid}`)
 
 
     // handles actions on unplublishClick
     const unpublishClick = async (productid) => {
         try {
-            const response = await axios.get(`http://localhost:8000/seller/dashboard/product/unpublish/${productid}`);
+            const response = await axios.delete(`${apiurl}/api/products/${productid}`);
             console.log(response);
             if (response.status === 200 && response.data === true) {
-                setsellerProduct((previousVal) =>
-                    previousVal.filter((data) => data._id !== productid)
-                );
+                window.location.reload();
             }
         } catch (error) {
             console.log(error);
-            seterror(true)
+            alert("Failed to Unpublish product, Due to internal server error")
         }
     }
 
     return (
         <>
-            {loading && (<Loader/>)}
+            {loading && (<Loader />)}
             {error && (<h2>Sorry, Something went wrong!</h2>)}
             {noData && (<h2>No Product Published</h2>)}
             {!loading && !error && !noData && (

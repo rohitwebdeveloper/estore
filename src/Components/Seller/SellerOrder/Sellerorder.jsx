@@ -1,9 +1,7 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import './Sellerorder.css';
+import apiurl from "../../../api/apiConfig";
 import axios from "axios";
-// import html2pdf from "html2pdf.js";
-import html2canvas from "html2canvas";
-import jsPDF from "jspdf";
 import ApiRequestHandler from "../../../api/ApiRequestHandler";
 import Loader from "../../Loader/Loader";
 
@@ -12,56 +10,24 @@ import Loader from "../../Loader/Loader";
 const Sellerorder = () => {
 
   const sellerid = sessionStorage.getItem('usertoken')
-  const [loading, error, noData, data] = ApiRequestHandler(`http://localhost:8000/seller/dashboard/order/${sellerid}`)
-  const [demoimg, setdemoimg] = useState()
+  const [loading, error, noData, data] = ApiRequestHandler(`${apiurl}/api/seller/orders/${sellerid}`)
+  const [updateStatus, setupdateStatus] = useState([])
   const [orderStatusValue, setorderStatusValue] = useState('Pending')
-  const [statusVisibility, setstatusVisibility] = useState('hidden')
-  const invoiceRef = useRef(null)
-  // const options = {
-  //   filename: 'my-document.pdf',
-  //   margin: 0.5,
-  //   image: { type: 'jpeg', quality: 1 },
-  //   html2canvas: { scale: 2 },
-  //   jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' },
-  // };
+  // const [statusVisibility, setstatusVisibility] = useState('hidden')
 
 
+  useEffect(() => {
+  const newStatus =  data.map(currdata => false)
+  setupdateStatus(newStatus)
+  console.log(newStatus)
+  }, [data])
 
-  const invoiceDownloadClick = async () => {
-    try {
-      const invoiceInfo = invoiceRef.current;
-      console.log(invoiceInfo)
-      // await window.scrollTo(0, 0)
-      // invoiceInfo.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-      // Capture the invoice as an image
-      const photo = await html2canvas(invoiceInfo,
-        //    {
-        //   allowTaint: false,
-        //  foreignObjectRendering:true,
-        //   width: invoiceInfo.scrollWidth,  // Set the canvas width to the element's full width
-        //   height: invoiceInfo.scrollHeight, // Set the canvas height to the element's full height
-        //   windowHeight: invoiceInfo.scrollHeight,
-        //   scrollY: -window.scrollY,
-        //   scale: 2, // Increase the scale for higher resolution
-        //   useCORS: true, // Enable CORS to handle images loaded from other origins
-        // }
-      );
-      const pdfImg = await photo.toDataURL('image/png')
-      await setdemoimg(pdfImg)
-      // const doc = new jsPDF();
-      // doc.addImage(pdfImg, 'PNG', 0, 0, doc.internal.pageSize.getWidth(), doc.internal.pageSize.getHeight())
-      // doc.save('estorebill.pdf')
-
-    } catch (error) {
-      console.error(error)
-    }
-  }
 
   // // Making a request to update the product order status
   const updateOrderStausClick = async (idOrder) => {
     try {
-      const response = await axios.patch(`http://localhost:8000/seller/dashboard/order/status-update`, { orderStatusValue, idOrder })
+      const response = await axios.patch(`${apiurl}/api/orders/status`, { orderStatusValue, idOrder })
       if (response.status == 200 && response.data.success) {
         setstatusVisibility('hidden')
       }
@@ -71,6 +37,14 @@ const Sellerorder = () => {
   }
 
 
+  const updateStatusClick = (i) => {
+    setupdateStatus((preval) => {
+      let newPreval = [...preval];
+      newPreval[i] = !newPreval[i];  // Toggle the value at index i
+      return newPreval;
+    });
+  };
+
 
 
   return (
@@ -79,9 +53,9 @@ const Sellerorder = () => {
       {error && (<h2>Sorry, Something went wrong</h2>)}
       {noData && (<h2>No Orders !</h2>)}
       {!loading && !error && !noData && (
-        data.map((data) => {
+        data.map((data, i) => {
           return (
-            <main className="sellerOrderContainer" key={data._id} ref={invoiceRef} >
+            <main className="sellerOrderContainer" key={data._id}  >
               <section className="sellerCustomerDetails sellerOrderSection">
                 <h3>Order Summary</h3>
                 <p><strong>Order ID:</strong> {data.orderid}</p>
@@ -118,10 +92,10 @@ const Sellerorder = () => {
               </section>
               <section className="sellerOrderActions sellerOrderSection">
                 <h3>Order Actions</h3>
-                <button className="sellerOrderBtn" onClick={invoiceDownloadClick} >Download Invoice</button>
-                <button className="sellerOrderBtn" onClick={() => setstatusVisibility('visible')} >Update Status</button>
-                <div className="updateOrderStatusBox" style={{ visibility: statusVisibility }} >
-                  <select name="orderStatus" id="" value={orderStatusValue} onChange={((e) => setorderStatusValue(e.target.value))}  >
+                {/* <button className="sellerOrderBtn" onClick={invoiceDownloadClick} >Download Invoice</button> */}
+                <button className="sellerOrderBtn" onClick={() =>updateStatusClick(i)} >Update Status</button>
+                <div className="updateOrderStatusBox" style={{visibility: updateStatus[i] ? 'visible' : 'hidden'}}  >
+                  <select name="orderStatus" className="statusOptions" id="" value={orderStatusValue} onChange={((e) => setorderStatusValue(e.target.value))}  >
                     <option value="Pending">Pending</option>
                     <option value="Processing">Processing</option>
                     <option value="Packed">Packed</option>

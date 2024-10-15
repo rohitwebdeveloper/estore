@@ -23,6 +23,7 @@ const ApiRequestHandler = (url) => {
                 return
             }
         } catch (error) {
+          console.log(error)
             seterror(true)
             setloading(false)
         }

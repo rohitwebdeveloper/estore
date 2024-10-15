@@ -7,23 +7,24 @@ import { MdAccountCircle } from "react-icons/md";
 import { MdShoppingCartCheckout } from "react-icons/md";
 import { GoSearch } from "react-icons/go";
 import { IoIosHeartEmpty } from "react-icons/io";
+import apiurl from "../../api/apiConfig";
+import { IoMenu } from "react-icons/io5";
+import { IoCloseSharp } from "react-icons/io5";
 
-// let searchval;
 
 const Navbar = () => {
 
   const [searchVal, setsearchVal] = useState('')
   const [searchData, setsearchData] = useState([])
   const [isVisibility, setisVisibility] = useState('hidden')
+  const [isActive, setIsActive] = useState(false);
   const navigate = useNavigate()
-
-
 
   useEffect(() => {
     const timer = setTimeout(async () => {
       try {
         if (searchVal) {
-          const response = await axios.get(`http://localhost:8000/search?q=${searchVal}`)
+          const response = await axios.get(`${apiurl}/api/products/search?q=${searchVal}`)
           setsearchData(response.data)
           setisVisibility(response.data.length ? 'visible' : 'hidden');
           console.log(response)
@@ -42,6 +43,7 @@ const Navbar = () => {
 
   const searchchange = (event) => {
     setsearchVal(event.target.value)
+    
   }
 
 
@@ -54,6 +56,7 @@ const Navbar = () => {
 
   const handleSearchFocus = () => {
     setisVisibility('visible');
+    setIsActive(false)
   };
 
   const handleSearchBlur = () => {
@@ -62,11 +65,16 @@ const Navbar = () => {
     }
   };
 
+  
+  const menuClick = () => {
+    setIsActive(!isActive);
+  }
+
   return (
     <>
       <div className="navbar_container">
         <div className="navbar">
-          <h3 className="brand_logo">E-Store</h3>
+          <h4 className="brand_logo">E-Store</h4>
           <div className="searchBox">
             <input
               type="search"
@@ -79,8 +87,8 @@ const Navbar = () => {
               onChange={searchchange}
             />
           </div>
-          <nav>
-            <ul className="ullist">
+          <nav >
+            <ul className={`ullist ${isActive ? 'active' : ''}`}  >
               <li><NavLink className="navitem" to="/">Home</NavLink></li>
               <li><NavLink className="navitem" to="/category/fashion">Categories</NavLink></li>
               <li><NavLink className="navitem logo" to="/kart"><MdShoppingCartCheckout /></NavLink></li>
@@ -88,6 +96,8 @@ const Navbar = () => {
               <li><NavLink className="navitem logo" to="/profile/myprofile"><MdAccountCircle /></NavLink></li>
             </ul>
           </nav>
+          <div className="menuLogo"  onClick={menuClick}  >{isActive ? <IoCloseSharp/> : <IoMenu/>} </div>
+         
         </div>
         <div className="search_result" style={{ visibility: isVisibility }}>
           <div className="row">

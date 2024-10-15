@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import apiurl from "../../api/apiConfig";
 import "./Billing.css";
 import { useSelector, useDispatch } from "react-redux";
 import { removeorderdetails } from "../../Reducers/orderSlice";
@@ -39,11 +40,13 @@ const Billing = () => {
         handler: async function (response) {
             // Handler function to be executed after payment is completed.
             const { razorpay_payment_id } = response;
+            // console.log(response)
             try {
                 if (response.razorpay_payment_id) {
                     // Sending payment details to the server for order placement
-                    const response = await axios.post(`http://localhost:8000/user/order-place`, { order, userDetail, userId, razorpay_payment_id })
-                    if (response.status == 200) {
+                    const orderresponse = await axios.post(`${apiurl}/api/orders/place-order`, { order, userDetail, userId, razorpay_payment_id })
+                    // console.log(response)
+                    if (orderresponse.status == 200) {
                         // Redirection the user to order placed page when the response is successfull
                         navigate('/billing/orderplaced')
                     }
@@ -73,12 +76,15 @@ const Billing = () => {
 
 
     useEffect(() => {
-        console.log(order)
+        // console.log(order)
         if (storedUserDetails) {
             setuserDetail({
                 name: storedUserDetails.name,
                 address: storedUserDetails.address,
                 mobileno: storedUserDetails.mobilenumber,
+                city: '',
+                state: '',
+                pincode: '',
             })
             return
         }
@@ -108,7 +114,7 @@ const Billing = () => {
         try {
             //   Checking the mode of payment selected by the user   
             if (isCashChecked == true && isOnlineChecked == false) {
-                const response = await axios.post(`http://localhost:8000/user/order-place`, { order, userDetail, userId })
+                const response = await axios.post(`${apiurl}/api/orders/place-order`, { order, userDetail, userId })
                 if (response.status == 200) {
                     dispatch(removeorderdetails(0))
                     navigate('/billing/orderplaced')

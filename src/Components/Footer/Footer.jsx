@@ -17,8 +17,8 @@ const Footer = () => {
                         <div className="followus_heading">Support</div>
                         <div>
                             <div className="support">212 Bandra, Navi Mumbai, Pin-442348, Maharastra, India</div>
-                            <div className="support"> Mail To: <a href="mailto:rohitkushwaha.developer@gmail.com" style={{color:'white', textDecoration:'underline'}}> rohitkushwaha.developer@gmail.com</a></div>
                             <div className="support">Customer Care: 09994554595, 09994554599</div>
+                            <p className="support"> Mail To: <a href="mailto:rohitkushwaha.developer@gmail.com" style={{color:'white', textDecoration:'underline'}}> rohitkushwaha.developer@gmail.com</a></p>
                         </div>
                     </div>
                     <div className="boxtwo box">
@@ -28,7 +28,7 @@ const Footer = () => {
                             <li className="quickLink"><Link to='/' style={{ color: 'white', textDecoration: 'underline' }} >About</Link></li>
                             <li className="quickLink"><Link to='/' style={{ color: 'white', textDecoration: 'underline' }} >Privacy Policy</Link></li>
                             <li className="quickLink"><Link to='/' style={{ color: 'white', textDecoration: 'underline' }} >Terms&Conditions</Link></li>
-                            <li className="quickLink"><Link to='/' style={{ color: 'white', textDecoration: 'underline' }} >FAQs</Link></li>
+                            {/* <li className="quickLink"><Link to='/' style={{ color: 'white', textDecoration: 'underline' }} >FAQs</Link></li> */}
                         </ul>
                     </div>
                     <div className="boxthree box">

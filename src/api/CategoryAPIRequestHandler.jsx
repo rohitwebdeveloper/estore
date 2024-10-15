@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-
+import apiurl from "./apiConfig";
 
 const CategoryAPIRequestHandler = (category) => {
 
@@ -15,11 +15,11 @@ const CategoryAPIRequestHandler = (category) => {
             try {
                 setloading(true)
                 seterror(false)
-                const response = await axios.get(`http://localhost:8000/products/category/${category}`)
-                setdata(response.data.electronicsProduct)
+                const response = await axios.get(`${apiurl}/api/products/category/${category}`)
+                setdata(response.data.categoryProducts)
                 console.log(response)
                 setloading(false)
-                if (response.status === 200 && !response.data.electronicsProduct.length) {
+                if (response.status === 200 && !response.data.categoryProducts.length) {
                     setnoData(true)
                     return
                 }

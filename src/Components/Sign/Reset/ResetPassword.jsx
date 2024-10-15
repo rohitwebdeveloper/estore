@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import './Reset.css'
+import apiurl from '../../../api/apiConfig';
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -54,7 +55,7 @@ const ResetPassword = ()=>{
 
         try{
             // Making a patch request to the server to update user password from the database
-            const response = await axios.patch('http://localhost:8000/auth/user/reset-password', {newpassword, emailverified})
+            const response = await axios.patch(`${apiurl}/api/auth/reset-password`, {newpassword, emailverified})
             if(response.data.success===true){
                 navigate('/signin');
             }

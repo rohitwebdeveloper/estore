@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { FaImage } from "react-icons/fa6";
-import axios from 'axios';
 import './Addproduct.css'
+import { FaImage } from "react-icons/fa6";
 import categories from './ProductCategoryData';
+import axios from 'axios';
+import apiurl from '../../../api/apiConfig';
+import { useNavigate } from 'react-router-dom';
 
 const Addproduct = () => {
 
@@ -19,7 +21,7 @@ const Addproduct = () => {
         category: '',
         subcategory: '',
     });
-
+    const navigate = useNavigate()
 
     // Using form method to append product information
     const form = new FormData();
@@ -87,12 +89,15 @@ const Addproduct = () => {
         }
 
         try {
-            const response = await axios.post('http://localhost:8000/seller/product/publish', form)
+            const response = await axios.post(`${apiurl}/api/products/`, form)
+            console.log(response)
 
             if (response.data.success == true) {
                 alert(response.data.message)
+                navigate('/product')
             }
         } catch (error) {
+            console.log(error)
             alert('Product publishing failed, due to internal server error')
         }
 

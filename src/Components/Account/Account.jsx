@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import apiurl from "../../api/apiConfig";
 import './Account.css'
 import { IoArrowBackSharp } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
@@ -9,6 +10,10 @@ import axios from "axios";
 import Myorder from "./Myorder";
 import Myprofile from "./Myprofile";
 import Loader from "../Loader/Loader";
+// import { MdArrowForwardIos } from "react-icons/md";
+import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
+// import { MdArrowBackIosNew } from "react-icons/md";
+import { MdOutlineKeyboardDoubleArrowLeft } from "react-icons/md";
 
 
 const Account = () => {
@@ -20,6 +25,7 @@ const Account = () => {
   const [apiResponse, setapiResponse] = useState()
   const navigate = useNavigate();
   const dispatch = useDispatch()
+  const [isActive, setisActive] = useState(false)
 
 
   useEffect(() => {
@@ -36,7 +42,7 @@ const Account = () => {
           setloading(true)
           seterror(false)
           // If there is no profile data in session storage then making a get request to get the profile data from the database
-          const response = await axios.get(`http://localhost:8000/users/profile/${userid}`)
+          const response = await axios.get(`${apiurl}/api/user/profile/${userid}`)
           setapiResponse(response.data)
           // if(response.data.isSeller== null || response.data.isSeller==undefined) {
             setisSeller(response.data.isSeller)
@@ -60,14 +66,23 @@ const Account = () => {
     sessionStorage.removeItem('usertoken')
   }
 
+
+  const slideSideBarClick = () => {
+    setisActive(!isActive)
+  }
+
   return (
     <>
       <div className="accountContainer">
+
         <div className="gohomeWrapper">
           <button className="gohomeBtn" onClick={() => navigate('/')} > <IoArrowBackSharp /> Go To Home</button>
         </div>
+        <div className="slideArrowBtn" onClick={slideSideBarClick}>
+  {isActive ? <MdOutlineKeyboardDoubleArrowLeft /> : <MdOutlineKeyboardDoubleArrowRight />}
+</div>
         <div className="accountBox">
-          <div className="sideBar">
+          <div className={`sideBar ${isActive ? 'active' : ''}`}>
             <div className="linkBox">
               <div className="contentLink"> <NavLink to="myprofile"> My Profile </NavLink> </div>
               <div className="contentLink"> <NavLink to="myorder" >My Orders</NavLink> </div>
@@ -77,7 +92,7 @@ const Account = () => {
             </div>
             <div className="linkBox">
               <button className="signoutBtn" onClick={signoutClick} >Sign-Out➡</button>
-              <button className="signoutBtn" onClick={() => navigate('/account/password/reset')} >Change Password➡</button>
+              <button className="signoutBtn" style={{textAlign:'left'}} onClick={() => navigate('/account/password/reset')} >Change Password➡</button>
 
             </div>
           </div>

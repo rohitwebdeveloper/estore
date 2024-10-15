@@ -1,5 +1,6 @@
 import React, { useState, useCallback, useEffect } from 'react'
 import './SellerProfile.css'
+import apiurl from '../../../api/apiConfig'
 import axios from 'axios'
 import { useSelector, useDispatch } from 'react-redux'
 import { setsellerProfileDetail } from '../../../Reducers/sellerprofileSlice'
@@ -50,7 +51,7 @@ const SellerProfile = () => {
                     setloading(true)
                     seterr(false)
                     // Making a get request to the server to get the seller profile data 
-                    const response = await axios.get(`http://localhost:8000/seller/dashboard/profile/${userid}`)
+                    const response = await axios.get(`${apiurl}/api/seller/profile/${userid}`)
 
                     const { name, email, _id, company, mobilenumber, address } = response.data;
                     setsellerDetail({
@@ -91,7 +92,7 @@ const SellerProfile = () => {
     const saveSellerProfile = async () => {
         try {
             // Making a post request to the server to save the updated seller data to the database
-            const response = await axios.post(`http://localhost:8000/seller/dashboard/profile/update`, sellerDetail)
+            const response = await axios.put(`${apiurl}/api/seller/profile`, sellerDetail)
 
             if (response.data.success === true) {
                 const { name, email, sellerId, mobilenumber, company, address } = response.data.updateResult;

@@ -1,9 +1,10 @@
 import React from "react";
 import "./Home.css"
-import SimpleImageSlider from "react-simple-image-slider";
 import Multiimageslider from "./Multiimageslider";
 import { useNavigate } from "react-router-dom";
 import { BestOfElectronicsAndAppliances, BestOfFashionAndBeauty, LaptopsAndMobiles } from "./MultiimagesliderData";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 
 const Home = () => {
@@ -12,38 +13,48 @@ const Home = () => {
 
     let image = [
         {
-            url: "/offerone.png"
+            url: "/offerone.png",
         },
         {
-            url: "/offertwo.png"
+            url: "/offertwo.png",
         },
         {
-            url: "/offerthree.png"
+            url: "/offerthree.png",
         }
     ]
 
 
 
-    const clickviewall = () => {
-        navigate('/category')
+    const clickviewall = (productCategory) => {
+        navigate(`/category/${productCategory}`)
     }
 
     return (
         <>
             <div className="offer_section">
-                <SimpleImageSlider
-                    width={'50%'}
-                    height={400}
-                    images={image}
-                    autoPlay={true}
-                    bgColor={'#ff0060'}
-                />
+                <div className="offerImageslider">
+                    <Carousel axis="horizontal" autoPlay={true} infiniteLoop={true} interval={2000} >
+                        <div >
+                            <img src={image[0].url} className="sliderImage" />
+                            {/* <p className="legendOne">{image[0].offer}</p>  */}
+                            
+                        </div>
+                        <div >
+                            <img src={image[1].url} className="sliderImage" />
+                            {/* <p className="legendOne">{image[1].offer}</p>  */}
+                        </div>
+                        <div >
+                            <img src={image[2].url} className="sliderImage" />
+                            {/* <p className="legendTwo">{image[2].offer}</p>  */}
+                        </div>
+                    </Carousel>
+                </div>
             </div>
             <div className="homeContainer">
                 <div className="homeSection">
                     <div className="headingLinkbox">
-                        <div className="sectionHeading">Best of Fashion, Cloth & Accessories</div>
-                        <button className="viewallBtn" onClick={clickviewall} >View All</button>
+                        <div className="sectionHeading">Best of Fashion & Accessories</div>
+                        <button className="viewallBtn" onClick={() => clickviewall('fashion')} >View All</button>
                     </div>
                     <div className="sliderbox">
                         <Multiimageslider imageData={BestOfFashionAndBeauty} />
@@ -52,7 +63,7 @@ const Home = () => {
                 <div className="homeSection">
                     <div className="headingLinkbox">
                         <div className="sectionHeading">Best of Electronics</div>
-                        <button className="viewallBtn" onClick={clickviewall} >View All</button>
+                        <button className="viewallBtn" onClick={() => clickviewall('electronics')} >View All</button>
                     </div>
                     <div className="sliderbox">
                         <Multiimageslider imageData={BestOfElectronicsAndAppliances} />
@@ -61,7 +72,7 @@ const Home = () => {
                 <div className="homeSection">
                     <div className="headingLinkbox">
                         <div className="sectionHeading">TVs, AC, Invertors & more...</div>
-                        <button className="viewallBtn" onClick={clickviewall} >View All</button>
+                        <button className="viewallBtn" onClick={() => clickviewall('appliance')} >View All</button>
                     </div>
                     <div className="sliderbox">
                         <Multiimageslider imageData={LaptopsAndMobiles} />

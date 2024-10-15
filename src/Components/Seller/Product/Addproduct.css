@@ -16,13 +16,14 @@
     border: 1px solid black;
     padding: 20px;
     border-radius: 5px;
+    padding: 10px 20px;
 }
 
 .sellerForm{ 
     display: flex;
     flex-direction: column;
     /* max-width: 1000px; */
-    width: 500px; 
+    width: 100%; 
 }
 
 .productInput{
@@ -49,7 +50,7 @@ input[type='file'] {
 .custom-file-upload{
     border: 1px solid black;
     padding: 10px 10px;
-    width: 200px;
+    width: fit-content;
     border-radius: 5px;
     line-height: 10px;
     font-size: 1.2rem;
@@ -72,4 +73,23 @@ input[type='file'] {
     border: none;
     color: white;
     border-radius: 5px;
+}
+
+
+
+@media(max-width:500px){
+    
+    .sellerContainer{
+        margin: 10px auto;  
+    }
+
+    .sellerBox{
+        padding: 10px 10px;
+    }
+
+    .productInput{
+        padding: 5px 10px;
+    }
+ 
+
 }

@@ -1,4 +1,5 @@
 import  { useEffect } from 'react'
+import apiurl from './api/apiConfig'
 import { Route, Routes } from 'react-router-dom'
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
@@ -30,7 +31,6 @@ import { setauthenticate } from "./Reducers/authSlice";
 import axios from "axios";
 
 
-
 function App() {
 
   const dispatch = useDispatch()
@@ -45,7 +45,7 @@ function App() {
           }
 
           try {
-              const response = await axios.post('http://localhost:8000/auth/user/verify-user', { userid })
+              const response = await axios.post(`${apiurl}/api/auth/verify`, { userid })
               //             console.log(response.data);
               if (response.data.success === true) {
                   dispatch(setauthenticate(true))

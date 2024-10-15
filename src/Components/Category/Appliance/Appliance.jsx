@@ -1,4 +1,5 @@
 import React from 'react'
+import apiurl from '../../../api/apiConfig';
 import { useState, useEffect } from 'react';
 import Filter from '../FilterandProduct/Filter';
 import Productlist from '../FilterandProduct/Productlist';
@@ -109,8 +110,12 @@ const Appliance = () => {
   }
 
   const addToWishlistClick = async (productid) => {
+    if(!userid){
+      alert('Please Sign-In , to add to wishlist !')
+      return
+    }
     try {
-      const wishlistResponse = await axios.post(`http://localhost:8000/wishlist/add/${productid}`, { userid })
+      const wishlistResponse = await axios.post(`${apiurl}/api/wishlist/${productid}`, { userid })
       if (wishlistResponse.status == 200 || wishlistResponse.data.success == true) {
         setwishlistAddresponse('Added To Wishlist !')
         setTimeout(() => {

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import apiurl from "../../api/apiConfig";
 import './Kart.css';
 import axios from "axios";
 // import Billing from "./Billing";
@@ -12,7 +13,7 @@ import Loader from "../Loader/Loader";
 const Kart = () => {
 
     const userid = sessionStorage.getItem('usertoken')
-    const [loading, error, noData, data] = ApiRequestHandler(`http://localhost:8000/user/kart/${userid}`)
+    const [loading, error, noData, data] = ApiRequestHandler(`${apiurl}/api/kart/${userid}`)
     const navigate = useNavigate();
     const [quantity, setquantity] = useState([]);
     const [kartData, setkartData] = useState([])
@@ -20,19 +21,25 @@ const Kart = () => {
     const [baseprice, setbaseprice] = useState([])
     const [total, settotal] = useState(0)
     const dispatch = useDispatch()
-    
-    
+
+
     useEffect(() => {
         setkartData(data)
-        for (let index = 0; index < data.length; index++) {
-            quantity.push(1);
-            subTotal.push(data[index].productdetail.price)
-            baseprice.push(data[index].productdetail.price)
-        }
-        subTotal.forEach(data => settotal(previoustotal => data + previoustotal));
-        dispatch(removeorderdetails(0))
-    }, [data])
+        if (data && data.length > 0) {
+            const initialQuantities = data.map(() => 1);
+            const initialSubTotals = data.map((item) => item?.productdetail?.price || 0);
+            const initialBasePrices = data.map((item) => item?.productdetail?.price || 0);
 
+            setquantity(initialQuantities);
+            setsubTotal(initialSubTotals);
+            setbaseprice(initialBasePrices);
+
+            const initialTotal = initialSubTotals.reduce((acc, curr) => acc + curr, 0);
+            settotal(initialTotal);
+
+            dispatch(removeorderdetails(0));
+        }
+    }, [data]);
 
 
 
@@ -79,19 +86,19 @@ const Kart = () => {
     // Handles the removal of a product from the kart.
     const removeKartItem = async (productid, index, subtotalPrice) => {
         try {
-            const response = await axios.delete(`http://localhost:8000/user/kart/remove-product/${productid}`)
+            const response = await axios.delete(`${apiurl}/api/kart/${productid}`)
             if (response.status === 200) {
 
                 setsubTotal(prevSubTotal => prevSubTotal.filter((item, i) => i !== index));
                 setquantity(prevQuantity => prevQuantity.filter((item, i) => i !== index));
                 setkartData(prevKartData => prevKartData.filter((item) => item._id !== productid));
-    
+
                 // Adjust the total after removing the item
                 settotal(prevTotal => prevTotal - subtotalPrice);
                 return
             }
         } catch (error) {
-           alert('Failed to remove product from kart')
+            alert('Failed to remove product from kart')
         }
     }
 
@@ -99,7 +106,7 @@ const Kart = () => {
     const handleProceed = async () => {
         try {
             // const amount = total + 60
-            const response = await axios.post('http://localhost:8000/user/order', { total })
+            const response = await axios.post(`${apiurl}/api/orders/generate-id`, { total })
             const order = [kartData, quantity, subTotal, total, response.data.order.id]
             if (response.status == 200) {
                 await dispatch(setorderdetails(order))
@@ -132,7 +139,7 @@ const Kart = () => {
                                 <div className="itemBox" key={data._id}>
                                     <div className="item kartProductimg ">
                                         <img src={data.productdetail.url} alt="" />
-                                        <div className="kartProductName">{data.productdetail.title}</div>
+                                        <div className="kartProductName" style={{textAlign:'center'}}>{data.productdetail.title}</div>
                                     </div>
                                     <div className="item kartPrice ">{data.productdetail.price}</div>
                                     <div className="item kartQuantity ">

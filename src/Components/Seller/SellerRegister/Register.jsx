@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import './Register.css'
+import apiurl from "../../../api/apiConfig";
 import axios from "axios";
 import { useSelector } from 'react-redux'
 import { useNavigate } from "react-router-dom";
@@ -42,7 +43,7 @@ const Register = () => {
         try {
             // Making a post request to the server to register a new seller and save its data in database
             setisDisable(true)
-            const response = await axios.post('http://localhost:8000/auth/seller/register', {sellerForm})
+            const response = await axios.post(`${apiurl}/api/auth/register-seller`, {sellerForm})
             if (response.data.success == true) {
                 setresponseMsg(response.data.message)
                 navigate('/seller/dashboard/profile')

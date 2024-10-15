@@ -1,23 +1,30 @@
-
-.kartContainer{
+.kartContainer {
     min-height: 100vh;
     max-width: 1450px;
     width: 100%;
+    display: block;
+    margin: auto;
     font-family: system-ui, sans-serif;
 }
 
-.kartBox{
-    display: block;
+.kartBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
     margin: auto;
+    width: 100%;
+    padding: 0px 20px;
 }
 
 
-.headingBox{
-    width: 1200px;
+.headingBox {
+    max-width: 1200px;
+    width: 100%;
     /* box-shadow: 0px 0px 5px rgb(194, 194, 194);  */
     border-bottom: 1px solid grey;
     display: block;
-    margin: 50px auto;
+    margin: 20px auto;
     font-size: 1rem;
     display: flex;
     justify-content: space-around;
@@ -25,32 +32,32 @@
     font-weight: bold;
 }
 
-.heading{
+.heading {
     font-size: 1rem;
 }
 
-.itemBox{
-    width: 1200px;
-    box-shadow: 0px 0px 5px rgb(194, 194, 194);  
+.itemBox {
+    max-width: 1200px;
+    width: 100%;
+    box-shadow: 0px 0px 5px rgb(194, 194, 194);
     /* border-bottom: 1px solid grey; */
-    display: flex;
     align-items: center;
-    margin: 50px auto;
+    margin: 15px 0px;
     font-size: 0.9rem;
     display: flex;
     justify-content: space-around;
     padding: 10px 0px;
 }
 
-.item{
-    /* border: 1px solid gray; */
+.kartProductimg {
+    width: 150px;
 }
 
-.kartPrice{
- font-size: 1rem;   
+.kartPrice {
+    font-size: 1rem;
 }
 
-.kartQuantity{
+.kartQuantity {
     display: flex;
     align-items: center;
     width: 70px;
@@ -61,11 +68,11 @@
     justify-content: space-between;
 }
 
-.quantityValue{
+.quantityValue {
     font-weight: bold;
 }
 
-.increanddecre{
+.increanddecre {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -75,13 +82,13 @@
     padding-left: 5px;
 }
 
-.couponBox{
+.couponBox {
     display: block;
     margin: auto;
     width: 1200px;
 }
 
-.couponCode{
+.couponCode {
     border-radius: 3px;
     border: 1px solid grey;
     padding: 10px 10px;
@@ -91,7 +98,7 @@
     font-family: system-ui, sans-serif;
 }
 
-.applyBtn{
+.applyBtn {
     border-radius: 3px;
     border: 1px solid grey;
     padding: 10px 10px;
@@ -103,12 +110,12 @@
     margin: 0px 0px 0px 20px;
 }
 
-.applyBtn:hover{
+.applyBtn:hover {
     box-shadow: 0px 0px 5px #ff0060;
 }
 
 
-.checkoutBox{
+.checkoutBox {
     max-width: 400px;
     border: 1px solid grey;
     border-radius: 5px;
@@ -117,22 +124,24 @@
 }
 
 
-.checkoutItem{
+.checkoutItem {
     border-bottom: 1px solid black;
     padding: 10px;
     display: flex;
     justify-content: space-between;
     font-family: 0.9rem;
+
 }
 
-.checkoutContainer{
-    width: 1200px;
+.checkoutContainer {
+    max-width: 760px;
+    width: 100%;
     display: block;
-    margin: 50px auto;
-    
+    margin: 50px 20px;
+
 }
 
-.checkoutBtn{
+.checkoutBtn {
     border-radius: 3px;
     border: 1px solid grey;
     padding: 10px 10px;
@@ -145,6 +154,56 @@
     display: block;
 }
 
-.removeKartItemBtn{
+.removeKartItemBtn {
     font-size: 1.6rem;
+}
+
+
+@media(max-width:500px){
+    
+    .kartProductimg{
+        width: 70px;
+    }
+
+    .kartProductimg>img{
+        height: 50px;
+    }
+
+    .kartQuantity{
+        width: 40px;
+        height: 40px;
+        padding: 0px 5px;
+    }
+    
+    .kartBox{
+        padding: 0px 10px;
+    }
+
+    .headingBox{
+        margin: 5px 0px;
+    }
+
+    .itemBox{
+        margin: 5px 0px;
+    }
+
+    .checkoutBox{
+        width: 200px;
+        padding: 5px;
+    }
+
+    .checkoutBtn{
+        padding: 6px 6px;
+        margin: 8px auto 0px auto;
+    }
+
+    .checkoutContainer{
+        max-width: 300px;
+        margin: 10px 13px;
+    }
+
+    .checkoutItem{
+        padding: 6px;
+    }
+
 }

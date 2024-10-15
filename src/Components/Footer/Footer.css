@@ -1,5 +1,8 @@
 .footer_section{
-    width: 100vw;
+    max-width: 1450px;
+    width: 100%;
+    display: block;
+    margin: auto;
     height: auto;
     background-color: black;
     color: white;
@@ -9,7 +12,7 @@
 .footerDetail{
     display: flex;
     justify-content: space-evenly;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .copyright{
@@ -22,10 +25,10 @@
 
 .box{
     max-width:200px;
-    height: 200px;
+    height: auto;
     width: 100%;
     background-color: rgb(0, 0, 0);
-    /* border: 2px solid white; */
+    margin: 0px 15px 15px 0px;
     color: white;
     font-family: system-ui, sans-serif;
 }
@@ -66,3 +69,56 @@
 .threads:hover{
     color: rgb(95, 95, 95);
 }
+
+
+@media(max-width:800px){
+     html{
+        font-size: 12px;
+     }
+
+     .footer_section{
+        padding: 10px;
+     }
+
+     .box{
+        margin:15px 15px 15px 5px ;
+     }
+}
+
+
+
+@media(max-width:500px){
+
+    html{
+        font-size: 10px;
+    }
+
+    .footerDetail{
+        flex-wrap: wrap;
+        justify-content: center;
+        
+    }
+    .box{
+        max-width:300px;
+    }
+    .boxone{
+        text-align: center;
+    }
+
+    .box ul{
+        display: flex;
+        justify-content: space-evenly;
+        align-items:center;
+    }
+
+    .followus_heading{
+        text-align: center;
+        margin: 10px auto 3px auto;
+    }
+
+    .footer_section{
+        padding: 20px 0px;
+    }
+    
+}
+

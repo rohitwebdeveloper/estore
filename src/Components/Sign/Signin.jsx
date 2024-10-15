@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import "./Sign.css"
+import apiurl from "../../api/apiConfig";
+import { useNavigate } from "react-router-dom";
 import { GoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import { setauthenticate } from '../../Reducers/authSlice'
@@ -43,7 +44,7 @@ const Sign = () => {
         try {
              sessionStorage.removeItem('estoreUserprofile');
             // Sending the user credentials to the backend using post request
-            const response = await axios.post('http://localhost:8000/auth/user/sign-in', formData)
+            const response = await axios.post(`${apiurl}/api/auth/signin`, formData)
             console.log('RESPONSE:', response)
             const tokenid = response.data.token;
 
@@ -81,7 +82,7 @@ const Sign = () => {
     // Defining action when the user click on Signin with Google
     const googleSignin = async (useremail) => {
         try {
-            const response = await axios.post('http://localhost:8000/auth/user/google/sign-in', { useremail })
+            const response = await axios.post(`${apiurl}/api/auth/google/signin`, { useremail })
             const usertoken = response.data.token;
 
             if (response.data.success === true) {
@@ -124,9 +125,9 @@ const Sign = () => {
                     <input type={showPassword} name="password" value={formData.password} className="sign_credentials" placeholder="Enter Password" onChange={formvalChange} />
                     <input type="checkbox" name="show" className="checkboxShow" onClick={checkboxClick} /><span>Show Password</span>
                     <p className="forgetPassword" onClick={()=> navigate('/account/password/forget')} >Forget Password ?</p>
-                    <button className="btn" onClick={submitClick} >Submit</button>
+                    <button className="signBtn" onClick={submitClick} >Submit</button>
                     <div className="googleBtnWrapper">
-                        <GoogleLogin width="320" text="signin_with"
+                        <GoogleLogin  text="signin_with"
                             onSuccess={credentialResponse => {
                                 let decodedInfo = jwtDecode(credentialResponse.credential)
                                 googleSignin(decodedInfo.email);

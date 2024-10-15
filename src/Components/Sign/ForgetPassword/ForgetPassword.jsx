@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import './Forget.css'
+import apiurl from "../../../api/apiConfig";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -27,10 +28,14 @@ const ForgetPassword = () => {
 
 // Defining action for Send button click
     const sendClick = async ()=>{
+
+        if (!useremail) {
+            alert('Please fill your email address')
+        }
        
         try {
             // Making a post request to the server to check whether this account exists or not
-            const response = await axios.post('http://localhost:8000/auth/user/forget-password', {useremail})
+            const response = await axios.post(`${apiurl}/api/auth/forgot-password`, {useremail})
     
             if(response.data.success===true){
                 seteditable(false)
@@ -45,7 +50,7 @@ const ForgetPassword = () => {
             }
             
         } catch (error) {
-            alert(error.response.data.message);
+            alert('Failed to send mail, due to internal server error, Please try later');
         }
     }
 
