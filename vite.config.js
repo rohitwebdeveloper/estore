@@ -2,17 +2,18 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
 
 
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react()],
-  server: {
-    port: 3000,
-    proxy: {
-      '/api': {
-        target: 'http://localhost:8000',
-        changeOrigin: true,
-        // rewrite: (path) => path.replace(/^\/api/, ''),
-      }
-    }
-  }
-})
+export default defineConfig(({ mode }) => {
+  return {
+    plugins: [react()],
+    server: {
+      port: 3000,
+      proxy: mode === 'development' ? {
+        '/api': {
+          target: 'https://estore-backend-de6f.onrender.com',
+          changeOrigin: true,
+        },
+      } : undefined,
+    },
+    base: mode === 'development' ? '/' : '/',
+  };
+});
