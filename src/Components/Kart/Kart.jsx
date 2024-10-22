@@ -88,7 +88,7 @@ const Kart = () => {
         try {
             const response = await axios.delete(`${apiurl}/api/kart/${productid}`)
             if (response.status === 200) {
-
+                setbaseprice(prevbaseprice => prevbaseprice.filter((item, i) => i !== index));
                 setsubTotal(prevSubTotal => prevSubTotal.filter((item, i) => i !== index));
                 setquantity(prevQuantity => prevQuantity.filter((item, i) => i !== index));
                 setkartData(prevKartData => prevKartData.filter((item) => item._id !== productid));
@@ -104,6 +104,7 @@ const Kart = () => {
 
     // Handle place order 
     const handleProceed = async () => {
+
         try {
             // const amount = total + 60
             const response = await axios.post(`${apiurl}/api/orders/generate-id`, { total })
@@ -165,11 +166,11 @@ const Kart = () => {
                             </div>
                             <div className="checkoutItem">
                                 <div className="shipping">Shipping:</div>
-                                <div className="shippingAmt">{total > 500000 ? 'Free' : 60}</div>
+                                <div className="shippingAmt">{total < 500 ? 'Free' : 60}</div>
                             </div>
                             <div className="checkoutItem">
                                 <div className="total">total:</div>
-                                <div className="totalAmt"  > {total > 500000 ? total : total + 60} </div>
+                                <div className="totalAmt"  > {total < 500 ? total : total + 60} </div>
                             </div>
                             <button className="checkoutBtn" onClick={handleProceed} >Proceed to checkout</button>
                         </div>

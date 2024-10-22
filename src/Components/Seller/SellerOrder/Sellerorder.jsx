@@ -13,7 +13,6 @@ const Sellerorder = () => {
   const [loading, error, noData, data] = ApiRequestHandler(`${apiurl}/api/seller/orders/${sellerid}`)
   const [updateStatus, setupdateStatus] = useState([])
   const [orderStatusValue, setorderStatusValue] = useState('Pending')
-  // const [statusVisibility, setstatusVisibility] = useState('hidden')
 
 
   useEffect(() => {
@@ -25,14 +24,20 @@ const Sellerorder = () => {
 
 
   // // Making a request to update the product order status
-  const updateOrderStausClick = async (idOrder) => {
+  const updateOrderStausClick = async (idOrder, i) => {
     try {
       const response = await axios.patch(`${apiurl}/api/orders/status`, { orderStatusValue, idOrder })
       if (response.status == 200 && response.data.success) {
-        setstatusVisibility('hidden')
+        alert(`Order status updated successfully!, Now it has been changed to: ${orderStatusValue} `)
+        setupdateStatus((preval)=> {
+          let newPreval = [...preval];
+          newPreval[i] = !newPreval[i];
+          return newPreval;
+        })
       }
     } catch (error) {
-      seterror(true)
+      alert('Failed to update order status, Due to internal server error')
+      console.log(error)
     }
   }
 
@@ -105,7 +110,7 @@ const Sellerorder = () => {
                     <option value="Cancelled">Cancelled</option>
                     <option value="Refunded">Refunded</option>
                   </select>
-                  <button className="sellerOrderBtn" onClick={() => updateOrderStausClick(data._id)} > Update</button>
+                  <button className="sellerOrderBtn" onClick={() => updateOrderStausClick(data._id, i)} > Update</button>
                 </div>
               </section>
             </main>
