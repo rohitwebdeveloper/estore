@@ -1,52 +1,43 @@
 .offer_section {
-  max-width: 1450px;
+  max-width: 1350px;
   width: 100%;
   height: 100%;
-  background: #ff0060;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: auto;
 }
 
-.sliderImage {
-  max-height: 500px;
-  height: 100%;
-  
+
+
+.slide {
+  padding: 10px 20px 10px 20px;
 }
 
-/* .legendOne{
-  font-size: 2.5rem;
-  font-weight: bold;
-  font-family: system-ui, sans-serif;
-  position: absolute;
-  top: 40%;
-  bottom: 0;
-  margin: auto 0px;
-  left: 10%;
-  color:white
-} */
-.carousel-status{
+.sliderImage {
+  max-height: 400px;
+  height: 100%;
+  border-radius: 20px;
+}
+
+.control-arrow {
+  background: transparent;
+  color: black;
+}
+
+.control-arrow:hover {
+  background: transparent;
+}
+
+.carousel-status {
   display: none;
 }
 
 
-/* .legendTwo{
-  font-size: 2rem;
-  font-weight: bold;
-  font-family: system-ui, sans-serif;
-  position: absolute;
-  top: 50%;
-  bottom: 0;
-  margin: auto 0px;
-  right: 10%;
-  color:white
-} */
-
 
 .offerImageslider {
-  background-color: #ff0060;
-  width: 80%;
+  /* background-color: #ff0060; */
+  width: 100%;
   height: 100%;
 
 }
@@ -70,131 +61,199 @@
 }
 
 .homeSection {
-  width: 100%;
-  display: block;
-  margin: 0px auto 40px auto;
+  padding: 20px;
+  /* background-color: #f9f9f9; */
+  background-color: rgb(255, 245, 247);
+  border-radius: 10px;
+  margin: 20px auto;
+  max-width: 1350px;
 }
 
 .headingLinkbox {
   display: flex;
-  border-bottom: 1px solid grey;
   justify-content: space-between;
-  font-family: system-ui, sans-serif;
-  padding: 10px;
+  align-items: center;
+  margin-bottom: 16px;
 }
 
 .sectionHeading {
-  font-size: 1.5rem;
-
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  font-family: system-ui, -apple-system, sans-serif;
 }
 
 .viewallBtn {
-  background-color: #ff0060;
-  outline: none;
-  border: none;
-  color: white;
-  padding: 8px 15px;
-  font-size: 0.9rem;
-  border-radius: 3px;
+  padding: 8px 16px;
+  background-color: white;
+  border: 2px solid #ff0060;
+  color: #ff0060;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
 }
 
 .viewallBtn:hover {
-  box-shadow: 0px 0px 3px #ff0060;
+  background-color: #ff0060;
+  color: white;
 }
 
-.imgBox {
-  background-color: #dddddd;
-  align-items: center;
-  margin: 10px;
-  display: flex;
-  justify-content: center;
-  padding: 15px 0px;
-
+.sliderbox {
+  overflow: hidden;
 }
-
-.carouselImgname {
-  text-align: center;
-  font-family: system-ui, sans-serif;
-  margin: 10px 0px 5px 0px;
-}
-
-.carouselImgoffer {
-  text-align: center;
-  font-family: system-ui, sans-serif;
-  margin-bottom: 10px;
-  font-weight: bold;
-}
-
-/* li{
-  width: 100px;
-} */
 
 .carouselProductgrid {
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
-  justify-content: center;
+  height: 280px;
+  background: white;
+  padding: 12px;
+  margin: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  padding: 10px 20px;
+  overflow: hidden;
+}
+
+.carouselProductgrid:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+
+.carouselProductgrid img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+  max-width: 180px;
+  height: auto;
+  /* aspect-ratio: 4/4; */
+
+}
+
+.carouselImgoffer {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: #444;
+  text-align: center;
+  white-space: wrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 
 
-@media(max-width:800px){
+@media(max-width:1040px) {
 
-  html{
+  html {
+    font-size: 14px;
+  }
+
+  .carouselProductgrid {
+    height: 270px;
+  }
+}
+
+
+
+@media(max-width:800px) {
+
+  html {
     font-size: 12px;
   }
 
-  .slider{
+  .slider {
     width: 100%;
   }
 
-  .homeContainer{
+  .homeContainer {
     padding: 10px;
   }
 
   .homeSection {
     margin: 0px auto 5px auto;
+    padding: 10px;
+    border-radius: 15px;
   }
+
+  .carouselProductgrid {
+    height: 220px;
+  }
+
+
+  .slide {
+    padding: 5px 16px 5px 10px;
+  }
+
+  .sliderImage {
+    border-radius: 10px;
+  }
+
+  .headingLinkbox {
+
+    margin-bottom: 5px;
+  }
+
+
 
 }
 
 
-@media(max-width:500px){
+@media(max-width:500px) {
 
-  html{
+  html {
     font-size: 8px;
   }
 
-  .viewallBtn{
+  .viewallBtn {
     padding: 2px 3px;
     font: 0.9rem;
   }
 
-  .offer_section{
+  .offer_section {
     position: relative;
     z-index: -1;
   }
 
-  .homeContainer{
-    padding: 5px;
-  }
-  
-  .headingLinkbox{
+  .homeContainer {
     padding: 5px;
   }
 
-  .sectionHeading{
+  .headingLinkbox {
+    padding: 5px;
+  }
+
+  .homeSection {
+    margin: 0px auto;
+  }
+
+  .sectionHeading {
     font-size: 1.4rem;
   }
 
-  .carouselProductgrid img{
+  /* .carouselProductgrid img{
     height: 30px;
+  } */
+
+  .carouselProductgrid {
+    height: 160px;
+    padding: 5px 10px;
+    margin: 5px;
   }
-  
-  .react-multi-carousel-item{
+
+  .carouselProductgrid img {
+    max-width: 130px;
+  }
+
+  .react-multi-carousel-item {
     padding: 0px 0px;
     margin: 3px 5px;
-    max-width: 80px;
     font-size: 0.7rem;
   }
 
@@ -202,20 +261,32 @@
     min-width: 16px;
     min-height: 16px;
   }
-  
-  .react-multi-carousel-list button{
+
+  .react-multi-carousel-list button {
     min-width: 16px;
     min-height: 16px;
     font-size: 1rem;
   }
-  .react-multi-carousel-list button::before{
+
+  .react-multi-carousel-list button::before {
     font-size: 1rem;
   }
 
-  .legendTwo{
+  .legendTwo {
     font-size: 1.75rem;
   }
 
+  .slider {
+    width: 100%;
+  }
+
+  .slide {
+    padding: 5px 15px 5px 5px;
+  }
+
+  .sliderImage {
+
+    border-radius: 6px;
+  }
 
 }
-

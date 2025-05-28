@@ -2,18 +2,18 @@ const BestOfElectronicsAndAppliances = [
   {
     url: "googleassistant.png",
     link: "category/electronics",
-    caption: "₹1500 off Google Assistant",
+    caption: "₹1500 off Smart Assistant",
   },
  
     {
         url: "galaxyone.png",
         link: "/category/electronics",
-        caption: "20% off Galaxy S23",
+        caption: "20% off Galaxy smartphones",
     },
     {
         url: "/sonyHeadphone.png",
         link: "/category/electronics",
-        caption: "20% off Sony Headphones",
+        caption: "20% off Headphones",
     },
     {
         url: "airpods.png",
@@ -75,7 +75,7 @@ const BestOfFashionAndBeauty =  [
     {
       url: "/addidasSportsShoe.png",
       link: "/category/fashion",
-      caption: "20% off Adidas Shoes",
+      caption: "20% off Shoes",
     },
   ];
 
@@ -85,7 +85,7 @@ const BestOfFashionAndBeauty =  [
     {
         url: "samsungSmartTV.png",
         link: "/category/appliance",
-        caption: "Flat ₹15000 off on Ultra HD Samsung TV!",
+        caption: "Flat ₹15000 off on Smart TVs!",
     },
     {
         url: "/refrigiratorDouble.png",
@@ -97,11 +97,6 @@ const BestOfFashionAndBeauty =  [
         link: "/category/appliance",
         caption: "Beat the heat with 35% off on Inverter ACs!",
     },
-    // {
-    //     url: "",
-    //     link: "",
-    //     caption: "Power up with 20% off on Home Inverters!",
-    // },
     {
         url: "LGTV.png",
         link: "/category/appliance",
@@ -117,11 +112,6 @@ const BestOfFashionAndBeauty =  [
         link: "/category/appliance",
         caption: "Cool your home instantly with 25% off on Carrier ACs!",
     },
-    // {
-    //     url: "",
-    //     link: "",
-    //     caption: "Never lose power with 15% off on Pure Sine Wave Inverters!",
-    // },
 ];
 
 

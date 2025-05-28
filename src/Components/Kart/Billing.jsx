@@ -65,7 +65,7 @@ const Billing = () => {
             email: storedUserDetails?.email || 'User email',
             contact: storedUserDetails?.mobilenumber || 'User mobilenumber',
             theme: {
-                'color': "#ffff"
+                'color': "#ffffff"
             }
         }
     };

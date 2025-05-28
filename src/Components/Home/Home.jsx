@@ -13,14 +13,14 @@ const Home = () => {
 
     let image = [
         {
-            url: "/offerone.png",
+            url: "/hero1.png",
         },
         {
-            url: "/offertwo.png",
+            url: "/hero2.png",
         },
         {
-            url: "/offerthree.png",
-        }
+            url: "/hero3.png",
+        },
     ]
 
 
@@ -33,19 +33,18 @@ const Home = () => {
         <>
             <div className="offer_section">
                 <div className="offerImageslider">
-                    <Carousel axis="horizontal" autoPlay={true} infiniteLoop={true} interval={2000} >
-                        <div >
+                    <Carousel axis="horizontal" showArrows={true} autoPlay={true} infiniteLoop={true} interval={3000} >
+                        <div>
                             <img src={image[0].url} className="sliderImage" />
-                            {/* <p className="legendOne">{image[0].offer}</p>  */}
-                            
+
                         </div>
                         <div >
                             <img src={image[1].url} className="sliderImage" />
-                            {/* <p className="legendOne">{image[1].offer}</p>  */}
+
                         </div>
                         <div >
                             <img src={image[2].url} className="sliderImage" />
-                            {/* <p className="legendTwo">{image[2].offer}</p>  */}
+
                         </div>
                     </Carousel>
                 </div>
@@ -53,8 +52,10 @@ const Home = () => {
             <div className="homeContainer">
                 <div className="homeSection">
                     <div className="headingLinkbox">
-                        <div className="sectionHeading">Best of Fashion & Accessories</div>
-                        <button className="viewallBtn" onClick={() => clickviewall('fashion')} >View All</button>
+                        <div className="sectionHeading">Fashion, Beauty & cloths</div>
+                        <button className="viewallBtn" onClick={() => clickviewall('electronics')}>
+                            View All
+                        </button>
                     </div>
                     <div className="sliderbox">
                         <Multiimageslider imageData={BestOfFashionAndBeauty} />
@@ -62,7 +63,7 @@ const Home = () => {
                 </div>
                 <div className="homeSection">
                     <div className="headingLinkbox">
-                        <div className="sectionHeading">Best of Electronics</div>
+                        <div className="sectionHeading">Electronics, Gadgets, and all.. </div>
                         <button className="viewallBtn" onClick={() => clickviewall('electronics')} >View All</button>
                     </div>
                     <div className="sliderbox">

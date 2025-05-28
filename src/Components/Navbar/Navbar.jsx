@@ -74,7 +74,7 @@ const Navbar = () => {
     <>
       <div className="navbar_container">
         <div className="navbar">
-          <h4 className="brand_logo">E-Store</h4>
+          <h4 onClick={() => navigate('/')} className="brand_logo">E-Store</h4>
           <div className="searchBox">
             <input
               type="search"

@@ -21,7 +21,7 @@ const Multiimageslider = (props) => {
     },
     mobile: {
       breakpoint: { max: 464, min: 0 },
-      items: 2
+      items: 3
     }
   };
 
@@ -29,22 +29,20 @@ const Multiimageslider = (props) => {
 
   return (
     <>
-      <Carousel responsive={responsive} itemClass="imgBox">
-        {props.imageData ? (
-          props.imageData.map((data, index) => {
-            return (
-              <div onClick={() => navigate(data.link)} key={index} className='carouselProductgrid'>
+      <div className="sliderbox">
+        <Carousel responsive={responsive} itemClass="imgBox">
+          {props.imageData ? (
+            props.imageData.map((data, index) => (
+              <div onClick={() => navigate(data.link)} key={index} className="carouselProductgrid">
                 <img src={data.url} alt="" />
-                {/* <div className="carouselImgname">{data.url}</div> */}
                 <div className="carouselImgoffer">{data.caption}</div>
               </div>
-            )
-          })
-
-        ) : (
-          <h1>DATA NOT FOUND</h1>
-        )}
-      </Carousel>;
+            ))
+          ) : (
+            <h1>DATA NOT FOUND</h1>
+          )}
+        </Carousel>
+      </div>
     </>
   )
 }

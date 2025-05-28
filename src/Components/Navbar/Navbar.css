@@ -1,8 +1,8 @@
 .navbar_container{
-    max-width: 1450px;
     width: 100%;
     margin: auto;
 }
+
 
 .search_result {
     width: 50vw;
@@ -26,7 +26,6 @@
     align-items: center;
     flex-direction: row;
     height: 60px;
-    max-width: 1450px;
     width: 100%;
     justify-content: space-between;
     font-weight: bold;
@@ -75,6 +74,7 @@ nav {
     min-width: 70px;
     overflow: hidden;
     text-align: center;
+    cursor: pointer;
 }
 
 .search {
