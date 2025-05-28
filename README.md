@@ -11,7 +11,7 @@
 
 ## 🛍️ eStore - E-commerce Website
 
-![eStore Screenshot](./screenshot.png)
+![eStore Screenshot](/screenshot.png)
 
 
 
