@@ -1,5 +1,7 @@
 # E-Store: Full-Stack E-Commerce Web Application
 
+Visit the live site here 👉 [eStore Live](https://e-store-n221.onrender.com/)
+
 ## Table of Contents
 - [Overview](#overview)
 - [Features](#features)
@@ -9,7 +11,6 @@
 - [Project Structure](#project-structure)
 - [Deployment](#deployment)
 
-## 🛍️ eStore - E-commerce Website
 
 ![eStore Screenshot](public/screenshot.png)
 
