@@ -9,6 +9,11 @@
 - [Project Structure](#project-structure)
 - [Deployment](#deployment)
 
+## 🛍️ eStore - E-commerce Website
+
+![eStore Screenshot](./screenshot.png)
+
+
 
 ## Overview
 
@@ -35,8 +40,8 @@ To test the application, you can use the following credentials:
 - **Password**: `testuser1`
 
 ### Seller Login
-- **Email**: `testseller1@gmail.com`
-- **Password**: `testseller1`
+- **Email**: `rohitkushwaha.developer@gmail.com`
+- **Password**: `rohitDeveloper`
 
 
 ## Payment Information
