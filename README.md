@@ -1,5 +1,7 @@
 # E-Store: Full-Stack E-Commerce Web Application
 
+> ⚠️ **NOTE:** This site is hosted on a free Render instance. The first API request may take **50–60 seconds** due to server cold start, as the platform puts the backend to sleep when inactive.
+
 Visit the live site here 👉 [eStore Live](https://e-store-n221.onrender.com/)
 
 ## Table of Contents
