@@ -94,7 +94,7 @@ const Addproduct = () => {
 
             if (response.data.success == true) {
                 alert(response.data.message)
-                navigate('/product')
+                navigate('/seller/dashboard/product')
             }
         } catch (error) {
             console.log(error)
